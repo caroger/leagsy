@@ -1,3 +1,13 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
 *.rbc
 capybara-*.html
 .rspec
@@ -65,3 +75,34 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/assets
+.env
+node_modules
+npm-debug.log*
+/coverage
+
+# Ignore bundle dependencies
+vendor/ruby
+
+# RVM gemset
+.ruby-gemset
+
+# Generated js bundles
+/public/webpack/
+/public/webpack-test/
+
+spec/examples.txt
+
+# Ignore i18n-js
+client/app/libs/i18n/translations.js
