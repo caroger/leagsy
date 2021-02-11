@@ -35,5 +35,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
+  }
 }
