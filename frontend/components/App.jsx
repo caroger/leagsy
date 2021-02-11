@@ -9,7 +9,9 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 const App = () => (
   <div>
     <header>
-      <h1>Rtsy</h1>
+      <Link to="/" className="header-link">
+        <h1>Rtsy</h1>
+      </Link>
       <GreetingContainer />
     </header>
     <Switch>
