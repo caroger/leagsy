@@ -1,0 +1,28 @@
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 20px;
+}
+
+.logo {
+  height: 40px;
+  width: 80px;
+  line-height: 20px;
+}
+.search {
+  outline: none;
+  width: 1000px;
+  line-height: 30px;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(34, 34, 34, 0.15);
+  border-radius: 96px;
+  border-width: 1px;
+}
+.sign-in-btn {
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  line-height: 20px;
+}

@@ -39,13 +39,13 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
+        <div onClick={this.props.closeModal} className="close-x">
+          X
+        </div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Welcome to Rtsy!
           <br />
           Please {this.props.formType} or {this.props.otherForm}
-          <div onClick={this.props.closeModal} className="close-x">
-            X
-          </div>
           {this.renderErrors()}
           <div className="login-form">
             <br />
