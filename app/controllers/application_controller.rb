@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # TODO: for Postman testing purpose only!
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
   helper_method :current_user, :logged_in?
 
   # private
@@ -22,12 +22,16 @@ class ApplicationController < ActionController::Base
   end
 
   def logout
-    current_user.reset_session_token!
-    session[:session_token] = nil
-    @current_user = nil
+    if logged_in?
+      current_user.reset_session_token!
+      session[:session_token] = nil
+      @current_user = nil
+    else
+      render status: 404
+    end
   end
 
   def require_logged_in
-    render json: { base: ['invalid credentials'] }, status: 401 unless current_user
+    render json: { base: ['invalid credentials'] }, status: 401 unless @current_user
   end
 end
