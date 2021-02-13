@@ -42,6 +42,7 @@ class SessionForm extends React.Component {
       return (
         <div>
           <h2>Sign In</h2>
+          {this.props.otherForm}
         </div>
       );
     } else {
@@ -65,7 +66,7 @@ class SessionForm extends React.Component {
           {this.renderHeader()}
 
           <br />
-          Please {this.props.formType} or {this.props.otherForm}
+          {/* Please {this.props.formType} or {this.props.otherForm} */}
           {this.renderErrors()}
           <div className="login-form">
             <br />
