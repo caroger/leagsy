@@ -13,135 +13,130 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 800px;
-    width: 100%;
+    max-width: 380px;
+    min-width: auto;
   }
 }
 
-.login-form-box,
-.signup-form-box {
-  display: flex;
-  padding-top: 40px;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
-  align-items: center;
-  max-width: 800px;
-  width: 100vw;
-  z-index: 3;
-  border: none;
-  border-radius: 10px;
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
-    sans-serif;
-  position: relative;
-  .login-form,
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-  }
-  .logo {
-    padding-top: 22px;
-    width: 90px;
-    height: 80px;
-  }
+// .login-form-box,
+// .signup-form-box {
+//   height: 600px;
+//   width: 350px;
+//   padding-left: 15px;
+//   background: white;
+//   position: relative;
+//   border: 1px solid rgba(0, 0, 0, 0.2);
+//   border-radius: 30px;
 
-  .close-x {
-    z-index: 100;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    transform: scale(1.4, 1);
-    font-weight: 300;
-    font-size: 22px;
-    cursor: pointer;
-    color: gray;
-  }
+//   .login-form,
+//   .signup-form {
+//     display: flex;
+//     flex-direction: column;
+//     margin-top: 0em;
+//     height: 300px;
+//     width: 325px;
+//   }
+//   .logo {
+//     padding-top: 22px;
+//     width: 90px;
+//     height: 80px;
+//   }
 
-  .session-submit {
-    width: 100%;
-    outline: none;
-    padding-top: 100px;
-  }
+//   .close-x {
+//     z-index: 100;
+//     position: absolute;
+//     top: 16px;
+//     left: 16px;
+//     transform: scale(1.4, 1);
+//     font-weight: 300;
+//     font-size: 22px;
+//     cursor: pointer;
+//     color: gray;
+//   }
 
-  .other-form {
-    width: 100%;
-    outline: none;
-    padding-top: 20px;
-    padding-bottom: 50px;
-  }
-}
+//   .session-submit {
+//     width: 100%;
+//     outline: none;
+//     padding-top: 100px;
+//   }
 
-.login-email,
-.login-password,
-.signup-email,
-.signup-password {
-  border-style: none;
-  vertical-align: middle;
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
-    sans-serif;
-  font-size: 16px;
-  font-weight: 345;
-  line-height: 2.5;
-  width: 300px;
-  background-color: #0a0a0a96;
-  color: white;
-  outline: none;
-  padding-left: 1vw;
-}
+//   .other-form {
+//     width: 100%;
+//     outline: none;
+//     padding-top: 20px;
+//     padding-bottom: 50px;
+//   }
+// }
 
-.login-email,
-.signup-email {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  margin-top: 40px;
-}
+// .login-email,
+// .login-password,
+// .signup-email,
+// .signup-password {
+//   border-style: none;
+//   vertical-align: middle;
+//   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+//     sans-serif;
+//   font-size: 16px;
+//   font-weight: 345;
+//   line-height: 2.5;
+//   width: 300px;
+//   background-color: #0a0a0a96;
+//   color: white;
+//   outline: none;
+//   padding-left: 1vw;
+// }
 
-.session-inputs {
-  padding-left: 20px;
-}
-.session-error {
-  padding-top: 5px;
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
-    sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-.login-password,
-.signup-password {
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
+// .login-email,
+// .signup-email {
+//   border-top-left-radius: 6px;
+//   border-top-right-radius: 6px;
+//   margin-top: 40px;
+// }
 
-.signin-header,
-.signup-header {
-  font-size: 24px;
-  font-style: normal;
-  padding-top: 20px;
-}
+// .session-inputs {
+//   padding-left: 20px;
+// }
+// .session-error {
+//   padding-top: 5px;
+//   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+//     sans-serif;
+//   font-size: 16px;
+//   font-weight: 300;
+//   line-height: 1.5;
+// }
+// .login-password,
+// .signup-password {
+//   border-bottom-left-radius: 6px;
+//   border-bottom-right-radius: 6px;
+// }
 
-.sign-in-info,
-.signup-info {
-  font-weight: 300;
-  font-size: 18px;
-  font-style: normal;
-  padding-top: 25px;
-}
+// .signin-header,
+// .signup-header {
+//   font-size: 24px;
+//   font-style: normal;
+//   padding-top: 20px;
+// }
 
-.session-submit,
-.other-form {
-  border-style: none;
-  background-color: rgb(51, 51, 51);
-  color: rgb(102, 187, 255);
-  cursor: pointer;
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
-    sans-serif;
-  font-size: 15px;
-  font-weight: 348;
-}
-.session-submit:hover,
-.other-form:hover {
-  text-decoration: underline;
-}
+// .sign-in-info,
+// .signup-info {
+//   font-weight: 300;
+//   font-size: 18px;
+//   font-style: normal;
+//   padding-top: 25px;
+// }
+
+// .session-submit,
+// .other-form {
+//   border-style: none;
+//   background-color: rgb(51, 51, 51);
+//   color: rgb(102, 187, 255);
+//   cursor: pointer;
+//   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+//     sans-serif;
+//   font-size: 15px;
+//   font-weight: 348;
+// }
+// .session-submit:hover,
+// .other-form:hover {
+//   text-decoration: underline;
+// }

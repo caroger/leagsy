@@ -12,7 +12,7 @@ const App = () => (
   <div>
     <Modal />
     <NavBarContainer />
-    {/* <GreetingContainer /> */}
+    <GreetingContainer />
   </div>
 );
 
