@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { demoLogin } from "../../actions/session_actions";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SessionForm extends React.Component {
       firstname: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
   componentWillUnmount() {
     this.props.clearErrors();
@@ -25,6 +27,16 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(this.props.closeModal);
+  }
+
+  handleDemoUser(e) {
+    e.preventDefault();
+    const demoUser = {
+      email: "demo@rtsy.com",
+      firstname: "Demo User",
+      password: "demodemo",
+    };
+    this.props.login(demoUser).then(this.props.closeModal);
   }
 
   renderErrors() {
@@ -62,7 +74,6 @@ class SessionForm extends React.Component {
           X
         </div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-
           {this.renderHeader()}
 
           <br />
@@ -103,11 +114,12 @@ class SessionForm extends React.Component {
               />
             </label>
             <br />
-            <input
-              className="session-submit"
-              type="submit"
-              value={this.props.formType}
-            />
+            <button className="session-submit" type="submit">{this.props.formType}</button>
+            {this.props.formType === "login" && (
+              <button onClick={this.handleDemoUser} className="session-submit">
+                Demo Login
+              </button>
+            )}
           </div>
         </form>
       </div>

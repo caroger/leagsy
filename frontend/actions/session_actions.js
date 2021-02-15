@@ -37,3 +37,11 @@ export const logout = () => (dispatch) =>
 export const clearErrors = () => (dispatch) => {
   dispatch(receiveErrors([]));
 };
+
+const demoUser = { email: "demo@rtsy.com", password: "demodemo" };
+
+export const demoLogin = () => (dispatch) => {
+  return APIUtil.login(demoUser).then((user) =>
+    dispatch(receiveCurrentUser(user))
+  );
+};
