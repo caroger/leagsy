@@ -61,9 +61,11 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="render-errors-ul">
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li className="render-errors" key={`error-${i}`}>
+            {error}
+          </li>
         ))}
       </ul>
     );
@@ -103,7 +105,6 @@ class SessionForm extends React.Component {
         {this.renderClose()}
         <form onSubmit={this.handleSubmit} className="login-form-box">
           {this.renderHeader()}
-          {this.renderErrors()}
           <div className="login-form">
             <br />
             <label className="login-input-label">
@@ -140,6 +141,7 @@ class SessionForm extends React.Component {
               />
             </label>
             <br />
+            {this.renderErrors()}
             <button className="session-submit" type="submit">
               {this.props.formType === "login" ? "Sign in" : "Register"}
             </button>

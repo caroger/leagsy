@@ -8,12 +8,31 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 
-const App = () => (
+const noMatchPage = () => {
+  return (
+    <div>
+      <h3>404 - Not found</h3>
+    </div>
+  );
+};
+
+const splashPage = () => (
   <div>
     <Modal />
     <NavBarContainer />
     <GreetingContainer />
   </div>
 );
+
+const App = () => {
+  return (
+    <section className="App">
+      <Switch>
+        <Route exact path="/" component={splashPage} />
+        <Route component={noMatchPage} />
+      </Switch>
+    </section>
+  );
+};
 
 export default App;

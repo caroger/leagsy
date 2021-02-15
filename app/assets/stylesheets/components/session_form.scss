@@ -158,39 +158,13 @@ form {
   font-weight: 300;
   display: block;
 }
-.text-title {
-  color: black;
-  font-weight: 400;
-  margin-top: 19px;
-  font-size: 26px;
-  margin-bottom: 4px;
-  // font-style: oblique;
-}
-.extra-login {
-  padding-top: 7px;
-  border: 2px solid black;
-  border-color: black;
-  padding-bottom: 3px;
-  height: 35px;
-  font-size: 18px;
-  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
-    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
-  background-color: white;
-  color: black;
-  width: 322px;
-  // right: 5px;
-  position: relative;
-  border-radius: 5px;
-  margin-bottom: 21px;
-  margin-top: 26px;
-}
 .render-errors-ul {
   display: flex;
   flex-direction: column;
   padding-top: 14px;
 }
 .render-errors {
-  color: #f56416;
+  color: red;
   font-size: 16px;
 }
 .conditions {

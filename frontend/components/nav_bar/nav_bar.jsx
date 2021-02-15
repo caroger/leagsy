@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ currentUser, logout, openModal }) => {
   const signinButton = () => {
@@ -19,7 +20,9 @@ const NavBar = ({ currentUser, logout, openModal }) => {
 
   return (
     <nav className="nav-bar">
-      <img className="logo" src={window.siteLogo} alt="Logo" />
+      <Link to="/">
+        <img className="logo" src={window.siteLogo} alt="Logo" />
+      </Link>
       <input className="search" type="text" placeholder="Search anything" />
       {currentUser ? userButton(currentUser, logout) : signinButton()}
     </nav>
