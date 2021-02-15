@@ -8,14 +8,6 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 
-const noMatchPage = () => {
-  return (
-    <div>
-      <h3>404 - Not found</h3>
-    </div>
-  );
-};
-
 const splashPage = () => (
   <div>
     <Modal />
@@ -29,7 +21,7 @@ const App = () => {
     <section className="App">
       <Switch>
         <Route exact path="/" component={splashPage} />
-        <Route component={noMatchPage} />
+        <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
     </section>
   );
