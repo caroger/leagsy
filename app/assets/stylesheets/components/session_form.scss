@@ -1,15 +1,44 @@
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
+    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+}
+
+.close-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 48px;
+}
+.close-x {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  display: block;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  background-color: transparent;
+}
+
+.close-x:hover {
+  background-color: #727272;
+}
+
 .login-form-box {
-  height: 600px;
+  height: 500px;
   width: 350px;
-  padding-left: 15px;
-  // padding-right: 15px;
   background: white;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  border-radius: 20px;
   font-size: 12px;
   font-weight: 0;
   color: #444;
+  padding: 30px;
 }
 
 form {
@@ -23,46 +52,111 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 1em;
 }
 
-.sesion-labels {
-  font-size: 15px;
-  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
-    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
-  padding-top: 6px;
-  color: black;
-  padding-bottom: 10px;
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  // justify-content: space-around;
+  align-items: center;
+  padding-right: 15 px;
+}
+
+.form-type {
+  font-size: 20px;
   font-weight: 500;
-  text-align: left;
-  // font-style:oblique;
+  line-height: 28px;
+  box-sizing: border-box;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.other-form {
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 36px;
+  min-width: 36px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 2px solid;
+  background-color: white;
+  color: black;
+  border-radius: 24px;
+}
+
+.other-form:hover {
+  transform: scale(1.03);
+  opacity: 1;
+  // backface-visibility: hidden;
 }
 
 .login-input {
-  padding-left: 7px;
-  height: 35px;
-  font-size: 20px;
+  display: block;
+  font-size: 16px;
   font-family: inherit;
-  width: 322px;
+  line-height: 28px;
+  padding: 9px 12px 9px 12px;
   border: 1px solid #e5e4e2;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  margin-bottom: 8px;
-  margin-top: 3px;
+  border-radius: 6px;
+  width: 100%;
 }
+.login-input:hover {
+  border: 1px solid rgb(174, 167, 167);
+}
+
+.login-input-label {
+  line-height: 18px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+}
+
 .session-submit {
-  padding-top: 2px;
-  border: 1px solid;
-  padding-bottom: 3px;
-  height: 55px;
-  font-size: 18px;
-  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
-    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
   background-color: black;
   color: white;
-  width: 322px;
-  // right: 5px;
-  position: relative;
+  width: 350px;
   border-radius: 5px;
+  padding: 12px 18px 12px 18px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 24px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.session-submit:hover {
+  transform: scale(1.01);
+  opacity: 1;
+  // backface-visibility: hidden;
+}
+
+.registration-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.registration_h1 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  display: block;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+.registration_h2 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  display: block;
 }
 .text-title {
   color: black;
@@ -71,8 +165,6 @@ form {
   font-size: 26px;
   margin-bottom: 4px;
   // font-style: oblique;
-  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
-    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
 }
 .extra-login {
   padding-top: 7px;
