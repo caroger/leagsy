@@ -12,9 +12,29 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoUser = this.handleDemoUser.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
   componentWillUnmount() {
     this.props.clearErrors();
+    window.removeEventListener("keyup", this.handleKeyUp, false);
+  }
+  componentDidMount() {
+    window.addEventListener("keyup", this.handleKeyUp, false);
+  }
+
+  handleKeyUp(e) {
+    const { closeModal} = this.props;
+    const keys = {
+      27: () => {
+        e.preventDefault();
+        closeModal();
+        window.removeEventListener("keyup", this.handleKeyUp, false);
+      },
+    };
+
+    if (keys[e.keyCode]) {
+      keys[e.keyCode]();
+    }
   }
   update(field) {
     return (e) =>
@@ -71,6 +91,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x">
+        {/* <div onClick={this.handleKeyUp} className="close-x"> */}
           X
         </div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -114,7 +135,9 @@ class SessionForm extends React.Component {
               />
             </label>
             <br />
-            <button className="session-submit" type="submit">{this.props.formType}</button>
+            <button className="session-submit" type="submit">
+              {this.props.formType}
+            </button>
             {this.props.formType === "login" && (
               <button onClick={this.handleDemoUser} className="session-submit">
                 Demo Login
