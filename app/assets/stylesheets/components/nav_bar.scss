@@ -1,28 +1,57 @@
+// Google fonts
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+$logo-font: "Lobster", cursive;
+
 .nav-bar {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  padding: 20px;
-}
-
-.logo {
-  height: 40px;
-  width: 80px;
-  line-height: 20px;
-}
-.search {
-  outline: none;
-  width: 1000px;
-  line-height: 30px;
-  background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(34, 34, 34, 0.15);
-  border-radius: 96px;
-  border-width: 1px;
-}
-.sign-in-btn {
+  // background: rgba(216, 213, 54, 0.233); /*TODO change to white later*/
+  padding: 12px 36px 12px 36px;
   box-sizing: border-box;
-  color: rgb(34, 34, 34);
-  line-height: 20px;
+
+  .site-logo {
+    color: orange;
+    font-family: $logo-font;
+    // text-align: center;
+    height: 40px;
+    width: 80px;
+    font-size: 40px;
+    text-decoration: none;
+    outline: none;
+    // background: #ddd;
+  }
+
+  .search-container {
+    outline: none;
+    width: 1000px;
+    line-height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(34, 34, 34, 0.15);
+    border-radius: 96px;
+    border-width: 1px;
+    margin-left: 6px;
+    margin-right: 18px;
+  }
+
+  .sign-in-btn {
+    cursor: pointer;
+    height: 36px;
+    vertical-align: middle;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+    &:hover {
+      border-radius: 24px;
+      background-color: #eeeeee;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavBar = ({ currentUser, logout, openModal }) => {
   const signinButton = () => {
     return (
-      <button className="sign-in-button" onClick={() => openModal("login")}>
+      <button className="sign-in-btn" onClick={() => openModal("login")}>
         Sign in
       </button>
     );
@@ -12,18 +12,28 @@ const NavBar = ({ currentUser, logout, openModal }) => {
 
   const userButton = () => {
     return (
-      <button className="sign-in-button" onClick={logout}>
+      <button className="sign-in-btn" onClick={logout}>
         Log Out
       </button>
     );
   };
 
+  const SiteLogo = () => {
+    return (
+      <Link to="/" className="site-logo">
+        Rtsy
+      </Link>
+    );
+  };
+
   return (
     <nav className="nav-bar">
-      <Link to="/">
-        <img className="logo" src={window.siteLogo} alt="Logo" />
-      </Link>
-      <input className="search" type="text" placeholder="Search anything" />
+      <SiteLogo />
+      <input
+        className="search-container"
+        type="text"
+        placeholder="Search anything"
+      />
       {currentUser ? userButton(currentUser, logout) : signinButton()}
     </nav>
   );

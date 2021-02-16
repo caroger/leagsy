@@ -16,7 +16,6 @@ const mSTP = ({ errors }) => {
 const mDTP = (dispatch) => {
   return {
     processForm: (user) => dispatch(login(user)),
-    // demoLogin: () => dispatch(login(demoUser)),
     login: (user) => dispatch(login(user)),
     otherForm: (
       <button
