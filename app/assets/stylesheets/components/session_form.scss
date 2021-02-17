@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+$form-font: "Rubik", sans-serif;
+
 .login-form-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  font-family: "Graphik Webfont", -apple-system, BlinkMacSystemFont, "Roboto",
-    "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+  font-family: $form-font;
   .close-container {
     display: flex;
     flex-direction: row;
@@ -57,6 +59,7 @@
       &:hover {
         transform: scale(1.03);
         opacity: 1;
+        cursor: pointer;
       }
     }
   }

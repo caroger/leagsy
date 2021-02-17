@@ -23,7 +23,7 @@ class SessionForm extends React.Component {
 
   // Press Escape to Close Form
   handleKeyUp(e) {
-    const { closeModal, processForm } = this.props;
+    const { closeModal } = this.props;
     const keys = {
       27: () => {
         e.preventDefault();
@@ -119,7 +119,7 @@ class SessionForm extends React.Component {
                     emErr.length > 0 ? "login-input--error" : "login-input"
                   }
                 />
-                {this.renderErrors(emErr)}
+                {this.props.formType === "signup" && this.renderErrors(emErr)}
               </label>
               <br />
               {this.props.formType === "signup" && (

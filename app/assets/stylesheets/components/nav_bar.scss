@@ -1,27 +1,27 @@
 // Google fonts
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 
 $logo-font: "Lobster", cursive;
+$main-font: "Rubik", sans-serif;
 
 .nav-bar {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  // background: rgba(216, 213, 54, 0.233); /*TODO change to white later*/
   padding: 12px 36px 12px 36px;
   box-sizing: border-box;
+  font-family: $main-font;
 
   .site-logo {
     color: orange;
     font-family: $logo-font;
-    // text-align: center;
     height: 40px;
     width: 80px;
     font-size: 40px;
     text-decoration: none;
     outline: none;
-    // background: #ddd;
   }
 
   .search-container {
