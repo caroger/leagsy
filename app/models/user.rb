@@ -10,9 +10,9 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :merchants,
-           class_name: 'Product',
+           primary_key: :id,
            foreign_key: :seller_id,
-           primary_key: :id
+           class_name: :Product
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
