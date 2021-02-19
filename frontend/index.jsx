@@ -4,7 +4,10 @@ import ReactDOM from "react-dom";
 //Components
 import Root from "./components/root";
 import configureStore from "./store/store";
+//TODO testing start
 import { login, logout, signup } from "./util/session_api_util";
+import { fetchProduct, fetchProducts } from "./util/product";
+//TODO testing end
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -23,11 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
   // TODO Testing Start
-  window.login = login;
   window.logout = logout;
-  window.signup = signup;
   window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  window.fetchProducts = fetchProducts;
+  window.fetchProduct = fetchProduct;
   //Testing End
 
   ReactDOM.render(<Root store={store} />, root);
