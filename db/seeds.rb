@@ -31,7 +31,7 @@ product2 = Product.create!(
   category: 'keyboard'
 )
 
-product2.photo.attach(io: File.open('app/assets/images/products/2.jpeg'), filename: '2.jpeg')
+product2.photo.attach(io: File.open('app/assets/images/products/2.jpeg'), filename: '2.jpg')
 
 product3 = Product.create!(
   seller_id: user3.id,
@@ -41,4 +41,4 @@ product3 = Product.create!(
   category: 'keyboard'
 )
 
-product3.photo.attach(io: File.open('app/assets/images/products/3.jpeg'), filename: '3.jpeg')
+product3.photo.attach(io: File.open('app/assets/images/products/3.jpg'), filename: '3.jpg')
