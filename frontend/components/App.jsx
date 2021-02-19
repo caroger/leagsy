@@ -7,12 +7,13 @@ import LogInFormContainer from "./session_form/login_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal";
 import NavBarContainer from "./nav_bar/nav_bar_container";
+import PromoContainer from "./promo/promo_container";
 
 const splashPage = () => (
   <div>
     <Modal />
     <NavBarContainer />
-    <GreetingContainer />
+    <PromoContainer />
   </div>
 );
 

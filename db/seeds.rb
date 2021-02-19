@@ -21,6 +21,8 @@ product1 = Product.create!(
   category: 'keyboard'
 )
 
+product1.photo.attach(io: File.open('app/assets/images/products/1.png'), filename: '1.png')
+
 product2 = Product.create!(
   seller_id: user2.id,
   name: 'Keyboard 2',
@@ -29,26 +31,14 @@ product2 = Product.create!(
   category: 'keyboard'
 )
 
+product2.photo.attach(io: File.open('app/assets/images/products/2.jpeg'), filename: '2.jpeg')
+
 product3 = Product.create!(
   seller_id: user3.id,
-  name: 'desk 1',
-  description: 'desk 1 description',
-  price: 199.99,
-  category: 'office'
+  name: 'Keyboard 3',
+  description: 'Keyboard 3 description',
+  price: 39.99,
+  category: 'keyboard'
 )
 
-product4 = Product.create!(
-  seller_id: user1.id,
-  name: 'chair 1',
-  description: 'chair 1 description',
-  price: 99.99,
-  category: 'office'
-)
-
-product5 = Product.create!(
-  seller_id: user2.id,
-  name: 'phone 1',
-  description: 'phone 1 description',
-  price: 199.99,
-  category: 'electronic'
-)
+product3.photo.attach(io: File.open('app/assets/images/products/3.jpeg'), filename: '3.jpeg')
