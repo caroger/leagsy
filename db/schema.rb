@@ -36,12 +36,14 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+  create_table "cart_items", id: false, force: :cascade do |t|
+    t.bigint "buyer_id"
+    t.bigint "product_id"
     t.integer "quantity", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_cart_items_on_buyer_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -57,14 +59,11 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "reviewer_id"
-    t.bigint "product_id"
+    t.integer "product_id"
     t.integer "rating"
     t.string "body"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_reviews_on_product_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +78,4 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "reviews", "products"
-  add_foreign_key "reviews", "users"
 end
