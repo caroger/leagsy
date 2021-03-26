@@ -2,7 +2,7 @@
 #
 # Table name: cart_items
 #
-#  buyer_id   :bigint
+#  user_id    :bigint
 #  product_id :bigint
 #  quantity   :integer          default(1), not null
 #  created_at :datetime         not null

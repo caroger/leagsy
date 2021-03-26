@@ -37,4 +37,13 @@ end
   )
 end
 
-# Seed cart items
+# Seed 3 cartItems for each user
+
+User.all.each do |usr|
+  3.times do
+    CartItem.create(
+      product: Product.all.sample,
+      buyer: usr
+    )
+  end
+end

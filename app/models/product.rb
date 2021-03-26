@@ -24,5 +24,9 @@ class Product < ApplicationRecord
              foreign_key: :seller_id,
              class_name: :User
 
+  has_many :cartItems, class_name: :CartItem, foreign_key: :product_id
+
+  has_many :buyers, through: :cartItems, source: :buyer
+
   has_many :reviews, class_name: :Review, foreign_key: :product_id
 end

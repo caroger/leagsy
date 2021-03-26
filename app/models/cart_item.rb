@@ -2,7 +2,7 @@
 #
 # Table name: cart_items
 #
-#  buyer_id   :bigint
+#  user_id    :bigint
 #  product_id :bigint
 #  quantity   :integer          default(1), not null
 #  created_at :datetime         not null
@@ -15,7 +15,7 @@ class CartItem < ApplicationRecord
              foreign_key: :product_id,
              class_name: :Product
 
-  belongs_to :customer,
+  belongs_to :buyer,
              foreign_key: :user_id,
              class_name: :User
 end
