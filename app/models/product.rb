@@ -10,4 +10,9 @@ class Product < ApplicationRecord
              primary_key: :id,
              foreign_key: :seller_id,
              class_name: :User
+
+  has_many :reviews,
+           primary_key: :id,
+           foreign_key: :product_id,
+           class_name: :Review
 end

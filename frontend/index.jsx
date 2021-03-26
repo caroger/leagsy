@@ -5,8 +5,8 @@ import ReactDOM from "react-dom";
 import Root from "./components/root";
 import configureStore from "./store/store";
 //TODO testing start
-import { login, logout, signup } from "./util/session_api_util";
-import { fetchProduct, fetchProducts } from "./util/product";
+// import { login, logout, signup } from "./util/session_api_util";
+// import { fetchProduct, fetchProducts } from "./util/product";
 //TODO testing end
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,13 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   const root = document.getElementById("root");
-
-  // TODO Testing Start
-  window.logout = logout;
-  window.getState = store.getState;
-  window.fetchProducts = fetchProducts;
-  window.fetchProduct = fetchProduct;
-  //Testing End
 
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -9,10 +9,14 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :merchants,
+  has_many :products,
            primary_key: :id,
            foreign_key: :seller_id,
            class_name: :Product
+
+  has_many :cart_items,
+           primary_key: :id,
+           foreign_key:
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

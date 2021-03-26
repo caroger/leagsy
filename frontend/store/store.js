@@ -12,14 +12,14 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // TODO get rid of the redux dev tool config for production
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = (preloadedState = {}) =>
   createStore(
     rootReducer,
     preloadedState,
-    // composeEnhancers(applyMiddleware(...middlewares))
-    applyMiddleware(...middlewares)
+    composeEnhancers(applyMiddleware(...middlewares))
+    // applyMiddleware(...middlewares)
   );
 
 export default configureStore;
