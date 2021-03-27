@@ -14,10 +14,9 @@
 class Product < ApplicationRecord
   validates :name, :category, :price, :description, :seller_id, presence: true
   validates :category,
-            inclusion: { in: %w[office electronic keyboard book chair], message: '%<value>s is not a valid product' }
+            inclusion: { in: %w[office electronic keyboard book chair], message: "%<value>s is not a valid product" }
   validates :price, numericality: { greater_than: 0 }
 
-  has_one_attached :photo
 
   belongs_to :seller,
              primary_key: :id,
@@ -29,4 +28,6 @@ class Product < ApplicationRecord
   has_many :buyers, through: :cartItems, source: :buyer
 
   has_many :reviews, class_name: :Review, foreign_key: :product_id
+
+  has_one_attached :photo
 end
