@@ -1,34 +1,39 @@
-require 'faker'
+require "faker"
+require "open-uri"
 
 User.destroy_all
 Product.destroy_all
 Review.destroy_all
 
 # Create 5 random users
+cat_list = %w[office electronic keyboard book chair]
 5.times do
-  User.create!(
-    email: Faker::Internet.email,
-    firstname: Faker::Name.first_name,
-    password: 'password'
+  # create a user
+  usr = User.create(
+   email: Faker::Internet.email,
+   firstname: Faker::Name.first_name,
+   password: "password"
+ )
+  # user will sell 1 product
+  Product.create(
+       name: Faker::Commerce.product_name,
+       price: Faker::Commerce.price,
+       category: cat_list.pop,
+       description: Faker::Lorem.paragraph,
+       seller: usr
   )
 end
 
-# Create 10 products for each category
-
-%w[office electronic keyboard book chair].each do |cat|
-  6.times do
-    Product.create!(
-      name: Faker::Commerce.product_name,
-      price: Faker::Commerce.price,
-      category: cat,
-      description: Faker::Lorem.paragraph,
-      seller: User.all.sample
-    )
+(1..5).each do |i|
+  p = Product.all[i - 1]
+  (1..5).each do |j|
+    file = open("https://rtsy-seeds.s3-us-west-1.amazonaws.com/rtsy/#{i}-#{j}.jpg")
+    p.photos.attach(io: file, filename: "#{i}-#{j}.jpg")
   end
 end
 
 # Seed reviews
-100.times do
+20.times do
   Review.create(
     product: Product.all.sample,
     reviewer: User.all.sample,
@@ -38,7 +43,6 @@ end
 end
 
 # Seed 3 cartItems for each user
-
 User.all.each do |usr|
   3.times do
     CartItem.create(

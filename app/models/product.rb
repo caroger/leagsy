@@ -17,7 +17,7 @@ class Product < ApplicationRecord
             inclusion: { in: %w[office electronic keyboard book chair], message: "%<value>s is not a valid product" }
   validates :price, numericality: { greater_than: 0 }
 
-
+  has_many_attached :photos
   belongs_to :seller,
              primary_key: :id,
              foreign_key: :seller_id,
@@ -29,5 +29,8 @@ class Product < ApplicationRecord
 
   has_many :reviews, class_name: :Review, foreign_key: :product_id
 
-  has_one_attached :photo
+  def avg_review
+    return 0 unless reviews.size.positive?
+    reviews.average(:rating).round(2).to_f
+  end
 end
