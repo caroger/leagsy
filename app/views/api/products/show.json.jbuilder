@@ -1,9 +1,19 @@
-json.extract! @product, :id, :name, :price, :seller_id, :description, :category
 
-json.photoUrls @product.photos.map { |file| url_for(file) }
-
-json.seller do
-  json.partial! "api/users/user", user: @product.seller
+json.product do
+  json.partial! "/api/products/product", product: @product
+  json.reviewIds @product.reviews.pluck(:id)
 end
-# TODO: for shopping cart
-# json.cart @product.buyers, :id, :name, :email
+
+@product.reviews.includes(:reviewer).each do |review|
+  json.reviews do
+    json.set! review.id do
+      json.partial! "api/reviews/review", review: review
+    end
+  end
+
+  json.reviewers do
+    json.set! review.reviewer.id do
+      json.extract! review.reviewer, :id, :firstname
+    end
+  end
+end
