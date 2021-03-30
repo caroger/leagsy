@@ -1,5 +1,6 @@
 class Api::CartItemsController < ApplicationController
   def index
+    @cart_items = CartItem
     render :index
   end
 
@@ -8,19 +9,15 @@ class Api::CartItemsController < ApplicationController
   end
 
   def create
-
   end
 
   def update
-
   end
 
   def destroy
-
   end
 
   private
-  def cartItemParams
-    
-  end
+    def cartItemParams
+    end
 end
