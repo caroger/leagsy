@@ -1,3 +1,1 @@
-json.review do
-  json.partial! "/api/reviews/review"
-end
+json.extract! @review, :id, :rating, :body, :product_id, :reviewer_id

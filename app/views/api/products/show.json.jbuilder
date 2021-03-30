@@ -1,19 +1,10 @@
-
-json.product do
-  json.partial! "/api/products/product", product: @product
-  json.reviewIds @product.reviews.pluck(:id)
-end
-
-@product.reviews.includes(:reviewer).each do |review|
-  json.reviews do
+json.extract! @product, :id, :name, :price, :description, :category, :avg_rating
+json.picture_urls @product.photos.map { |file| url_for(file) }
+json.reviews do
+  @product.reviews.each do |review|
     json.set! review.id do
-      json.partial! "api/reviews/review", review: review
-    end
-  end
-
-  json.reviewers do
-    json.set! review.reviewer.id do
-      json.extract! review.reviewer, :id, :firstname
+      json.extract! review, :id, :rating, :body, :product_id, :reviewer_id
+      json.reviewerName review.reviewer.firstname
     end
   end
 end
