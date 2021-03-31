@@ -8,15 +8,13 @@ export const receiveProducts = (products) => ({
   products,
 });
 
-export const receiveProduct = ({ product, reviews, reviewers }) => ({
+export const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
   product,
-  reviews,
-  reviewers,
 });
 
 export const fetchProducts = () => (dispatch) =>
-  APIUtil.fetchProducts.then((products) => dispatch(receiveProducts));
+  APIUtil.fetchProducts.then((products) => dispatch(receiveProducts(products)));
 
 export const fetchProduct = (id) => (dispatch) =>
-  APIUtil.fetchProduct(id).then((payload) => dispatch(receiveProduct(payload)));
+  APIUtil.fetchProduct(id).then((product) => dispatch(receiveProduct(product)));
