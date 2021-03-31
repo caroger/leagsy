@@ -8,7 +8,22 @@ class Api::ReviewsController < ApplicationController
     if @review.save
       render :show
     else
-      render json: @review, status: :unprocessable_entity
+      render json: @review, status: 422
+    end
+  end
+
+  def index
+    @reviews = Review.all
+    render :index
+  end
+
+  def show
+    @review = Review.find_by(id: params[:id])
+
+    if @review
+      render :show
+    else
+      render json: ["Review not found"], status: 404
     end
   end
 

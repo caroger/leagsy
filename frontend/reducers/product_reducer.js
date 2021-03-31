@@ -1,19 +1,16 @@
-import {
-  RECEIVE_ALL_PRODUCTS,
-  RECEIVE_PRODUCT,
-  RECEIVE_PRODUCT_ERRORS,
-} from "../actions/product_actions";
+import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from "../actions/product_actions";
 
-export default (state = {}, action) => {
+const productReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_ALL_PRODUCTS:
+    case RECEIVE_PRODUCTS:
       return action.products;
     case RECEIVE_PRODUCT:
-      return Object.assign({}, state, { [action.product.id]: action.product });
-    case RECEIVE_PRODUCT_ERRORS:
-      return null;
+      const newProduct = { [action.product.id]: action.product };
+      return newProduct;
     default:
       return state;
   }
 };
+
+export default productReducer;

@@ -1,13 +1,11 @@
 class Api::ProductsController < ApplicationController
   def show
     @product = Product.includes(:reviews, :seller).with_attached_photos.find_by(id: params[:id])
-
     if @product
       render :show
     else
       render json: ["Product not found"], status: 404
     end
-
   end
 
   def index

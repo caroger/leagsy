@@ -56,18 +56,17 @@ class User < ApplicationRecord
   end
 
   private
+    def ensure_session_token
+      generate_unique_session_token unless session_token
+    end
 
-  def ensure_session_token
-    generate_unique_session_token unless session_token
-  end
+    def new_session_token
+      SecureRandom.urlsafe_base64
+    end
 
-  def new_session_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def generate_unique_session_token
-    self.session_token = new_session_token
-    self.session_token = new_session_token while User.find_by(session_token: session_token)
-    session_token
-  end
+    def generate_unique_session_token
+      self.session_token = new_session_token
+      self.session_token = new_session_token while User.find_by(session_token: session_token)
+      session_token
+    end
 end

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # TODO: for Postman testing purpose only!
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
   helper_method :current_user, :logged_in?
 
   # private
