@@ -1,0 +1,16 @@
+.productGrid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    display: inline-block;
+    border: 1px solid #efefef;
+
+    img {
+        width: 340px;
+        height: 270px;
+    }
+
+
+}

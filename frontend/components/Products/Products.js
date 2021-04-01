@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fetchProducts } from "../../actions/product_actions";
 import { connect } from "react-redux";
+import ProductCard from "./ProductCard";
 
 class Products extends Component {
   constructor(props) {
@@ -11,11 +12,9 @@ class Products extends Component {
     this.props.fetchProducts();
   }
 
-  productList() {
-    return Object.entries(this.props.products).map(([key, value], i) => (
-      <li key={key}>
-        product_id: {value.id}; product_name: {value.name}
-      </li>
+  productGrid() {
+    return Object.entries(this.props.products).map(([key,product], i) => (
+      <ProductCard key={key} product={product} />
     ));
   }
 
@@ -23,7 +22,7 @@ class Products extends Component {
     return (
       <div className="all products">
         <h1>All products</h1>
-        <ul>{this.productList()}</ul>
+        <ul className="productGrid">{this.productGrid()}</ul>
       </div>
     );
   }
