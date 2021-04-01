@@ -1,15 +1,17 @@
 import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from "../actions/product_actions";
 
-const productReducer = (state = {}, action) => {
-  Object.freeze(state);
+const productReducer = (oldState = {}, action) => {
+  Object.freeze(oldState);
+
   switch (action.type) {
     case RECEIVE_PRODUCTS:
-      return action.products;
+      return Object.assign({}, oldState, action.products);
     case RECEIVE_PRODUCT:
-      const newProduct = { [action.product.id]: action.product };
-      return newProduct;
+      return Object.assign({}, oldState, {
+        [action.product.id]: action.product,
+      });
     default:
-      return state;
+      return oldState;
   }
 };
 
