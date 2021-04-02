@@ -13,7 +13,7 @@ class Products extends Component {
   }
 
   productGrid() {
-    return Object.entries(this.props.products).map(([key,product], i) => (
+    return Object.entries(this.props.products).map(([key, product], i) => (
       <ProductCard key={key} product={product} />
     ));
   }

@@ -10,23 +10,29 @@ class Product extends Component {
 
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId);
-    // console.log(typeOf(this.props.match.params.productId));
   }
 
   render() {
-    return (
-      <div>
-        <h1>This is Products#show view of our app</h1>
-      </div>
-    );
+    if (!this.props.product) {
+      return null;
+    } else {
+      const { reviews } = this.props;
+      return (
+        <div>
+          <h1>This is Products#show view of our app</h1>
+          <div>Review Count: {Object.keys(this.props.reviews).length}</div>
+          {console.log(reviews)}
+        </div>
+      );
+    }
   }
 }
 
 const mSTP = (state, ownProps) => {
-  // const productId = ownProps.match.params.productId;
+  const productId = parseInt(ownProps.match.params.productId);
   return {
-    // product: state.products[productId],
-    product: [],
+    product: state.entities.products[productId],
+    reviews: state.entities.reviews,
   };
 };
 
