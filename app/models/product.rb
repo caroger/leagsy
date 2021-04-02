@@ -31,6 +31,6 @@ class Product < ApplicationRecord
 
   def avg_rating
     return 0 unless reviews.size.positive?
-    reviews.average(:rating).round(2).to_f
+    reviews.average(:rating).round(1).to_f
   end
 end

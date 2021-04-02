@@ -1,0 +1,19 @@
+.productGrid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    display: inline-block;
+    border: 1px solid #efefef;
+    cursor: pointer;
+
+    img {
+        border-width: 1px;
+        border-color: red;
+        width: 340px;
+        height: 270px;
+    }
+
+
+}

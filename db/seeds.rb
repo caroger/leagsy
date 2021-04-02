@@ -24,11 +24,10 @@ cat_list = %w[office electronic keyboard book chair]
   )
 end
 
-(1..5).each do |i|
-  p = Product.all[i - 1]
+Product.all.each_with_index do |p, i|
   (1..5).each do |j|
-    file = open("https://rtsy-seeds.s3-us-west-1.amazonaws.com/rtsy/#{i}-#{j}.jpg")
-    p.photos.attach(io: file, filename: "#{i}-#{j}.jpg")
+    file = open("https://rtsy-seeds.s3-us-west-1.amazonaws.com/rtsy/#{i + 1}-#{j}.jpg")
+    p.photos.attach(io: file, filename: "#{i + 1}-#{j}.jpg}")
   end
 end
 

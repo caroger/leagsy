@@ -7,9 +7,7 @@ const productReducer = (oldState = {}, action) => {
     case RECEIVE_PRODUCTS:
       return Object.assign({}, oldState, action.products);
     case RECEIVE_PRODUCT:
-      return Object.assign({}, oldState, {
-        [action.product.id]: action.product,
-      });
+      return Object.assign({}, oldState, action.product);
     default:
       return oldState;
   }
