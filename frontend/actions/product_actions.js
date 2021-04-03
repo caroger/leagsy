@@ -11,11 +11,9 @@ export const receiveProducts = (products) => ({
   products,
 });
 
-export const receiveProduct = ({ product, reviews, reviewers }) => ({
+export const receiveProduct = (payload) => ({
   type: RECEIVE_PRODUCT,
-  product,
-  reviews,
-  reviewers,
+  payload,
 });
 
 export const receiveReview = ({ review, avgRating, reviewer }) => ({

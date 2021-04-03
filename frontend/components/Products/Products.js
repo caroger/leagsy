@@ -6,6 +6,10 @@ import ProductCard from "./ProductCard";
 class Products extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      products: {},
+    };
   }
 
   componentDidMount() {

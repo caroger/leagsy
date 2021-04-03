@@ -6,16 +6,17 @@ import {
 
 const productReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
+  const newState = Object.assign({}, oldState);
 
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return Object.assign({}, oldState, action.products);
     case RECEIVE_PRODUCT:
-      const newProduct = { [action.product.id]: action.product };
-      return Object.assign({}, oldState, newProduct);
+      newState[action.payload.product.id] = action.payload.product;
+      return newState;
+
     case RECEIVE_REVIEW:
       const { review, avgRating } = action;
-      const newState = Object.assign({}, oldState);
       newState[review.product_id].reviewIds.push(review.id);
       newState[review.product_id].avgRating = avgRating;
       return newState;

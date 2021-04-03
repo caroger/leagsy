@@ -12,16 +12,31 @@ class Product extends Component {
     this.props.fetchProduct(this.props.match.params.productId);
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (
+  //     prevProps.match.params.productId !== this.props.match.params.productId
+  //   ) {
+  //     this.props.fetchProduct(this.props.match.params.productId);
+  //   }
+  // }
+
   render() {
-    if (!this.props.product) {
-      return null;
+    if (this.props.product === undefined) {
+      return <h1> Loading </h1>;
     } else {
-      const { reviews } = this.props;
+      const { reviews, product } = this.props;
+      const urls = product.imgUrls || [];
       return (
-        <div>
+        <div className="product-show">
           <h1>This is Products#show view of our app</h1>
-          <div>Review Count: {Object.keys(this.props.reviews).length}</div>
-          {console.log(reviews)}
+
+          <div className="product-title">
+            <h1>{product.name}</h1>
+          </div>
+          <div className="product-image">
+            <img src={`http://localhost:3000${urls[0]}`} alt="" />
+          </div>
+          <h1>Review Count: {Object.keys(this.props.reviews).length}</h1>
         </div>
       );
     }
@@ -29,9 +44,8 @@ class Product extends Component {
 }
 
 const mSTP = (state, ownProps) => {
-  const productId = parseInt(ownProps.match.params.productId);
   return {
-    product: state.entities.products[productId],
+    product: state.entities.products[ownProps.match.params.productId],
     reviews: state.entities.reviews,
   };
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 
 const ProductCard = (props) => {
   const { name, imgUrl, price, avgRating, id } = { ...props.product };
@@ -20,4 +20,4 @@ const ProductCard = (props) => {
   );
 };
 
-export default withRouter(ProductCard);
+export default ProductCard;

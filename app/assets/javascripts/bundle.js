@@ -149,21 +149,16 @@ var receiveProducts = function receiveProducts(products) {
     products: products
   };
 };
-var receiveProduct = function receiveProduct(_ref) {
-  var product = _ref.product,
-      reviews = _ref.reviews,
-      reviewers = _ref.reviewers;
+var receiveProduct = function receiveProduct(payload) {
   return {
     type: RECEIVE_PRODUCT,
-    product: product,
-    reviews: reviews,
-    reviewers: reviewers
+    payload: payload
   };
 };
-var receiveReview = function receiveReview(_ref2) {
-  var review = _ref2.review,
-      avgRating = _ref2.avgRating,
-      reviewer = _ref2.reviewer;
+var receiveReview = function receiveReview(_ref) {
+  var review = _ref.review,
+      avgRating = _ref.avgRating,
+      reviewer = _ref.reviewer;
   return {
     type: RECEIVE_REVIEW,
     review: review,
@@ -427,15 +422,34 @@ var Product = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProduct(this.props.match.params.productId);
-    }
+    } // componentDidUpdate(prevProps) {
+    //   if (
+    //     prevProps.match.params.productId !== this.props.match.params.productId
+    //   ) {
+    //     this.props.fetchProduct(this.props.match.params.productId);
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.product) {
-        return null;
+      if (this.props.product === undefined) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Loading ");
       } else {
-        var reviews = this.props.reviews;
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "This is Products#show view of our app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Review Count: ", Object.keys(this.props.reviews).length), console.log(reviews));
+        var _this$props = this.props,
+            reviews = _this$props.reviews,
+            product = _this$props.product;
+        var urls = product.imgUrls || [];
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "product-show"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "This is Products#show view of our app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "product-title"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, product.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "product-image"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "http://localhost:3000".concat(urls[0]),
+          alt: ""
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Review Count: ", Object.keys(this.props.reviews).length));
       }
     }
   }]);
@@ -444,9 +458,8 @@ var Product = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 var mSTP = function mSTP(state, ownProps) {
-  var productId = parseInt(ownProps.match.params.productId);
   return {
-    product: state.entities.products[productId],
+    product: state.entities.products[ownProps.match.params.productId],
     reviews: state.entities.reviews
   };
 };
@@ -512,7 +525,7 @@ var ProductCard = function ProductCard(props) {
   }, "View Product")));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProductCard));
+/* harmony default export */ __webpack_exports__["default"] = (ProductCard);
 
 /***/ }),
 
@@ -575,9 +588,15 @@ var Products = /*#__PURE__*/function (_Component) {
   var _super = _createSuper(Products);
 
   function Products(props) {
+    var _this;
+
     _classCallCheck(this, Products);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      products: {}
+    };
+    return _this;
   }
 
   _createClass(Products, [{
@@ -1325,28 +1344,25 @@ var productErrorsReducer = function productErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var productReducer = function productReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  var newState = Object.assign({}, oldState);
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCTS"]:
       return Object.assign({}, oldState, action.products);
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:
-      var newProduct = _defineProperty({}, action.product.id, action.product);
-
-      return Object.assign({}, oldState, newProduct);
+      newState[action.payload.product.id] = action.payload.product;
+      return newState;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
       var review = action.review,
           avgRating = action.avgRating;
-      var newState = Object.assign({}, oldState);
       newState[review.product_id].reviewIds.push(review.id);
       newState[review.product_id].avgRating = avgRating;
       return newState;
@@ -1381,7 +1397,7 @@ var reviewReducer = function reviewReducer() {
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:
-      return Object.assign({}, oldState, action.reviews);
+      return Object.assign({}, oldState, action.payload.reviews);
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
       var review = action.review;
