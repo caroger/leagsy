@@ -1,6 +1,6 @@
 import { RECEIVE_PRODUCT, RECEIVE_REVIEW } from "../actions/product_actions";
 
-const reviewReducer = (oldState = {}, action) => {
+export default (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_PRODUCT:
@@ -12,5 +12,3 @@ const reviewReducer = (oldState = {}, action) => {
       return oldState;
   }
 };
-
-export default reviewReducer;

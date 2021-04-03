@@ -4,7 +4,7 @@ import {
   RECEIVE_REVIEW,
 } from "../actions/product_actions";
 
-const productReducer = (oldState = {}, action) => {
+export default (oldState = {}, action) => {
   Object.freeze(oldState);
   const newState = Object.assign({}, oldState);
 
@@ -24,5 +24,3 @@ const productReducer = (oldState = {}, action) => {
       return oldState;
   }
 };
-
-export default productReducer;
