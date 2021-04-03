@@ -1,0 +1,21 @@
+.product-show {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    h1 {
+        font-size: 20px;
+    }
+
+
+    .product-image {
+        width: 250px;
+        height: 250px;
+        overflow: hidden;
+        border: 1px solid #000;
+
+        img {
+            height: 100%;
+        }
+    }
+}

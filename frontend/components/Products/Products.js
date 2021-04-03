@@ -6,6 +6,10 @@ import ProductCard from "./ProductCard";
 class Products extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      products: {},
+    };
   }
 
   componentDidMount() {
@@ -13,7 +17,7 @@ class Products extends Component {
   }
 
   productGrid() {
-    return Object.entries(this.props.products).map(([key,product], i) => (
+    return Object.entries(this.props.products).map(([key, product], i) => (
       <ProductCard key={key} product={product} />
     ));
   }

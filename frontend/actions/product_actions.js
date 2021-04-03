@@ -4,15 +4,23 @@ export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
 export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const CLEAR_PRODUCT_ERRORS = "CLEAR_PRODUCT_ERRORS";
+export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 
 export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
   products,
 });
 
-export const receiveProduct = (product) => ({
+export const receiveProduct = (payload) => ({
   type: RECEIVE_PRODUCT,
-  product,
+  payload,
+});
+
+export const receiveReview = ({ review, avgRating, reviewer }) => ({
+  type: RECEIVE_REVIEW,
+  review,
+  avgRating,
+  reviewer,
 });
 
 export const receiveProductErrors = (errors) => ({
@@ -33,8 +41,8 @@ export const fetchProducts = () => (dispatch) => {
   );
 };
 
-export const fetchProduct = (id) => (dispatch) => {
-  return APIUtil.fetchProduct(id).then(
+export const fetchProduct = (productId) => (dispatch) => {
+  return APIUtil.fetchProduct(productId).then(
     (product) => dispatch(receiveProduct(product)),
     (errors) => dispatch(receiveProductErrors(errors.responseJSON))
   );

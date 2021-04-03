@@ -4,7 +4,7 @@ class Api::ProductsController < ApplicationController
     if @product
       render :show
     else
-      render json: ["Product not found"], status: 404
+      render json: @product.errors.full_messages, status: 404
     end
   end
 
