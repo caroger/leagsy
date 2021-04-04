@@ -12,8 +12,8 @@ export default (oldState = {}, action) => {
     case RECEIVE_PRODUCTS:
       return Object.assign({}, oldState, action.products);
     case RECEIVE_PRODUCT:
-      newState[action.payload.product.id] = action.payload.product;
-      return newState;
+      const newProduct = { [action.product.id]: action.product };
+      return Object.assign({}, oldState, newProduct);
 
     case RECEIVE_REVIEW:
       const { review, avgRating } = action;

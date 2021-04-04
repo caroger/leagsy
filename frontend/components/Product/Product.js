@@ -44,7 +44,7 @@ class Product extends Component {
 
     if (!this.props.product) return null;
 
-    const { reviews, product } = this.props;
+    const { reviews, product } = this.state;
     const urls = product.imgUrls || [];
     return (
       <div className="product-show">
@@ -56,7 +56,15 @@ class Product extends Component {
         <div className="product-image">
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
-        <ul className="reviewGrid">{this.reviewGrid()}</ul>
+        <ul className="reviewGrid">
+          {product.reviewIds.map((reviewId, i) => (
+            <ReviewCard
+              key={reviewId}
+              reviewId={reviewId}
+              review={this.props.reviews[reviewId]}
+            />
+          ))}
+        </ul>
       </div>
     );
   }
