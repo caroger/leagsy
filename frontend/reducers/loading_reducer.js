@@ -1,1 +1,0 @@
-import { RECEIVE_PRODUCT, RECEIVE_REVIEW, RECEIVE_PRODUCTS } from '../actions/product_actions'

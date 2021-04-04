@@ -4,7 +4,7 @@ import {
   RECEIVE_REVIEW,
 } from "../actions/product_actions";
 
-const productReducer = (oldState = {}, action) => {
+export default (oldState = {}, action) => {
   Object.freeze(oldState);
   const newState = Object.assign({}, oldState);
 
@@ -12,8 +12,8 @@ const productReducer = (oldState = {}, action) => {
     case RECEIVE_PRODUCTS:
       return Object.assign({}, oldState, action.products);
     case RECEIVE_PRODUCT:
-      newState[action.payload.product.id] = action.payload.product;
-      return newState;
+      const newProduct = { [action.product.id]: action.product };
+      return Object.assign({}, oldState, newProduct);
 
     case RECEIVE_REVIEW:
       const { review, avgRating } = action;
@@ -24,5 +24,3 @@ const productReducer = (oldState = {}, action) => {
       return oldState;
   }
 };
-
-export default productReducer;
