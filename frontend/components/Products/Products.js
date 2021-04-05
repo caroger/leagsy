@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import { fetchProducts } from "../../actions/product_actions";
+import { fetchReviews } from "../../actions/review_actions";
 import { connect } from "react-redux";
 import ProductCard from "./ProductCard";
 
 class Products extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      products: {},
-    };
-  }
-
   componentDidMount() {
     this.props.fetchProducts();
+    this.props.fetchReviews();
   }
 
   productGrid() {
@@ -23,6 +17,9 @@ class Products extends Component {
   }
 
   render() {
+    if (!this.props.products) {
+      return <h1>Rendering</h1>;
+    }
     return (
       <div className="all products">
         <h1>All products</h1>
@@ -34,13 +31,15 @@ class Products extends Component {
 
 const mSTP = (state) => {
   return {
-    products: state.entities.products,
+    products: state.entities.products.all ? state.entities.products.all : {},
+    reviews: state.entities.reviews ? state.entities.reviews : {},
   };
 };
 
 const mDTP = (dispatch) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
+    fetchReviews: () => dispatch(fetchReviews()),
   };
 };
 export default connect(mSTP, mDTP)(Products);

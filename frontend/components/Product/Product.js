@@ -1,8 +1,10 @@
-import React, { Component, useState, useEffect } from "react";
-import { render } from "react-dom";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
-import ReviewCard from "./ReviewCard";
+import { fetchReviews } from "../../actions/review_actions";
+import ReviewCard from "../Review/ReviewCard";
+import ReviewGrid from "../Review/ReviewGrid";
+import { Link } from "react-router-dom";
 
 class Product extends Component {
   constructor(props) {
@@ -13,41 +15,20 @@ class Product extends Component {
       reviews: {},
     };
   }
-
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.match.params.productId !== this.props.match.params.productId
-    ) {
-      this.props.fetchProduct(this.props.match.params.productId);
-    }
-  }
-
-  //Render review card
-  reviewGrid() {
-    return this.props.product.reviewIds.map((reviewId, i) => (
-      <ReviewCard
-        key={reviewId}
-        reviewId={reviewId}
-        review={this.props.reviews[reviewId]}
-      />
-    ));
+    this.props.fetchReviews();
   }
 
   render() {
-    if (this.props.loading) {
-      return <div>Loading</div>;
-    }
+    if (Object.keys(this.props.product).length === 0) return null;
+    if (Object.keys(this.props.reviews).length === 0) return null;
 
-    if (!this.props.product) return null;
-
-    const { reviews, product } = this.state;
+    const { product, reviews } = this.props;
     const urls = product.imgUrls || [];
     return (
       <div className="product-show">
+        <Link to={"/products"}>Back to Product Index</Link>
         <h1>This is Products#show view of our app</h1>
 
         <div className="product-title">
@@ -56,31 +37,23 @@ class Product extends Component {
         <div className="product-image">
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
-        <ul className="reviewGrid">
-          {product.reviewIds.map((reviewId, i) => (
-            <ReviewCard
-              key={reviewId}
-              reviewId={reviewId}
-              review={this.props.reviews[reviewId]}
-            />
-          ))}
-        </ul>
+        <ReviewGrid reviewIds={product.reviewIds} reviews={reviews} />
       </div>
     );
   }
 }
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state) => {
   return {
-    product: state.entities.products[ownProps.match.params.productId],
-    reviews: state.entities.reviews,
-    loading: state.ui.loading.detailLoading,
+    product: state.entities.products.product || {},
+    reviews: state.entities.reviews || {},
   };
 };
 
 const mDTP = (dispatch) => {
   return {
     fetchProduct: (id) => dispatch(fetchProduct(id)),
+    fetchReviews: () => dispatch(fetchReviews()),
   };
 };
 
