@@ -1,12 +1,13 @@
 import React from "react";
+import ReviewItem from "./ReviewItem";
 
 const ReviewGrid = (props) => {
   return (
-    <ul>
+    <div className="reviewGri">
       {props.reviewIds.map((id) => (
-        <li key={id}>rating: {props.reviews[id].rating}</li>
+        <ReviewItem review={props.reviews[id]} key={id} />
       ))}
-    </ul>
+    </div>
   );
 };
 export default ReviewGrid;

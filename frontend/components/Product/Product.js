@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
 import { fetchReviews } from "../../actions/review_actions";
-import ReviewCard from "../Review/ReviewCard";
-import ReviewGrid from "../Review/ReviewGrid";
+import ReviewList from "../Review/ReviewList";
 import { Link } from "react-router-dom";
 
 class Product extends Component {
@@ -37,7 +36,7 @@ class Product extends Component {
         <div className="product-image">
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
-        <ReviewGrid reviewIds={product.reviewIds} reviews={reviews} />
+        <ReviewList reviewIds={product.reviewIds} reviews={reviews} />
       </div>
     );
   }
