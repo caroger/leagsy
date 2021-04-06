@@ -476,7 +476,6 @@ var Product = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      product: props.product,
       reviews: props.reviews
     };
     return _this;
@@ -496,9 +495,8 @@ var Product = /*#__PURE__*/function (_Component) {
     value: function render() {
       if (Object.keys(this.props.product).length === 0) return null;
       if (Object.keys(this.props.reviews).length === 0) return null;
-      var _this$props = this.props,
-          product = _this$props.product,
-          reviews = _this$props.reviews;
+      var product = this.props.product;
+      var reviews = this.props.reviews;
       var urls = product.imgUrls || [];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-show"
@@ -885,6 +883,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReviewItem = function ReviewItem(props) {
+  if (!props.review) {
+    return null;
+  }
+
   var _props$review = props.review,
       reviewer = _props$review.reviewer,
       rating = _props$review.rating,

@@ -1,6 +1,9 @@
 import React from "react";
 
 const ReviewItem = (props) => {
+  if (!props.review) {
+    return null;
+  }
   const { reviewer, rating, body, updatedAt, id } = props.review;
   const { deleteReview } = props;
 

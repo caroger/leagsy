@@ -10,7 +10,6 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: props.product,
       reviews: props.reviews,
     };
   }
@@ -24,7 +23,8 @@ class Product extends Component {
     if (Object.keys(this.props.product).length === 0) return null;
     if (Object.keys(this.props.reviews).length === 0) return null;
 
-    const { product, reviews } = this.props;
+    const { product } = this.props;
+    const { reviews } = this.props;
     const urls = product.imgUrls || [];
     return (
       <div className="product-show">
