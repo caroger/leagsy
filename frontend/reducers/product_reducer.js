@@ -9,7 +9,7 @@ export default (oldState = {}, action) => {
       nextState.all = action.products;
       return nextState;
     case RECEIVE_PRODUCT:
-      nextState.product = action.product.product;
+      nextState.product = action.product;
       return nextState;
     default:
       return oldState;

@@ -9,12 +9,12 @@ const receiveReviews = (reviews) => ({
   reviews,
 });
 
-const receiveReview = (review) => ({
+const receiveReview = ({ review }) => ({
   type: RECEIVE_REVIEW,
   review,
 });
 
-const destroyReview = (review) => ({
+const destroyReview = ({ review }) => ({
   type: DELETE_REVIEW,
   review,
 });

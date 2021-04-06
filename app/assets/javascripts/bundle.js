@@ -140,7 +140,8 @@ var receiveProducts = function receiveProducts(products) {
   };
 };
 
-var receiveProduct = function receiveProduct(product) {
+var receiveProduct = function receiveProduct(_ref) {
+  var product = _ref.product;
   return {
     type: RECEIVE_PRODUCT,
     product: product
@@ -195,14 +196,16 @@ var receiveReviews = function receiveReviews(reviews) {
   };
 };
 
-var receiveReview = function receiveReview(review) {
+var receiveReview = function receiveReview(_ref) {
+  var review = _ref.review;
   return {
     type: RECEIVE_REVIEW,
     review: review
   };
 };
 
-var destroyReview = function destroyReview(review) {
+var destroyReview = function destroyReview(_ref2) {
+  var review = _ref2.review;
   return {
     type: DELETE_REVIEW,
     review: review
@@ -1613,7 +1616,7 @@ __webpack_require__.r(__webpack_exports__);
       return nextState;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:
-      nextState.product = action.product.product;
+      nextState.product = action.product;
       return nextState;
 
     default:
