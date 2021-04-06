@@ -3,7 +3,7 @@ import ReviewItem from "./ReviewItem";
 
 const ReviewGrid = (props) => {
   return (
-    <div className="reviewGri">
+    <div className="review-list">
       {props.reviewIds.map((id) => (
         <ReviewItem review={props.reviews[id]} key={id} />
       ))}

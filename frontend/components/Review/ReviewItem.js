@@ -1,12 +1,15 @@
 import React from "react";
 
 const ReviewItem = (props) => {
-  const { reviewer, rating, body } = props.review;
+  const { reviewer, rating, body, updatedAt } = props.review;
   return (
-    <div className="reviewItem">
-      <div className="reviewRating">Reviewed By: {reviewer}</div>
-      <div className="reviewRating">Rating: {rating}</div>
-      <div className="reviewRating">Body: {body}</div>
+    <div className="review-item">
+      <div className="name-time">
+        <div className="reviewer-name">{reviewer}</div>
+        <div className="review-time">{updatedAt}</div>
+      </div>
+      <div className="review-rating">Rating: {rating}</div>
+      <div className="review-body">Body: {body}</div>
     </div>
   );
 };

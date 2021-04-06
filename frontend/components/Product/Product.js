@@ -3,20 +3,21 @@ import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
 import { fetchReviews } from "../../actions/review_actions";
 import ReviewList from "../Review/ReviewList";
+import ReviewForm from "../Review/ReviewForm";
 import { Link } from "react-router-dom";
 
 class Product extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      product: {},
-      reviews: {},
+      product: props.product,
+      reviews: props.reviews,
     };
   }
   componentDidMount() {
-    this.props.fetchProduct(this.props.match.params.productId);
-    this.props.fetchReviews();
+    this.props
+      .fetchProduct(this.props.match.params.productId)
+      .then(() => this.props.fetchReviews());
   }
 
   render() {
@@ -28,7 +29,6 @@ class Product extends Component {
     return (
       <div className="product-show">
         <Link to={"/products"}>Back to Product Index</Link>
-        <h1>This is Products#show view of our app</h1>
 
         <div className="product-title">
           <h1>{product.name}</h1>
@@ -37,15 +37,19 @@ class Product extends Component {
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
         <ReviewList reviewIds={product.reviewIds} reviews={reviews} />
+        <ReviewForm productId={product.id} />
       </div>
     );
   }
 }
 
 const mSTP = (state) => {
+  const product = state.entities.products.product || {};
+  const reviews = state.entities.reviews || {};
   return {
-    product: state.entities.products.product || {},
-    reviews: state.entities.reviews || {},
+    product: product,
+    reviews: reviews,
+    currentUserId: state.session.id || null,
   };
 };
 
@@ -53,6 +57,7 @@ const mDTP = (dispatch) => {
   return {
     fetchProduct: (id) => dispatch(fetchProduct(id)),
     fetchReviews: () => dispatch(fetchReviews()),
+    createReview: (review) => dispatch(createReview(review)),
   };
 };
 

@@ -1,0 +1,27 @@
+.review-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+
+}
+
+.name-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.review-rating {
+    margin-bottom: 0.5rem;
+}
+
+.review-body {
+    margin-bottom: 0.5rem;
+}
