@@ -5,7 +5,11 @@ const ReviewGrid = (props) => {
   return (
     <div className="review-list">
       {props.reviewIds.map((id) => (
-        <ReviewItem review={props.reviews[id]} key={id} />
+        <ReviewItem
+          review={props.reviews[id]}
+          key={id}
+          deleteReview={props.deleteReview}
+        />
       ))}
     </div>
   );

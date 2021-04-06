@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
-import { fetchReviews } from "../../actions/review_actions";
+import { fetchReviews, deleteReview } from "../../actions/review_actions";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
 import { Link } from "react-router-dom";
@@ -36,7 +36,11 @@ class Product extends Component {
         <div className="product-image">
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
-        <ReviewList reviewIds={product.reviewIds} reviews={reviews} />
+        <ReviewList
+          reviewIds={product.reviewIds}
+          reviews={reviews}
+          deleteReview={this.props.deleteReview}
+        />
         <ReviewForm productId={product.id} />
       </div>
     );
@@ -58,6 +62,7 @@ const mDTP = (dispatch) => {
     fetchProduct: (id) => dispatch(fetchProduct(id)),
     fetchReviews: () => dispatch(fetchReviews()),
     createReview: (review) => dispatch(createReview(review)),
+    deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
   };
 };
 

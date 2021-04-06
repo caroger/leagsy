@@ -1,7 +1,9 @@
 import React from "react";
 
 const ReviewItem = (props) => {
-  const { reviewer, rating, body, updatedAt } = props.review;
+  const { reviewer, rating, body, updatedAt, id } = props.review;
+  const { deleteReview } = props;
+
   return (
     <div className="review-item">
       <div className="name-time">
@@ -10,6 +12,7 @@ const ReviewItem = (props) => {
       </div>
       <div className="review-rating">Rating: {rating}</div>
       <div className="review-body">Body: {body}</div>
+      <button onClick={() => deleteReview(id)}>Delete Review</button>
     </div>
   );
 };

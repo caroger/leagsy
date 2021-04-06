@@ -231,9 +231,9 @@ var createReview = function createReview(review) {
     });
   };
 };
-var deleteReview = function deleteReview(review) {
+var deleteReview = function deleteReview(reviewId) {
   return function (dispatch) {
-    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteReview"](review).then(function () {
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteReview"](reviewId).then(function (review) {
       return dispatch(destroyReview(review));
     });
   };
@@ -510,7 +510,8 @@ var Product = /*#__PURE__*/function (_Component) {
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewList__WEBPACK_IMPORTED_MODULE_4__["default"], {
         reviewIds: product.reviewIds,
-        reviews: reviews
+        reviews: reviews,
+        deleteReview: this.props.deleteReview
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
         productId: product.id
       }));
@@ -550,7 +551,10 @@ var mDTP = function mDTP(dispatch) {
       return createReview;
     }(function (review) {
       return dispatch(createReview(review));
-    })
+    }),
+    deleteReview: function deleteReview(reviewId) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["deleteReview"])(reviewId));
+    }
   };
 };
 
@@ -749,6 +753,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -780,6 +785,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ReviewForm = /*#__PURE__*/function (_Component) {
   _inherits(ReviewForm, _Component);
 
@@ -795,7 +801,7 @@ var ReviewForm = /*#__PURE__*/function (_Component) {
       review: {
         product_id: props.productId,
         body: "",
-        rating: ""
+        rating: 5
       }
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -807,24 +813,14 @@ var ReviewForm = /*#__PURE__*/function (_Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-
-      var review = _objectSpread({}, this.state);
-
-      review.rating = 5; // this.props.createReview(review);
-      // this.setState({ review });
-
-      console.log(this.state.review);
+      this.props.createReview(this.state.review);
     }
   }, {
     key: "handleChange",
     value: function handleChange(e) {
       e.preventDefault();
-
-      var review = _objectSpread({}, this.state.review);
-
-      review[e.target.name] = e.target.value;
       this.setState({
-        review: review
+        review: Object.assign({}, _objectSpread({}, this.state.review), _defineProperty({}, e.target.name, e.target.value))
       });
       console.log(this.state.review);
     }
@@ -868,7 +864,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (connect(null, mDTP)(ReviewForm));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mDTP)(ReviewForm));
 
 /***/ }),
 
@@ -890,7 +886,9 @@ var ReviewItem = function ReviewItem(props) {
       reviewer = _props$review.reviewer,
       rating = _props$review.rating,
       body = _props$review.body,
-      updatedAt = _props$review.updatedAt;
+      updatedAt = _props$review.updatedAt,
+      id = _props$review.id;
+  var deleteReview = props.deleteReview;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "review-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -903,7 +901,11 @@ var ReviewItem = function ReviewItem(props) {
     className: "review-rating"
   }, "Rating: ", rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "review-body"
-  }, "Body: ", body));
+  }, "Body: ", body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return deleteReview(id);
+    }
+  }, "Delete Review"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ReviewItem);
@@ -931,7 +933,8 @@ var ReviewGrid = function ReviewGrid(props) {
   }, props.reviewIds.map(function (id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ReviewItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       review: props.reviews[id],
-      key: id
+      key: id,
+      deleteReview: props.deleteReview
     });
   }));
 };
@@ -1907,10 +1910,10 @@ var createReview = function createReview(review) {
     }
   });
 };
-var deleteReview = function deleteReview(review) {
+var deleteReview = function deleteReview(reviewId) {
   return $.ajax({
     method: "DELETE",
-    url: "api/reviews/".concat(review.id)
+    url: "api/reviews/".concat(reviewId)
   });
 };
 var updateReview = function updateReview(review) {

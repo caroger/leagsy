@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createReview } from "../../actions/review_actions";
+import { connect } from "react-redux";
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class ReviewForm extends Component {
       review: {
         product_id: props.productId,
         body: "",
-        rating: "",
+        rating: 5,
       },
     };
     this.handleChange = this.handleChange.bind(this);
@@ -17,20 +18,20 @@ class ReviewForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    let review = { ...this.state };
-    review.rating = 5;
-    // this.props.createReview(review);
-    // this.setState({ review });
-
-    console.log(this.state.review);
+    this.props.createReview(this.state.review);
   }
 
   handleChange(e) {
     e.preventDefault();
-    let review = { ...this.state.review };
-    review[e.target.name] = e.target.value;
-    this.setState({ review });
+    this.setState({
+      review: Object.assign(
+        {},
+        { ...this.state.review },
+        {
+          [e.target.name]: e.target.value,
+        }
+      ),
+    });
     console.log(this.state.review);
   }
 
