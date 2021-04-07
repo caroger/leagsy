@@ -939,8 +939,7 @@ var ReviewGrid = function ReviewGrid(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ReviewItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: id,
       review: reviews[id],
-      deleteReview: deleteReview // reviewer={reviewers[review[id].reviewerId]}
-
+      deleteReview: deleteReview
     });
   }));
 };
