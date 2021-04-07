@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchProduct } from "../../actions/product_actions";
-import { fetchReviews, deleteReview } from "../../actions/review_actions";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
 import { Link } from "react-router-dom";
@@ -9,27 +6,18 @@ import { Link } from "react-router-dom";
 class Product extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      reviews: props.reviews,
-    };
   }
+
   componentDidMount() {
-    this.props
-      .fetchProduct(this.props.match.params.productId)
-      .then(() => this.props.fetchReviews());
+    this.props.fetchProduct(this.props.match.params.productId);
   }
-
   render() {
-    if (Object.keys(this.props.product).length === 0) return null;
-    if (Object.keys(this.props.reviews).length === 0) return null;
-
-    const { product } = this.props;
-    const { reviews } = this.props;
+    const { product, reviews, reviewers } = this.props;
+    if (!product || !reviews || !reviewers) return null;
     const urls = product.imgUrls || [];
     return (
       <div className="product-show">
         <Link to={"/products"}>Back to Product Index</Link>
-
         <div className="product-title">
           <h1>{product.name}</h1>
         </div>
@@ -37,8 +25,8 @@ class Product extends Component {
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
         <ReviewList
-          reviewIds={product.reviewIds}
-          reviews={reviews}
+          reviews={this.props.reviews}
+          reviewers={this.props.reviewers}
           deleteReview={this.props.deleteReview}
         />
         <ReviewForm productId={product.id} />
@@ -46,24 +34,4 @@ class Product extends Component {
     );
   }
 }
-
-const mSTP = (state) => {
-  const product = state.entities.products.product || {};
-  const reviews = state.entities.reviews || {};
-  return {
-    product: product,
-    reviews: reviews,
-    currentUserId: state.session.id || null,
-  };
-};
-
-const mDTP = (dispatch) => {
-  return {
-    fetchProduct: (id) => dispatch(fetchProduct(id)),
-    fetchReviews: () => dispatch(fetchReviews()),
-    createReview: (review) => dispatch(createReview(review)),
-    deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
-  };
-};
-
-export default connect(mSTP, mDTP)(Product);
+export default Product;

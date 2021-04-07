@@ -1,11 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
 const ReviewItem = (props) => {
   if (!props.review) {
     return null;
   }
-  const { reviewer, rating, body, updatedAt, id } = props.review;
-  const { deleteReview } = props;
+  const { rating, body, updatedAt, id } = props.review;
+  const { deleteReview, reviewer } = props;
 
   return (
     <div className="review-item">
@@ -20,4 +21,13 @@ const ReviewItem = (props) => {
   );
 };
 
-export default ReviewItem;
+const mSTP = (state, ownProps) => {
+  console.log(
+    `reviewed by ${state.entities.users[ownProps.review.reviewerId].firstname}`
+  );
+  return {
+    reviewer: state.entities.users[ownProps.review.reviewerId].firstname,
+  };
+};
+
+export default connect(mSTP)(ReviewItem);

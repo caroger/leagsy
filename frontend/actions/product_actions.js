@@ -8,9 +8,11 @@ const receiveProducts = (products) => ({
   products,
 });
 
-const receiveProduct = ({ product }) => ({
+const receiveProduct = ({ product, reviews, reviewers }) => ({
   type: RECEIVE_PRODUCT,
   product,
+  reviews,
+  reviewers,
 });
 
 // Thunk Actions

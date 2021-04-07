@@ -24,6 +24,7 @@ class Api::ReviewsController < ApplicationController
       render json: @review.errors.full_messages, status: 404
     end
   end
+
   def destroy
     @review = current_user.reviews.find_by(id: params[:id])
     if @review
