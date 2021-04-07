@@ -16,6 +16,7 @@ class Products extends Component {
   }
 
   render() {
+ 
     if (!this.props.products) {
       return <h1>Rendering</h1>;
     }

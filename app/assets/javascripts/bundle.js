@@ -1878,7 +1878,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object.assign({}, state, action.reviewers);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_REVIEW"]:
-      // debugger;
       return Object.assign({}, state, _defineProperty({}, action.reviewer.id, action.reviewer));
 
     default:

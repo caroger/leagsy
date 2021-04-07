@@ -12,7 +12,6 @@ export default (state = {}, action) => {
     case RECEIVE_PRODUCT:
       return Object.assign({}, state, action.reviewers);
     case RECEIVE_REVIEW:
-      // debugger;
       return Object.assign({}, state, {
         [action.reviewer.id]: action.reviewer,
       });
