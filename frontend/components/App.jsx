@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Modal from "./modal/modal";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 import Products from "./Products/Products";
-import Product from "./Product/Product";
+import Product from "./Product/ProductContainer";
 import Home from "./Home/Home";
 
 const App = () => {

@@ -4,34 +4,36 @@ export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
 export const DELETE_REVIEW = "DELETE_REVIEW";
 
-const receiveReviews = (reviews) => ({
-  type: RECEIVE_REVIEWS,
-  reviews,
-});
+// const receiveReviews = (reviews) => ({
+//   type: RECEIVE_REVIEWS,
+//   reviews,
+// });
 
-const receiveReview = (review) => ({
+const receiveReview = ({ review, reviewer, avgRating }) => ({
   type: RECEIVE_REVIEW,
   review,
+  reviewer,
+  avgRating,
 });
 
-const destroyReview = (review) => ({
+const destroyReview = ({ review }) => ({
   type: DELETE_REVIEW,
   review,
 });
 
 // Thunk Actions
 
-export const fetchReviews = () => (dispatch) => {
-  return APIUtil.fetchReviews().then((reviews) =>
-    dispatch(receiveReviews(reviews))
-  );
-};
+// export const fetchReviews = () => (dispatch) => {
+//   return APIUtil.fetchReviews().then((reviews) =>
+//     dispatch(receiveReviews(reviews))
+//   );
+// };
 
-export const fetchReview = (reviewId) => (dispatch) => {
-  return APIUtil.fetchReview(reviewId).then((review) =>
-    dispatch(receiveReview(review))
-  );
-};
+// export const fetchReview = (reviewId) => (dispatch) => {
+//   return APIUtil.fetchReview(reviewId).then((review) =>
+//     dispatch(receiveReview(review))
+//   );
+// };
 
 export const createReview = (review) => (dispatch) => {
   return APIUtil.createReview(review).then((review) =>

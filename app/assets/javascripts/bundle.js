@@ -140,10 +140,15 @@ var receiveProducts = function receiveProducts(products) {
   };
 };
 
-var receiveProduct = function receiveProduct(product) {
+var receiveProduct = function receiveProduct(_ref) {
+  var product = _ref.product,
+      reviews = _ref.reviews,
+      reviewers = _ref.reviewers;
   return {
     type: RECEIVE_PRODUCT,
-    product: product
+    product: product,
+    reviews: reviews,
+    reviewers: reviewers
   };
 }; // Thunk Actions
 
@@ -169,7 +174,7 @@ var fetchProduct = function fetchProduct(productId) {
 /*!********************************************!*\
   !*** ./frontend/actions/review_actions.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_REVIEW, RECEIVE_REVIEWS, DELETE_REVIEW, fetchReviews, fetchReview, createReview, deleteReview, updateReview */
+/*! exports provided: RECEIVE_REVIEW, RECEIVE_REVIEWS, DELETE_REVIEW, createReview, deleteReview, updateReview */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -177,8 +182,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_REVIEW", function() { return RECEIVE_REVIEW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_REVIEWS", function() { return RECEIVE_REVIEWS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_REVIEW", function() { return DELETE_REVIEW; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReviews", function() { return fetchReviews; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReview", function() { return fetchReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReview", function() { return deleteReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateReview", function() { return updateReview; });
@@ -186,44 +189,42 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_REVIEW = "RECEIVE_REVIEW";
 var RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
-var DELETE_REVIEW = "DELETE_REVIEW";
+var DELETE_REVIEW = "DELETE_REVIEW"; // const receiveReviews = (reviews) => ({
+//   type: RECEIVE_REVIEWS,
+//   reviews,
+// });
 
-var receiveReviews = function receiveReviews(reviews) {
-  return {
-    type: RECEIVE_REVIEWS,
-    reviews: reviews
-  };
-};
-
-var receiveReview = function receiveReview(review) {
+var receiveReview = function receiveReview(_ref) {
+  var review = _ref.review,
+      reviewer = _ref.reviewer,
+      avgRating = _ref.avgRating;
   return {
     type: RECEIVE_REVIEW,
-    review: review
+    review: review,
+    reviewer: reviewer,
+    avgRating: avgRating
   };
 };
 
-var destroyReview = function destroyReview(review) {
+var destroyReview = function destroyReview(_ref2) {
+  var review = _ref2.review;
   return {
     type: DELETE_REVIEW,
     review: review
   };
 }; // Thunk Actions
+// export const fetchReviews = () => (dispatch) => {
+//   return APIUtil.fetchReviews().then((reviews) =>
+//     dispatch(receiveReviews(reviews))
+//   );
+// };
+// export const fetchReview = (reviewId) => (dispatch) => {
+//   return APIUtil.fetchReview(reviewId).then((review) =>
+//     dispatch(receiveReview(review))
+//   );
+// };
 
 
-var fetchReviews = function fetchReviews() {
-  return function (dispatch) {
-    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchReviews"]().then(function (reviews) {
-      return dispatch(receiveReviews(reviews));
-    });
-  };
-};
-var fetchReview = function fetchReview(reviewId) {
-  return function (dispatch) {
-    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchReview"](reviewId).then(function (review) {
-      return dispatch(receiveReview(review));
-    });
-  };
-};
 var createReview = function createReview(review) {
   return function (dispatch) {
     return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["createReview"](review).then(function (review) {
@@ -349,7 +350,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 /* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.jsx");
 /* harmony import */ var _Products_Products__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Products/Products */ "./frontend/components/Products/Products.js");
-/* harmony import */ var _Product_Product__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Product/Product */ "./frontend/components/Product/Product.js");
+/* harmony import */ var _Product_ProductContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Product/ProductContainer */ "./frontend/components/Product/ProductContainer.js");
 /* harmony import */ var _Home_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Home/Home */ "./frontend/components/Home/Home.js");
 
 
@@ -373,7 +374,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/products/:productId",
-    component: _Product_Product__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _Product_ProductContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     render: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
@@ -425,12 +426,9 @@ var Home = function Home() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
-/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
-/* harmony import */ var _Review_ReviewList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Review/ReviewList */ "./frontend/components/Review/ReviewList.js");
-/* harmony import */ var _Review_ReviewForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Review/ReviewForm */ "./frontend/components/Review/ReviewForm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Review_ReviewList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Review/ReviewList */ "./frontend/components/Review/ReviewList.js");
+/* harmony import */ var _Review_ReviewForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Review/ReviewForm */ "./frontend/components/Review/ReviewForm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -458,48 +456,34 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-
-
 var Product = /*#__PURE__*/function (_Component) {
   _inherits(Product, _Component);
 
   var _super = _createSuper(Product);
 
   function Product(props) {
-    var _this;
-
     _classCallCheck(this, Product);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      product: props.product,
-      reviews: props.reviews
-    };
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(Product, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.fetchProduct(this.props.match.params.productId).then(function () {
-        return _this2.props.fetchReviews();
-      });
+      this.props.fetchProduct(this.props.match.params.productId);
     }
   }, {
     key: "render",
     value: function render() {
-      if (Object.keys(this.props.product).length === 0) return null;
-      if (Object.keys(this.props.reviews).length === 0) return null;
       var _this$props = this.props,
           product = _this$props.product,
-          reviews = _this$props.reviews;
+          reviews = _this$props.reviews,
+          reviewers = _this$props.reviewers;
+      if (!product || !reviews || !reviewers) return null;
       var urls = product.imgUrls || [];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-show"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/products"
       }, "Back to Product Index"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-title"
@@ -508,11 +492,11 @@ var Product = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "http://localhost:3000".concat(urls[0]),
         alt: ""
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        reviewIds: product.reviewIds,
-        reviews: reviews,
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        reviews: this.props.reviews,
+        reviewers: this.props.reviewers,
         deleteReview: this.props.deleteReview
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Review_ReviewForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
         productId: product.id
       }));
     }
@@ -521,44 +505,54 @@ var Product = /*#__PURE__*/function (_Component) {
   return Product;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
+/* harmony default export */ __webpack_exports__["default"] = (Product);
+
+/***/ }),
+
+/***/ "./frontend/components/Product/ProductContainer.js":
+/*!*********************************************************!*\
+  !*** ./frontend/components/Product/ProductContainer.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _reducers_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selector */ "./frontend/reducers/selector.js");
+/* harmony import */ var _Product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Product */ "./frontend/components/Product/Product.js");
+
+
+
+
+
+
 var mSTP = function mSTP(state) {
-  var product = state.entities.products.product || {};
-  var reviews = state.entities.reviews || {};
   return {
-    product: product,
-    reviews: reviews,
-    currentUserId: state.session.id || null
+    product: state.entities.products.product,
+    reviews: state.entities.reviews,
+    reviewers: state.entities.users,
+    currentUserId: state.session.id
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
     fetchProduct: function fetchProduct(id) {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["fetchProduct"])(id));
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["fetchProduct"])(id));
     },
-    fetchReviews: function fetchReviews() {
-      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["fetchReviews"])());
+    createReview: function createReview(review) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["createReview"])(review));
     },
-    createReview: function (_createReview) {
-      function createReview(_x) {
-        return _createReview.apply(this, arguments);
-      }
-
-      createReview.toString = function () {
-        return _createReview.toString();
-      };
-
-      return createReview;
-    }(function (review) {
-      return dispatch(createReview(review));
-    }),
     deleteReview: function deleteReview(reviewId) {
-      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["deleteReview"])(reviewId));
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["deleteReview"])(reviewId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(Product));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_Product__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -685,7 +679,6 @@ var Products = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProducts();
-      this.props.fetchReviews();
     }
   }, {
     key: "productGrid",
@@ -721,8 +714,7 @@ var Products = /*#__PURE__*/function (_Component) {
 
 var mSTP = function mSTP(state) {
   return {
-    products: state.entities.products.all ? state.entities.products.all : {},
-    reviews: state.entities.reviews ? state.entities.reviews : {}
+    products: state.entities.products.all ? state.entities.products.all : {}
   };
 };
 
@@ -730,9 +722,6 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchProducts: function fetchProducts() {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["fetchProducts"])());
-    },
-    fetchReviews: function fetchReviews() {
-      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["fetchReviews"])());
     }
   };
 };
@@ -879,16 +868,22 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
 
 var ReviewItem = function ReviewItem(props) {
+  if (!props.review) {
+    return null;
+  }
+
   var _props$review = props.review,
-      reviewer = _props$review.reviewer,
       rating = _props$review.rating,
       body = _props$review.body,
       updatedAt = _props$review.updatedAt,
       id = _props$review.id;
-  var deleteReview = props.deleteReview;
+  var deleteReview = props.deleteReview,
+      reviewer = props.reviewer;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "review-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -908,7 +903,14 @@ var ReviewItem = function ReviewItem(props) {
   }, "Delete Review"));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ReviewItem);
+var mSTP = function mSTP(state, ownProps) {
+  console.log("reviewed by ".concat(state.entities.users[ownProps.review.reviewerId].firstname));
+  return {
+    reviewer: state.entities.users[ownProps.review.reviewerId].firstname
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP)(ReviewItem));
 
 /***/ }),
 
@@ -927,14 +929,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ReviewGrid = function ReviewGrid(props) {
+var ReviewGrid = function ReviewGrid(_ref) {
+  var reviews = _ref.reviews,
+      reviewers = _ref.reviewers,
+      deleteReview = _ref.deleteReview;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "review-list"
-  }, props.reviewIds.map(function (id) {
+    className: "reviewGrid"
+  }, Object.keys(reviews).map(function (id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ReviewItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      review: props.reviews[id],
       key: id,
-      deleteReview: props.deleteReview
+      review: reviews[id],
+      deleteReview: deleteReview
     });
   }));
 };
@@ -1613,7 +1618,7 @@ __webpack_require__.r(__webpack_exports__);
       return nextState;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PRODUCT"]:
-      nextState.product = action.product.product;
+      nextState.product = action.product;
       return nextState;
 
     default:
@@ -1633,7 +1638,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1642,13 +1649,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   Object.freeze(oldState);
 
   switch (action.type) {
-    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEWS"]:
-      return Object.assign({}, oldState, action.reviews);
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PRODUCT"]:
+      var reviews = action.reviews;
+      return Object.assign({}, oldState, reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
-      var newReview = _defineProperty({}, action.review.id, action.review);
-
-      return Object.assign({}, oldState, newReview);
+      var review = action.review;
+      return Object.assign({}, oldState, _defineProperty({}, review.id, review));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_REVIEW"]:
       var newState = Object.assign({}, oldState);
@@ -1687,6 +1694,68 @@ __webpack_require__.r(__webpack_exports__);
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/selector.js":
+/*!***************************************!*\
+  !*** ./frontend/reducers/selector.js ***!
+  \***************************************/
+/*! exports provided: selectProduct, selectReviewsForProduct, asArray */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectProduct", function() { return selectProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsForProduct", function() { return selectReviewsForProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "asArray", function() { return asArray; });
+var selectProduct = function selectProduct(_ref, productId) {
+  var products = _ref.products;
+  return products[productId] || {
+    reviewIds: []
+  };
+};
+var selectReviewsForProduct = function selectReviewsForProduct(_ref2, product) {
+  var products = _ref2.products,
+      reviews = _ref2.reviews;
+  return product.reviewIds.map(function (reviewId) {
+    return reviews[reviewId];
+  });
+};
+var asArray = function asArray(_ref3) {
+  var products = _ref3.products;
+  return Object.keys(products).map(function (key) {
+    return products[key];
+  });
+};
+/*
+Create a function:
+
+const filterObject = (obj, filter, filterValue) =>
+   Object.keys(obj).reduce((acc, val) =>
+   (obj[val][filter] === filterValue ? acc : {
+       ...acc,
+       [val]: obj[val]
+   }
+), {});
+And call it:
+
+filterObject(developers, "name", "Alireza");
+and will return:
+
+{
+  1: {
+  id: 1,
+  name: "Brendan",
+  family: "Eich"
+  },
+  2: {
+   id: 2,
+   name: "John",
+   family: "Resig"
+  }
+}
+*/
 
 /***/ }),
 
@@ -1789,7 +1858,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1800,6 +1873,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PRODUCT"]:
+      return Object.assign({}, state, action.reviewers);
+
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_REVIEW"]:
+      // debugger;
+      return Object.assign({}, state, _defineProperty({}, action.reviewer.id, action.reviewer));
 
     default:
       return state;
