@@ -7,6 +7,10 @@ Review.destroy_all
 
 # Create 5 random users
 cat_list = %w[office electronic keyboard book chair]
+User.create!(email: "demo@rtsy.com",
+      firstname: "Demo User",
+      password: "demodemo"
+)
 5.times do
   # create a user
   usr = User.create(

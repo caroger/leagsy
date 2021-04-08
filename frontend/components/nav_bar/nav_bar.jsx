@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = ({ currentUser, logout, openModal }) => {
   const signinButton = () => {
@@ -35,6 +37,9 @@ const NavBar = ({ currentUser, logout, openModal }) => {
         placeholder="Search anything"
       />
       {currentUser ? userButton(currentUser, logout) : signinButton()}
+      <Link to="/cart">
+        <FontAwesomeIcon icon={faShoppingCart} />
+      </Link>
     </nav>
   );
 };

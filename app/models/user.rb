@@ -25,11 +25,11 @@ class User < ApplicationRecord
            foreign_key: :seller_id,
            class_name: :Product
 
-  has_many :cartItems,
+  has_many :cart_items,
            foreign_key: :user_id,
            class_name: :CartItem
 
-  has_many :itemsInCart, through: :cartItems, source: :product
+  has_many :items_in_cart, through: :cart_items, source: :product
 
   has_many :reviews, class_name: :Review, foreign_key: :reviewer_id
 

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "cart_items", id: false, force: :cascade do |t|
+  create_table "cart_items", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "product_id"
     t.integer "quantity", default: 1, null: false

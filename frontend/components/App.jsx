@@ -4,6 +4,7 @@ import Modal from "./modal/modal";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 import Products from "./Products/Products";
 import Product from "./Product/ProductContainer";
+import Cart from "./Cart/Cart";
 import Home from "./Home/Home";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/products/:productId" component={Product} />
+        <Route exact path="/cart" component={Cart} />
         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
     </section>
