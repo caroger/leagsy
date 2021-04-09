@@ -10,7 +10,7 @@
 #
 class CartItem < ApplicationRecord
   validates :user_id, :product_id, :quantity, presence: true
-  # validates :product_id, uniqueness: { scope: :user_id }
+  validates :product_id, uniqueness: { scope: :user_id }
 
   belongs_to :product,
              foreign_key: :product_id,

@@ -10,3 +10,9 @@ export const createCartItem = (cartItem) =>
     url: `api/cart_items`,
     data: { cartItem },
   });
+
+export const deleteCartItem = (cartItemId) =>
+  $.ajax({
+    method: "DELETE",
+    url: `api/cart_items/${cartItemId}`,
+  });
