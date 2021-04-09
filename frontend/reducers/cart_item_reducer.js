@@ -1,4 +1,8 @@
-import { RECEIVE_CART_ITEMS, DELETE_CART_ITEM } from "../actions/cart_actions";
+import {
+  RECEIVE_CART_ITEMS,
+  DELETE_CART_ITEM,
+  RECEIVE_CART_ITEM,
+} from "../actions/cart_actions";
 
 export default (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -11,6 +15,9 @@ export default (oldState = {}, action) => {
       let newState = Object.assign({}, oldState);
       delete newState[action.cartItem.id];
       return newState;
+    case RECEIVE_CART_ITEM:
+      const { cartItem } = action;
+      return Object.assign({}, oldState, { [cartItem.id]: cartItem });
     default:
       return oldState;
   }

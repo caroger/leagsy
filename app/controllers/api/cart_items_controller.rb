@@ -4,18 +4,15 @@ class Api::CartItemsController < ApplicationController
     render :index
   end
 
-  def show
-  end
-
   def create
     ## find associated product
-    @cart_item = CartItem.find_by(user_id: params[:user_id], product_id: params[:product_id])
+    @cart_item = current_user.cart_items.find_by(product_id: cartitem_params[:product_id])
 
     ## If cart already has this product, update quantity
     if @cart_item
-      @cart_item.update_attribute(:quantity, @cart_item.qauntity += params[:quantity])
+      @cart_item.update_attribute(:quantity, @cart_item.quantity += cartitem_params[:quantity].to_i)
     else
-      @cart_item = CartItem.new(cartitem_params)
+      @cart_item = current_user.cart_items.new(cartitem_params)
     end
     if @cart_item.save
       render :show
@@ -39,6 +36,6 @@ class Api::CartItemsController < ApplicationController
 
   private
     def cartitem_params
-      params.require(:cart_items).permit(:user_id, :product_id, :quantity)
+      params.require(:cartItem).permit(:product_id, :quantity, :user_id)
     end
 end

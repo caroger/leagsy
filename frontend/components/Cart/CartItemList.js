@@ -1,11 +1,11 @@
 import CartItem from "./CartItem";
 import React from "react";
 
-const CartItemList = ({ cartItems }) => {
+const CartItemList = ({ cartItems, products }) => {
   return (
     <div className="cart-item-list">
       {Object.keys(cartItems).map((id) => (
-        <CartItem key={id} cartItemId={id} cartItem={cartItems[id]} />
+        <CartItem key={id} cartItem={cartItems[id]} products={products} />
       ))}
     </div>
   );
