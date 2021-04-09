@@ -22,9 +22,6 @@ const ReviewItem = (props) => {
 };
 
 const mSTP = (state, ownProps) => {
-  console.log(
-    `reviewed by ${state.entities.users[ownProps.review.reviewerId].firstname}`
-  );
   return {
     reviewer: state.entities.users[ownProps.review.reviewerId].firstname,
   };

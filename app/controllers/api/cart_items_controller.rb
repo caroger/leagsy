@@ -1,6 +1,6 @@
 class Api::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_user.cart_items
     render :index
   end
 
@@ -13,7 +13,7 @@ class Api::CartItemsController < ApplicationController
 
     ## If cart already has this product, update quantity
     if @cart_item
-      @cart_item.quantity += params[:quantity]
+      @cart_item.update_attribute(:quantity, @cart_item.qauntity += params[:quantity])
     else
       @cart_item = CartItem.new(cartitem_params)
     end
@@ -28,6 +28,13 @@ class Api::CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_item = current_user.cart_items.find_by(id: params[:id])
+    if @cart_item
+      @cart_item.destroy
+      render :show
+    else
+      render json: @cart_item.errors.full_message, status: 422
+    end
   end
 
   private
