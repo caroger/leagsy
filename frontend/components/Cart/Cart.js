@@ -18,7 +18,10 @@ class Cart extends Component {
     return (
       <div className="cart">
         <h1>{itemCount} Items in Your Cart</h1>
-        <CartItemList cartItems={this.props.cartItems} />
+        <CartItemList
+          cartItems={this.props.cartItems}
+          products={this.props.products.all}
+        />
       </div>
     );
   }
@@ -27,6 +30,7 @@ class Cart extends Component {
 const mSTP = (state) => {
   return {
     cartItems: state.entities.cartItems,
+    products: state.entities.products,
   };
 };
 

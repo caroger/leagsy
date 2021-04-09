@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
+import AddToCartForm from "../Cart/AddToCartForm";
 import { Link } from "react-router-dom";
 
 class Product extends Component {
@@ -24,6 +25,7 @@ class Product extends Component {
         <div className="product-image">
           <img src={`http://localhost:3000${urls[0]}`} alt="" />
         </div>
+        <AddToCartForm productId={product.id} />
         <ReviewList
           reviews={this.props.reviews}
           reviewers={this.props.reviewers}

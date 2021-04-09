@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
-import {createReview,  deleteReview } from "../../actions/review_actions";
+import { createReview, deleteReview } from "../../actions/review_actions";
+import { createCartItem } from "../../actions/cart_actions";
 import Product from "./Product";
 
 const mSTP = (state) => {
