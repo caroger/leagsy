@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
 import AddToCartForm from "../Cart/AddToCartForm";
+import ImageContainer from "./ImagesContainer";
 import { Link } from "react-router-dom";
 
 class Product extends Component {
@@ -17,14 +18,12 @@ class Product extends Component {
     if (!product || !reviews || !reviewers) return null;
     const urls = product.imgUrls || [];
     return (
-      <div className="product-show">
+      <div className="product-container">
         <Link to={"/products"}>Back to Product Index</Link>
         <div className="product-title">
           <h1>{product.name}</h1>
         </div>
-        <div className="product-image">
-          <img src={`http://localhost:3000${urls[0]}`} alt="" />
-        </div>
+        <ImageContainer images={urls} />
         <AddToCartForm productId={product.id} />
         <ReviewList
           reviews={this.props.reviews}

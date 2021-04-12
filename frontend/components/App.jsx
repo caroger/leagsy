@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Modal from "./modal/modal";
-import NavBarContainer from "./nav_bar/nav_bar_container";
+import GlobalNav from "./GlobalNav/GlobalNavContainer";
 import Products from "./Products/Products";
 import Product from "./Product/ProductContainer";
 import Cart from "./Cart/Cart";
@@ -10,7 +10,7 @@ import Home from "./Home/Home";
 const App = () => {
   return (
     <section className="App">
-      <NavBarContainer />
+      <GlobalNav />
       <Modal />
       <Switch>
         <Route exact path="/" component={Home} />

@@ -1,12 +1,6 @@
-.product-show {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-
-    h1 {
-        font-size: 20px;
-        font-weight: bold;
-    }
+.product-container {
+   width: 1400px;
+    display: block;
 
 
     .product-image {
