@@ -1,4 +1,5 @@
 require "open-uri"
+require "faker"
 
 User.destroy_all
 Product.destroy_all
@@ -58,22 +59,19 @@ plushes_list.each_with_index do |plush, idx|
   end
 end
 
-# Product.all.each_with_index do |p, i|
-#   (1..5).each do |j|
-#     file = open("https://rtsy-seeds.s3-us-west-1.amazonaws.com/rtsy/#{i + 1}-#{j}.jpg")
-#     p.photos.attach(io: file, filename: "#{i + 1}-#{j}.jpg}")
-#   end
-# end
 
 # # Seed reviews
-# 20.times do
-#   Review.create(
-#     product: Product.all.sample,
-#     reviewer: User.all.sample,
-#     rating: rand(1..5),
-#     body: Faker::Lorem.paragraph(sentence_count: 4)
-#   )
-# end
+if ENV["reviews"]
+  User.all.each do |user|
+    Product.all.each do |product|
+      Review.create(
+        product: product,
+        reviewer: user,
+        rating: rand(1..5),
+        body: Faker::Lorem.paragraph(sentence_count: 4))
+    end
+  end
+end
 
 # # Seed 3 cartItems for each user
 # User.all.each do |usr|
