@@ -8,10 +8,7 @@ const ProductCard = (props) => {
     <div className="product-card">
       <div>Product id: {id}</div>
       <div className="product-cover">
-        <img
-          src={`http://localhost:3000${imgUrls[0]}`}
-          alt={props.product.name}
-        />
+        <img src={imgUrls[0]} alt={props.product.name} />
       </div>
       <div className="product-name">{name}</div>
       <div className="product-price">Price: {price}</div>
