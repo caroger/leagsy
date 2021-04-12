@@ -1108,7 +1108,7 @@ var ProductCard = function ProductCard(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Product id: ", id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product-cover"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "http://localhost:3000".concat(imgUrls[0]),
+    src: imgUrls[0],
     alt: props.product.name
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product-name"
@@ -1742,7 +1742,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var demoUser = {
         email: "demo@rtsy.com",
         firstname: "Demo User",
-        password: "demodemo"
+        password: "123456"
       };
       this.props.login(demoUser).then(this.props.closeModal);
     }
