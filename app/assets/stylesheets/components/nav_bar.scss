@@ -1,19 +1,8 @@
-// Google fonts
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
-
-$logo-font: "Lobster",
-cursive;
-$main-font: "Rubik",
-sans-serif;
-
 .NavBar {
   display: block;
   height: 72px;
   position: relative;
   font-family: $main-font;
-
-
 
   .header-container {
     //layout
@@ -34,14 +23,14 @@ sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      text-align: left;
 
       .logo-link {
         flex: 0 0 80px;
         text-decoration: none;
         outline: none;
-        color: #ee502f;
-        font-size: 1.9rem;
+        color: #019fb6;
+        font-size: 2.5rem;
 
       }
     }

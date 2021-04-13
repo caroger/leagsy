@@ -4,7 +4,6 @@ import { login, clearErrors } from "../../actions/session_actions";
 import SessionForm from "./session_form";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
-const demoUser = { email: "demo@rtsy.com", password: "demodemo" };
 
 const mSTP = ({ errors }) => {
   return {

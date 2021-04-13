@@ -7,6 +7,7 @@
 
 /* reset */
 @import "./base/reset.scss";
+@import "./base/fonts.scss";
 
 /* modal */
 @import "./components/modals.scss";
@@ -29,4 +30,6 @@
 
 @import "./components/cart_item.scss";
 
-@import "./components/app.scss"
+@import "./components/app.scss";
+
+@import "./components/cat_nav.scss";
