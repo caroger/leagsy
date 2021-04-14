@@ -47,11 +47,21 @@
       position: relative;
       width: 100%;
       font-size: 13px;
-      font-weight: 700;
+      font-family: $main-font;
+      font-weight: 600;
       line-height: 18px;
       text-align: center;
-      text-decoration-style: solid;
       cursor: pointer;
+      color: rgb(34, 34, 34);
+      &:link {
+        text-decoration: none;
+      }
+
+      &:hover {
+        .Arrow {
+          transform: translateX(5px);
+        }
+      }
 
       img {
         margin-bottom: 12px;
@@ -64,6 +74,19 @@
         border-radius: 50%;
         overflow: hidden;
         background-color: #d2ebfdb8;
+      }
+      .ProductCircleLink {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        .ProductName {
+          margin-right: 5px;
+          text-decoration: none;
+        }
+        .Arrow {
+          position: relative;
+          transition: transform 250ms;
+        }
       }
     }
   }
