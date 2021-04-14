@@ -1,0 +1,70 @@
+.PromoWrapper {
+  display: block;
+  margin-bottom: 30px;
+  color: rgb(34, 34, 34);
+  background-color: #ace5ef;
+
+  h1 {
+    font-family: $Roboto;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 36px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 30px 12px 12px 12px;
+  }
+
+  .PromoContentWrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 36px;
+
+    h2 {
+      padding-bottom: 12px;
+      line-height: 28px;
+      font-family: $main-font;
+      font-weight: 500;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+}
+.ProductCircleWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -9px;
+
+  .ProductCircleContainer {
+    display: block;
+    padding: 9px 18px 18px 18px;
+    flex-grow: 1;
+    flex-basis: 1/6;
+    max-width: 1/6;
+
+    .ProductCircle {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 18px;
+      text-align: center;
+      text-decoration-style: solid;
+      cursor: pointer;
+
+      img {
+        margin-bottom: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 160px;
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #d2ebfdb8;
+      }
+    }
+  }
+}

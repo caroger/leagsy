@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import Promo from "./Promo";
 
 const Home = () => {
   return (
-    <div>
-      <h1>This is the Home page</h1>
+    <div className="Home">
+      <Promo />
       <Link to={"/products"}> View all Products</Link>
     </div>
   );

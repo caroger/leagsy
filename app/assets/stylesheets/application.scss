@@ -8,6 +8,7 @@
 /* reset */
 @import "./base/reset.scss";
 @import "./base/fonts.scss";
+@import "./base/colors.scss";
 
 /* modal */
 @import "./components/modals.scss";
@@ -33,3 +34,5 @@
 @import "./components/app.scss";
 
 @import "./components/cat_nav.scss";
+
+@import "./components/home.scss";
