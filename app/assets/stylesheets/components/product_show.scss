@@ -1,16 +1,18 @@
-.product-container {
-   width: 1400px;
-    display: block;
+.ProductShowContainer {
+  width: 1400px;
+  padding-top: 30px;
+  width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 42px;
+}
 
+.leftCol {
+  padding-left: 30px;
+}
 
-    .product-image {
-        width: 250px;
-        height: 250px;
-        overflow: hidden;
-        border: 1px solid #000;
-
-        img {
-            height: 100%;
-        }
-    }
+.rightCol {
+  padding-right: 30px;
 }
