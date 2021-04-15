@@ -1,26 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const NavBar = ({ currentUser, logout, openModal }) => {
-  const SigninButton = () => {
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchCartItems();
+  }
+
+  SigninButton() {
     return (
-      <button className="SigninButton" onClick={() => openModal("login")}>
+      <button
+        className="SigninButton"
+        onClick={() => this.props.openModal("login")}
+      >
         Sign in
       </button>
     );
-  };
+  }
 
-  const LogoutButton = () => {
+  LogoutButton() {
     return (
-      <button className="SigninButton" onClick={logout}>
+      <button className="SigninButton" onClick={this.props.logout}>
         Log Out
       </button>
     );
-  };
+  }
 
-  const SiteLogo = () => {
+  SiteLogo() {
     return (
       <div className="logo">
         <Link to="/" className="logo-link">
@@ -28,9 +40,9 @@ const NavBar = ({ currentUser, logout, openModal }) => {
         </Link>
       </div>
     );
-  };
+  }
 
-  const SearchBar = () => {
+  SearchBar() {
     return (
       <div className="SearchBar">
         <input
@@ -43,36 +55,40 @@ const NavBar = ({ currentUser, logout, openModal }) => {
         </button>
       </div>
     );
-  };
+  }
 
-  const ShoppingCart = () => {
+  ShoppingCart() {
+    const { itemCount } = this.props;
     return (
       <Link to="/cart" className="ShoppingCart">
         <FontAwesomeIcon icon={faShoppingCart} />
+        {itemCount > 0 && (
+          <div className="itemCount">
+            <span>{itemCount}</span>
+          </div>
+        )}
       </Link>
     );
-  };
+  }
 
-  const UserNav = ({ currentUser }) => {
+  UserNav(currentUser) {
     return (
       <ul className="UserNav">
-        <li>{currentUser ? <LogoutButton /> : <SigninButton />}</li>
-        <li>
-          <ShoppingCart />
-        </li>
+        <li>{!currentUser ? this.SigninButton() : this.LogoutButton()}</li>
+        <li>{this.ShoppingCart()}</li>
       </ul>
     );
-  };
-
-  return (
-    <div className="NavBar">
-      <div className="header-container">
-        <SiteLogo />
-        <SearchBar />
-        <UserNav currentUser={currentUser} />
+  }
+  render() {
+    return (
+      <div className="NavBar">
+        <div className="header-container">
+          {this.SiteLogo()}
+          {this.SearchBar()}
+          {this.UserNav(this.props.currentUser)}
+        </div>
       </div>
-    </div>
-  );
-};
-
+    );
+  }
+}
 export default NavBar;

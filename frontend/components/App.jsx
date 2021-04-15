@@ -9,6 +9,7 @@ import Home from "./Home/Home";
 import CatNav from "./CatNav/CatNav";
 import Category from "./Category/Category.js";
 
+
 const App = () => {
   return (
     <section className="App">
