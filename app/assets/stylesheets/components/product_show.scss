@@ -38,44 +38,49 @@
   flex-direction: column;
   .Thumb,
   .ActiveThumb {
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
     margin-bottom: 2px;
-
-    img {
-      width: 100%;
-      border-radius: 5px;
-      padding: 1px;
-      opacity: 50%;
-    }
   }
   .ActiveThumb {
-    border: 2px solid teal;
-    border-radius: 5px;
-    img {
+    .ProductThumb {
       opacity: 1;
+      border: 2px solid teal;
+      border-radius: 5px;
     }
+  }
+
+  .ProductThumb {
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    opacity: 50%;
+    object-fit: cover;
   }
 }
 
 .ImageSlider {
   position: relative;
   width: 100%;
+  height: auto;
 
   .Slider {
     opacity: 0;
     transition-duration: 500ms ease;
     transform: scale(0.92);
+    width: 100%;
   }
 
   .ActiveSlider {
     opacity: 1;
     transition-duration: 500ms;
+    width: 100%;
   }
 
-  img {
+  .ProductImage {
     max-width: 100%;
     border-radius: 10px;
     background-color: teal;
+    object-fit: contain;
   }
 }

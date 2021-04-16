@@ -1372,7 +1372,8 @@ var ImageSlider = function ImageSlider(_ref) {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: image,
-      alt: "product thumb"
+      alt: "product thumb",
+      className: "ProductThumb"
     }));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaArrowAltCircleLeft"], {
     className: "left-arrow",

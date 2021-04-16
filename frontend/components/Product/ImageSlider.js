@@ -26,7 +26,7 @@ const ImageSlider = ({ images }) => {
               key={index}
               onClick={() => setCurrent(index)}
             >
-              <img src={image} alt="product thumb" />
+              <img src={image} alt="product thumb" className="ProductThumb" />
             </div>
           );
         })}
