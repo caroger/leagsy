@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
-import AddToCartForm from "../Cart/AddToCartForm";
+import AddToCartForm from "./AddToCartForm";
 import ImageSlider from "./ImageSlider";
 
 class Product extends Component {
@@ -28,8 +28,7 @@ class Product extends Component {
           <ReviewForm productId={product.id} />
         </div>
         <div className="rightCol">
-          <h1>{product.name}</h1>
-          <AddToCartForm productId={product.id} />
+          <AddToCartForm product={product} />
         </div>
       </div>
     );
