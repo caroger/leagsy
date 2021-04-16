@@ -16,3 +16,66 @@
 .rightCol {
   padding-right: 30px;
 }
+
+.ProductShowImage {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto 1fr;
+  column-gap: 10px;
+
+  .left-arrow,
+  .right-arrow {
+    font-size: 3rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    align-self: center;
+  }
+}
+
+.ImageThumbnail {
+  display: flex;
+  flex-direction: column;
+  .Thumb,
+  .ActiveThumb {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 2px;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+      padding: 1px;
+      opacity: 50%;
+    }
+  }
+  .ActiveThumb {
+    border: 2px solid teal;
+    border-radius: 5px;
+    img {
+      opacity: 1;
+    }
+  }
+}
+
+.ImageSlider {
+  position: relative;
+  width: 100%;
+
+  .Slider {
+    opacity: 0;
+    transition-duration: 500ms ease;
+    transform: scale(0.92);
+  }
+
+  .ActiveSlider {
+    opacity: 1;
+    transition-duration: 500ms;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: teal;
+  }
+}
