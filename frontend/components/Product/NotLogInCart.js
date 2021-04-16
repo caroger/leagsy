@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
 
 function NotLogInCart(props) {
+  debugger;
   return (
     <div className="NotLogInCart">
       <p>Please </p>

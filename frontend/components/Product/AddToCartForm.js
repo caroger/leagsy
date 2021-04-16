@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createCartItem } from "../../actions/cart_actions";
 import { FaCheck, FaTruckMoving } from "react-icons/fa";
 import { openModal, closeModal } from "../../actions/modal_actions";
+import { withRouter } from "react-router-dom";
 
 class AddToCartForm extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AddToCartForm extends Component {
       cartItem: {
         product_id: props.product.id,
         quantity: 1,
+        product: props.product,
       },
     };
 
@@ -20,9 +22,13 @@ class AddToCartForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.currentUser
-      ? this.props.createCartItem(this.state.cartItem)
-      : this.props.openModal("notlogincart");
+    if (this.props.currentUser) {
+      this.props
+        .createCartItem(this.state.cartItem)
+        .then(() => this.props.history.push("/cart"));
+    } else {
+      this.props.openModal("notlogincart");
+    }
   }
 
   handleChange(e) {
@@ -92,6 +98,7 @@ class AddToCartForm extends Component {
 const mSTP = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
+    cartItem: state.entities.cartItem,
   };
 };
 
@@ -103,4 +110,4 @@ const mDTP = (dispatch) => {
   };
 };
 
-export default connect(mSTP, mDTP)(AddToCartForm);
+export default withRouter(connect(mSTP, mDTP)(AddToCartForm));

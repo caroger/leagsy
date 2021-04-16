@@ -1211,6 +1211,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -1245,6 +1246,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var AddToCartForm = /*#__PURE__*/function (_Component) {
   _inherits(AddToCartForm, _Component);
 
@@ -1259,7 +1261,8 @@ var AddToCartForm = /*#__PURE__*/function (_Component) {
     _this.state = {
       cartItem: {
         product_id: props.product.id,
-        quantity: 1
+        quantity: 1,
+        product: props.product
       }
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -1271,8 +1274,17 @@ var AddToCartForm = /*#__PURE__*/function (_Component) {
   _createClass(AddToCartForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      this.props.currentUser ? this.props.createCartItem(this.state.cartItem) : this.props.openModal("notlogincart");
+
+      if (this.props.currentUser) {
+        this.props.createCartItem(this.state.cartItem).then(function () {
+          return _this2.props.history.push("/cart");
+        });
+      } else {
+        this.props.openModal("notlogincart");
+      }
     }
   }, {
     key: "handleChange",
@@ -1345,7 +1357,8 @@ var AddToCartForm = /*#__PURE__*/function (_Component) {
 
 var mSTP = function mSTP(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    cartItem: state.entities.cartItem
   };
 };
 
@@ -1363,7 +1376,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(AddToCartForm));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(AddToCartForm)));
 
 /***/ }),
 
@@ -1472,6 +1485,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NotLogInCart(props) {
+  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "NotLogInCart"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

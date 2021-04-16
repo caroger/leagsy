@@ -17,7 +17,9 @@ export default (oldState = {}, action) => {
       return newState;
     case RECEIVE_CART_ITEM:
       const { cartItem } = action;
-      return Object.assign({}, oldState, { [cartItem.id]: cartItem });
+      return Object.assign({}, oldState, {
+        [cartItem.id]: cartItem,
+      });
     default:
       return oldState;
   }
