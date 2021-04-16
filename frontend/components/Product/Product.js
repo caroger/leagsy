@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReviewList from "../Review/ReviewList";
 import ReviewForm from "../Review/ReviewForm";
 import AddToCartForm from "../Cart/AddToCartForm";
-import ImageContainer from "./ImagesContainer";
+import ImageSlider from "./ImageSlider";
 
 class Product extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Product extends Component {
     return (
       <div className="ProductShowContainer">
         <div className="leftCol">
-          <ImageContainer images={urls} />
+          <ImageSlider images={urls} />
           <ReviewList
             reviews={this.props.reviews}
             reviewers={this.props.reviewers}
