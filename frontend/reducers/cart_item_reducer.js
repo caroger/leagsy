@@ -4,6 +4,11 @@ import {
   RECEIVE_CART_ITEM,
 } from "../actions/cart_actions";
 
+import {
+  LOGOUT_CURRENT_USER,
+  RECEIVE_CURRENT_USER,
+} from "../actions/session_actions";
+
 export default (oldState = {}, action) => {
   Object.freeze(oldState);
 
@@ -20,6 +25,8 @@ export default (oldState = {}, action) => {
       return Object.assign({}, oldState, {
         [cartItem.id]: cartItem,
       });
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

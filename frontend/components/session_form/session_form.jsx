@@ -46,7 +46,10 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    this.props
+      .processForm(user)
+      .then(() => this.props.history.push("/home"))
+      .then(() => this.props.closeModal());
   }
 
   handleDemoUser(e) {
@@ -56,7 +59,10 @@ class SessionForm extends React.Component {
       firstname: "Demo User",
       password: "123456",
     };
-    this.props.login(demoUser).then(this.props.closeModal);
+    this.props
+      .login(demoUser)
+      .then(() => this.props.closeModal())
+      .then(() => this.props.history.push("/home"));
   }
 
   renderErrors(err) {
@@ -171,4 +177,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

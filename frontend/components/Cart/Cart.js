@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCartItems } from "../../actions/cart_actions";
 import { deleteCartItem } from "../../actions/cart_actions";
+import { Link } from "react-router-dom";
 import CartItemList from "./CartItemList";
 
 class Cart extends Component {
@@ -9,19 +10,20 @@ class Cart extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchCartItems();
-  }
+  // componentDidMount() {
+  //   this.props.fetchCartItems();
+  // }
 
   render() {
     const itemCount = Object.keys(this.props.cartItems).length;
     return (
-      <div className="cart">
-        <h1>{itemCount} Items in Your Cart</h1>
-        <CartItemList
-          cartItems={this.props.cartItems}
-          products={this.props.products.all}
-        />
+      <div className="CartContainer">
+        <div className="Text1">{itemCount} Items in Your Cart</div>
+        <div className="Text2">
+          <Link to={"/home"}>Keep Shopping</Link>
+        </div>
+        <div className="CartItems"></div>
+        <div className="Bank">Choose Credit Card and Checkout</div>
       </div>
     );
   }

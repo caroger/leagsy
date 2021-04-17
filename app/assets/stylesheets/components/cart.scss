@@ -1,0 +1,44 @@
+// container
+.CartContainer {
+  width: 1400px;
+  padding-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid: 72px auto/ 2fr 1fr;
+  grid-template-areas:
+    "a b"
+    "c d";
+  column-gap: 42px;
+  font-family: $main-font;
+}
+
+.Text1 {
+  grid-area: a;
+  place-self: center start;
+  padding-left: 36px;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+}
+.Text2 {
+  grid-area: b;
+  place-self: center end;
+  padding-right: 36px;
+  font-size: 16px;
+  font-weight: bold;
+
+  a:link {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.CartItems {
+  grid-area: c;
+}
+
+.Bank {
+  grid-area: d;
+  padding-right: 36px;
+}
