@@ -17,11 +17,19 @@ class Api::CartItemsController < ApplicationController
     if @cart_item.save
       render :show
     else
-      render json: @review.errors.full_messages, status: 422
+      render json: @cart_item.errors.full_messages, status: 422
     end
   end
 
   def update
+    # debugger
+    @cart_item = current_user.cart_items.find_by(product_id: cartitem_params[:product_id])
+    if @cart_item
+      @cart_item.update(cartitem_params)
+      render :show
+    else
+      render json: @cart_item.errors.full_messages, status: 422
+    end
   end
 
   def destroy

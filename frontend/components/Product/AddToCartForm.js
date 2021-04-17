@@ -9,11 +9,8 @@ class AddToCartForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItem: {
-        product_id: props.product.id,
-        quantity: 1,
-        product: props.product,
-      },
+      product_id: props.productId,
+      quantity: 1,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,24 +20,22 @@ class AddToCartForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.currentUser) {
+      console.log(this.state);
       this.props
-        .createCartItem(this.state.cartItem)
+        .createCartItem(this.state)
         .then(() => this.props.history.push("/cart"));
     } else {
       this.props.openModal("notlogincart");
     }
   }
 
-  handleChange(e) {
-    e.preventDefault();
+  handleChange(event) {
+    event.preventDefault();
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
     this.setState({
-      cartItem: Object.assign(
-        {},
-        { ...this.state.cartItem },
-        {
-          [e.target.name]: e.target.value,
-        }
-      ),
+      [name]: value,
     });
   }
 
@@ -74,7 +69,7 @@ class AddToCartForm extends Component {
             name="quantity"
             min={1}
             onChange={this.handleChange}
-            value={this.state.cartItem.quantity}
+            value={this.state.quantity}
           />
           <button type="submit">
             <span>Add To Cart</span>
@@ -95,10 +90,10 @@ class AddToCartForm extends Component {
   }
 }
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    cartItem: state.entities.cartItem,
+    productId: ownProps.match.params.productId,
   };
 };
 

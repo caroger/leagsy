@@ -37,3 +37,10 @@ export const createCartItem = (cartItem) => (dispatch) => {
     dispatch(receiveCartItem(cartItem))
   );
 };
+
+export const updateCartItem = (cartItem) => (dispatch) => {
+  // debugger;
+  return APIUtil.updateCartItem(cartItem).then((cartItem) =>
+    dispatch(receiveCartItem(cartItem))
+  );
+};

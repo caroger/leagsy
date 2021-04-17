@@ -16,3 +16,10 @@ export const deleteCartItem = (cartItemId) =>
     method: "DELETE",
     url: `api/cart_items/${cartItemId}`,
   });
+
+export const updateCartItem = (cartItem) =>
+  $.ajax({
+    method: "PATCH",
+    url: `api/cart_items/${cartItem.id}`,
+    data: { cartItem },
+  });

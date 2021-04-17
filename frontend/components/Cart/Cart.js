@@ -3,16 +3,12 @@ import { connect } from "react-redux";
 import { fetchCartItems } from "../../actions/cart_actions";
 import { deleteCartItem } from "../../actions/cart_actions";
 import { Link } from "react-router-dom";
-import CartItemList from "./CartItemList";
+import CartItem from "./CartItem";
 
 class Cart extends Component {
   constructor(props) {
     super(props);
   }
-
-  // componentDidMount() {
-  //   this.props.fetchCartItems();
-  // }
 
   render() {
     const itemCount = Object.keys(this.props.cartItems).length;
@@ -22,7 +18,11 @@ class Cart extends Component {
         <div className="Text2">
           <Link to={"/home"}>Keep Shopping</Link>
         </div>
-        <div className="CartItems"></div>
+        <div className="CartItems">
+          {Object.values(this.props.cartItems).map((cartItem, index) => (
+            <CartItem key={index} cartItem={cartItem} />
+          ))}
+        </div>
         <div className="Bank">Choose Credit Card and Checkout</div>
       </div>
     );
