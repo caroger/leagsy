@@ -3,6 +3,14 @@ import { connect } from "react-redux";
 import { fetchCartItems } from "../../actions/cart_actions";
 import { deleteCartItem } from "../../actions/cart_actions";
 import { Link } from "react-router-dom";
+import {
+  FaCcVisa,
+  FaCcMastercard,
+  FaCcApplePay,
+  FaCcDiscover,
+  FaCcAmex,
+  FaCcPaypal,
+} from "react-icons/fa";
 import CartItem from "./CartItem";
 
 class Cart extends Component {
@@ -14,7 +22,7 @@ class Cart extends Component {
     const itemCount = Object.keys(this.props.cartItems).length;
     return (
       <div className="CartContainer">
-        <div className="Text1">{itemCount} Items in Your Cart</div>
+        <div className="Text1">{itemCount} items in Your Cart</div>
         <div className="Text2">
           <Link to={"/home"}>Keep Shopping</Link>
         </div>
@@ -23,7 +31,32 @@ class Cart extends Component {
             <CartItem key={index} cartItem={cartItem} />
           ))}
         </div>
-        <div className="Bank">Choose Credit Card and Checkout</div>
+        <div className="Bank">
+          <h1>How you'll pay</h1>
+          <label htmlFor="credit" className="container">
+            <FaCcVisa size={32} />
+            <FaCcMastercard size={32} />
+            <FaCcDiscover size={32} />
+            <FaCcAmex size={32} />
+            <input
+              type="radio"
+              name="payment"
+              id="credit"
+              defaultChecked={true}
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label htmlFor="paypal" className="container">
+            <FaCcPaypal size={32} />
+            <input type="radio" name="payment" id="paypal" />
+            <span class="checkmark"></span>
+          </label>
+          <label htmlFor="applePay" className="container">
+            <FaCcApplePay size={32} />
+            <input type="radio" name="payment" id="applePay" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
       </div>
     );
   }
