@@ -20,6 +20,10 @@ class Cart extends Component {
 
   render() {
     const itemCount = Object.keys(this.props.cartItems).length;
+    const subTotal = Object.values(this.props.cartItems).reduce(
+      (t, { quantity, product }) => t + quantity * product.price,
+      0
+    );
     return (
       <div className="CartContainer">
         <div className="Text1">{itemCount} items in Your Cart</div>
@@ -56,6 +60,26 @@ class Cart extends Component {
             <input type="radio" name="payment" id="applePay" />
             <span class="checkmark"></span>
           </label>
+
+          <div className="itemsTotal">
+            <div className="label">Item(s) total</div>
+            <div className="value">${subTotal}</div>
+          </div>
+          <div className="discount">
+            <div className="label">Discount</div>
+            <div className="value">$0</div>
+          </div>
+          <div className="subTotal">
+            <div className="label">Subtotal</div>
+            <div className="value">${subTotal}</div>
+          </div>
+          <div className="shipping">
+            <div className="label">Shipping</div>
+            <div className="value">FREE</div>
+          </div>
+          <div className="checkOutButton">
+            <p>Proceed to checkout</p>
+          </div>
         </div>
       </div>
     );

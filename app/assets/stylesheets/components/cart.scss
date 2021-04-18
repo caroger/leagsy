@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid: 72px auto/ 2fr 1fr;
+  grid: 72px auto/ 2.5fr 1fr;
   grid-template-areas:
     "a b"
     "c d";
@@ -24,15 +24,51 @@
 .Text2 {
   grid-area: b;
   place-self: center end;
-  padding-right: 36px;
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  border-radius: 36px;
+  &:hover {
+    opacity: 1;
+    transform: scale(1) perspective(1px);
+    // transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+      background 150ms ease-out, box-shadow 200ms ease-out;
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
+  }
 
   a:link {
+    padding: 12px 8px;
     text-decoration: none;
     color: #000;
+    margin: auto;
   }
 }
+// .removeBtn {
+//   font-size: 13px;
+//   height: 36px;
+//   cursor: pointer;
+//   width: 80px;
+//   display: flex;
+//   justify-content: center;
+//   border-radius: 36px;
+
+//   p {
+//     margin: auto;
+//     font-weight: 700;
+//   }
+
+//   &:hover {
+//     opacity: 1;
+//     transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+//     transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+//       background 150ms ease-out, box-shadow 200ms ease-out;
+//     background: rgba(0, 0, 0, 0.15);
+//   }
+// }
+//
 
 .CartItems {
   grid-area: c;
@@ -149,6 +185,9 @@
   padding: 18px;
   border-radius: 18px;
   box-shadow: rgba(34, 34, 34, 0.15) 0px 4px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   h1 {
     font-size: 16px;
@@ -170,7 +209,7 @@
     user-select: none;
 
     svg {
-      margin-right: 10px;
+      margin-left: 12px;
     }
   }
 
@@ -228,5 +267,68 @@
     height: 8px;
     border-radius: 50%;
     background: white;
+  }
+
+  .itemsTotal,
+  .discount,
+  .subTotal,
+  .shipping {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding-top: 6px;
+    line-height: 24px;
+  }
+  .subTotal {
+    .label {
+      font-weight: bold;
+    }
+  }
+
+  .shipping {
+    .value {
+      color: #258635;
+    }
+  }
+
+  .discount {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    }
+  }
+
+  .checkOutButton {
+    align-self: flex-end;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    height: 48px;
+    cursor: pointer;
+    border-radius: 24px;
+    background-color: #222222;
+    box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 36px;
+    p {
+      color: white;
+    }
+
+    &:hover {
+      transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+        background 150ms ease-out, box-shadow 200ms ease-out;
+      box-shadow: 0 4px 20px rgba(34, 34, 34, 20%);
+      transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+      background: #2f2f2f;
+    }
   }
 }
