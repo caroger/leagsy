@@ -12,6 +12,7 @@ import {
   FaCcPaypal,
 } from "react-icons/fa";
 import CartItem from "./CartItem";
+import { openModal } from "../../actions/modal_actions";
 
 class Cart extends Component {
   constructor(props) {
@@ -48,17 +49,17 @@ class Cart extends Component {
               id="credit"
               defaultChecked={true}
             />
-            <span class="checkmark"></span>
+            <span className="checkmark"></span>
           </label>
           <label htmlFor="paypal" className="container">
             <FaCcPaypal size={32} />
             <input type="radio" name="payment" id="paypal" />
-            <span class="checkmark"></span>
+            <span className="checkmark"></span>
           </label>
           <label htmlFor="applePay" className="container">
             <FaCcApplePay size={32} />
             <input type="radio" name="payment" id="applePay" />
-            <span class="checkmark"></span>
+            <span className="checkmark"></span>
           </label>
 
           <div className="itemsTotal">
@@ -77,7 +78,10 @@ class Cart extends Component {
             <div className="label">Shipping</div>
             <div className="value">FREE</div>
           </div>
-          <div className="checkOutButton">
+          <div
+            className="checkOutButton"
+            onClick={() => this.props.openModal("checkout")}
+          >
             <p>Proceed to checkout</p>
           </div>
         </div>
@@ -97,6 +101,7 @@ const mDTP = (dispatch) => {
   return {
     fetchCartItems: () => dispatch(fetchCartItems()),
     deleteCartItem: (id) => dispatch(deleteCartItem(id)),
+    openModal: (modal) => dispatch(openModal(modal)),
   };
 };
 

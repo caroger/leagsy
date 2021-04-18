@@ -502,6 +502,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 /* harmony import */ var _CartItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CartItem */ "./frontend/components/Cart/CartItem.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -532,6 +533,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Cart = /*#__PURE__*/function (_Component) {
   _inherits(Cart, _Component);
 
@@ -546,6 +548,8 @@ var Cart = /*#__PURE__*/function (_Component) {
   _createClass(Cart, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var itemCount = Object.keys(this.props.cartItems).length;
       var subTotal = Object.values(this.props.cartItems).reduce(function (t, _ref) {
         var quantity = _ref.quantity,
@@ -586,7 +590,7 @@ var Cart = /*#__PURE__*/function (_Component) {
         id: "credit",
         defaultChecked: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "checkmark"
+        className: "checkmark"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "paypal",
         className: "container"
@@ -597,7 +601,7 @@ var Cart = /*#__PURE__*/function (_Component) {
         name: "payment",
         id: "paypal"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "checkmark"
+        className: "checkmark"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "applePay",
         className: "container"
@@ -608,7 +612,7 @@ var Cart = /*#__PURE__*/function (_Component) {
         name: "payment",
         id: "applePay"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "checkmark"
+        className: "checkmark"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "itemsTotal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -634,7 +638,10 @@ var Cart = /*#__PURE__*/function (_Component) {
       }, "Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "value"
       }, "FREE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkOutButton"
+        className: "checkOutButton",
+        onClick: function onClick() {
+          return _this.props.openModal("checkout");
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Proceed to checkout"))));
     }
   }]);
@@ -656,6 +663,9 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteCartItem: function deleteCartItem(id) {
       return dispatch(Object(_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__["deleteCartItem"])(id));
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__["openModal"])(modal));
     }
   };
 };
@@ -800,6 +810,35 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mDTP)(CartItem));
+
+/***/ }),
+
+/***/ "./frontend/components/Cart/CheckoutMessage.js":
+/*!*****************************************************!*\
+  !*** ./frontend/components/Cart/CheckoutMessage.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+function CheckoutMessage() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "CheckoutMessage"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Thank you for visting Rtsy!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All credits go to Riot Games for the sample products images and descriptions used on Rtsy."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please head to the official", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "https://merch.riotgames.com/en-us/",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "Riot Games Merch website"), " ", "to make purchases."));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (CheckoutMessage);
 
 /***/ }),
 
@@ -2216,6 +2255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _Product_NotLogInCart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Product/NotLogInCart */ "./frontend/components/Product/NotLogInCart.js");
+/* harmony import */ var _Cart_CheckoutMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Cart/CheckoutMessage */ "./frontend/components/Cart/CheckoutMessage.js");
+
 
 
 
@@ -2244,6 +2285,10 @@ function Modal(_ref) {
 
     case "notlogincart":
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Product_NotLogInCart__WEBPACK_IMPORTED_MODULE_5__["default"], null);
+      break;
+
+    case "checkout":
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart_CheckoutMessage__WEBPACK_IMPORTED_MODULE_6__["default"], null);
       break;
 
     default:
