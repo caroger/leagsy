@@ -733,7 +733,7 @@ var CartItem = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      quantity: props.cartItem.quantity,
+      quantity: 0,
       subTotal: 0
     };
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
@@ -747,6 +747,7 @@ var CartItem = /*#__PURE__*/function (_Component) {
           cartItem = _this$props.cartItem;
 
       this.setState({
+        quantity: cartItem.quantity,
         subTotal: cartItem.quantity * cartItem.product.price
       });
     }

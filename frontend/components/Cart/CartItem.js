@@ -7,7 +7,7 @@ class CartItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quantity: props.cartItem.quantity,
+      quantity: 0,
       subTotal: 0,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -16,6 +16,7 @@ class CartItem extends Component {
   componentDidMount() {
     const { cartItem } = { ...this.props };
     this.setState({
+      quantity: cartItem.quantity,
       subTotal: cartItem.quantity * cartItem.product.price,
     });
   }
