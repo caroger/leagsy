@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid: 72px auto/ 2fr 1fr;
+  grid: 72px auto/ 2.5fr 1fr;
   grid-template-areas:
     "a b"
     "c d";
@@ -24,21 +24,332 @@
 .Text2 {
   grid-area: b;
   place-self: center end;
-  padding-right: 36px;
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  border-radius: 36px;
+  &:hover {
+    opacity: 1;
+    transform: scale(1) perspective(1px);
+    // transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+      background 150ms ease-out, box-shadow 200ms ease-out;
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
+  }
 
   a:link {
+    padding: 12px 8px;
     text-decoration: none;
     color: #000;
+    margin: auto;
   }
 }
+// .removeBtn {
+//   font-size: 13px;
+//   height: 36px;
+//   cursor: pointer;
+//   width: 80px;
+//   display: flex;
+//   justify-content: center;
+//   border-radius: 36px;
+
+//   p {
+//     margin: auto;
+//     font-weight: 700;
+//   }
+
+//   &:hover {
+//     opacity: 1;
+//     transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+//     transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+//       background 150ms ease-out, box-shadow 200ms ease-out;
+//     background: rgba(0, 0, 0, 0.15);
+//   }
+// }
+//
 
 .CartItems {
   grid-area: c;
+  display: flex;
+  flex-direction: column;
+  padding-left: 36px;
+
+  .CartItem {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr;
+    grid-template-areas: "pImage pName pQuantity pPrice";
+    column-gap: 24px;
+    margin-bottom: 24px;
+
+    .pImage {
+      grid-area: pImage;
+      position: relative;
+      width: 100%; /* The size you want */
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      img {
+        position: absolute; /* Take your picture out of the flow */
+        top: 2px;
+        bottom: 2px;
+        left: 2px;
+        right: 2px; /* Make the picture taking the size of it's parent */
+        width: 100%; /* This if for the object-fit */
+        height: 100%; /* This if for the object-fit */
+        object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+        object-position: center;
+        background-color: teal;
+        border-radius: 6px;
+      }
+    }
+    .pName {
+      grid-area: pName;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .removeBtn {
+        font-size: 13px;
+        height: 36px;
+        cursor: pointer;
+        width: 80px;
+        display: flex;
+        justify-content: center;
+        border-radius: 36px;
+
+        p {
+          margin: auto;
+          font-weight: 700;
+        }
+
+        &:hover {
+          opacity: 1;
+          transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+          transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+            background 150ms ease-out, box-shadow 200ms ease-out;
+          background: rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+    .pQuantity {
+      grid-area: pQuantity;
+      input {
+        height: 48px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 0 12px;
+        border-radius: 6px;
+        border-color: rgba(34, 34, 34, 0.15);
+        border-style: solid;
+        border-width: 1px;
+        color: #222222;
+        text-indent: 0.01px;
+        box-shadow: 0 1px 6px 0 rgba(34, 34, 34, 15%);
+        transition: border-color 200ms ease-out 0ms, box-shadow 0s ease-out;
+        &:hover,
+        &:focus {
+          border-color: rgba(34, 34, 34, 0.5);
+          box-shadow: 0 1px 12px 0 rgba(34, 34, 34, 0.2);
+          outline: none;
+        }
+      }
+    }
+    .pPrice {
+      grid-area: pPrice;
+      text-align: right;
+      .subTotal {
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .Bank {
   grid-area: d;
   padding-right: 36px;
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: rgba(34, 34, 34, 0.15) 0px 4px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h1 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  .container {
+    // display: block;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    margin: 12px 0;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    svg {
+      margin-left: 12px;
+    }
+  }
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    left: 0;
+    top: 0;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid rgba(34, 34, 34, 0.3);
+    transition: all 200ms ease-out;
+    margin-right: 10px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #222222;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .itemsTotal,
+  .discount,
+  .subTotal,
+  .shipping {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding-top: 6px;
+    line-height: 24px;
+  }
+  .subTotal {
+    .label {
+      font-weight: bold;
+    }
+  }
+
+  .shipping {
+    .value {
+      color: #258635;
+    }
+  }
+
+  .discount {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    }
+  }
+
+  .checkOutButton {
+    align-self: flex-end;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    height: 48px;
+    cursor: pointer;
+    border-radius: 24px;
+    background-color: #222222;
+    box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 36px;
+    p {
+      color: white;
+    }
+
+    &:hover {
+      transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+        background 150ms ease-out, box-shadow 200ms ease-out;
+      box-shadow: 0 4px 20px rgba(34, 34, 34, 20%);
+      transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+      background: #2f2f2f;
+    }
+  }
+}
+
+.CheckoutMessage {
+  // width: 100%;
+  // height: 300px;
+  background-color: #eee;
+  border-radius: 6px;
+  font-family: $main-font;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1em;
+  h1 {
+    font-size: 16px;
+    font-weight: bold;
+    align-self: center;
+  }
+  p {
+    padding: 1em;
+  }
 }

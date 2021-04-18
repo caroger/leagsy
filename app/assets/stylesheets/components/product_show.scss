@@ -168,11 +168,12 @@
       line-height: 24px;
       font-weight: 700;
       outline: none;
+      transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+        background 150ms ease-out, box-shadow 200ms ease-out;
       &:hover {
-        transition: transform 200ms ease-in-out box-shadow 0 4px 20px
-          rgba(34, 34, 34, 15%);
         box-shadow: 0 4px 20px rgba(34, 34, 34, 20%);
-        transform: scaleX(1.003);
+        transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+        background: #2f2f2f;
       }
     }
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { deleteCartItem, updateCartItem } from "../../actions/cart_actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class CartItem extends Component {
   constructor(props) {
@@ -33,19 +34,35 @@ class CartItem extends Component {
     const { cartItem, deleteCartItem } = this.props;
     return (
       <div className="CartItem">
-        <h3>Product Name: ${cartItem.product.name}</h3>
-        <h3>Price: ${cartItem.product.price}</h3>
-        <label htmlFor="quantity">Quantity</label>
-        <input
-          type="number"
-          name="quantity"
-          value={this.state.quantity}
-          id="quantity"
-          onChange={this.handleInputChange}
-        />
-        <h3>Quantity: {cartItem.quantity}</h3>
-        <h3>Sub-total: ${cartItem.quantity * cartItem.product.price}</h3>
-        <button onClick={() => deleteCartItem(cartItem.id)}>Remove</button>
+        <Link className="pImage" to={`/products/${cartItem.product.id}`}>
+          {" "}
+          <img src={cartItem.imageUrl} alt="imageThumb" />
+        </Link>
+        <div className="pName">
+          <p>{cartItem.product.name}</p>
+          <div
+            className="removeBtn"
+            onClick={() => deleteCartItem(cartItem.id)}
+          >
+            <p>Remove</p>
+          </div>
+        </div>
+        <div className="pQuantity">
+          <input
+            min="1"
+            type="number"
+            name="quantity"
+            value={this.state.quantity}
+            id="quantity"
+            onChange={this.handleInputChange}
+          />
+        </div>
+        <div className="pPrice">
+          <div className="subTotal">
+            ${cartItem.quantity * cartItem.product.price}
+          </div>
+          <div className="perItem">(${cartItem.product.price} each)</div>
+        </div>
       </div>
     );
   }
