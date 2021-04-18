@@ -8,25 +8,31 @@ class CartItem extends Component {
     super(props);
     this.state = {
       quantity: props.cartItem.quantity,
+      subTotal: 0,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    const { cartItem } = { ...this.props };
+    this.setState({
+      subTotal: cartItem.quantity * cartItem.product.price,
+    });
   }
 
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value,
-    });
-
     const oldItem = this.props.cartItem;
+    this.setState({
+      quantity: value,
+      subTotal: value * oldItem.product.price,
+    });
     const newItem = {
       product_id: oldItem.product.id,
       quantity: value,
       user_id: oldItem.userId,
     };
-    console.log(newItem);
     this.props.updateCartItem(newItem);
   }
 
@@ -58,9 +64,7 @@ class CartItem extends Component {
           />
         </div>
         <div className="pPrice">
-          <div className="subTotal">
-            ${cartItem.quantity * cartItem.product.price}
-          </div>
+          <div className="subTotal">${this.state.subTotal}</div>
           <div className="perItem">(${cartItem.product.price} each)</div>
         </div>
       </div>

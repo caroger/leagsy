@@ -690,6 +690,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -729,34 +733,46 @@ var CartItem = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      quantity: props.cartItem.quantity
+      quantity: props.cartItem.quantity,
+      subTotal: 0
     };
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CartItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = _objectSpread({}, this.props),
+          cartItem = _this$props.cartItem;
+
+      this.setState({
+        subTotal: cartItem.quantity * cartItem.product.price
+      });
+    }
+  }, {
     key: "handleInputChange",
     value: function handleInputChange(event) {
       var target = event.target;
       var value = target.type === "checkbox" ? target.checked : target.value;
-      var name = target.name;
-      this.setState(_defineProperty({}, name, value));
       var oldItem = this.props.cartItem;
+      this.setState({
+        quantity: value,
+        subTotal: value * oldItem.product.price
+      });
       var newItem = {
         product_id: oldItem.product.id,
         quantity: value,
         user_id: oldItem.userId
       };
-      console.log(newItem);
       this.props.updateCartItem(newItem);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          cartItem = _this$props.cartItem,
-          deleteCartItem = _this$props.deleteCartItem;
+      var _this$props2 = this.props,
+          cartItem = _this$props2.cartItem,
+          deleteCartItem = _this$props2.deleteCartItem;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "CartItem"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -785,7 +801,7 @@ var CartItem = /*#__PURE__*/function (_Component) {
         className: "pPrice"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "subTotal"
-      }, "$", cartItem.quantity * cartItem.product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "$", this.state.subTotal), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "perItem"
       }, "($", cartItem.product.price, " each)")));
     }
