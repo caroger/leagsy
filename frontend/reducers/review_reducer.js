@@ -12,9 +12,15 @@ export default (oldState = {}, action) => {
     case RECEIVE_PRODUCT:
       const { reviews } = action;
       return Object.assign({}, oldState, reviews);
+    case RECEIVE_REVIEWS:
+      return Object.assign({}, oldState, action.reviews);
     case RECEIVE_REVIEW:
-      const { review } = action;
-      return Object.assign({}, oldState, { [review.id]: review });
+      const { review, reviewer } = action;
+      return Object.assign({}, oldState, {
+        [review.id]: Object.assign(review, {
+          reviewer: reviewer.firstname,
+        }),
+      });
     case DELETE_REVIEW:
       let newState = Object.assign({}, oldState);
       delete newState[action.review.id];

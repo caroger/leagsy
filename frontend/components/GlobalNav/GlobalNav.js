@@ -11,6 +11,8 @@ class NavBar extends Component {
 
   componentDidMount() {
     this.props.fetchCartItems();
+    this.props.fetchProducts();
+    this.props.fetchReviews();
   }
 
   SigninButton() {

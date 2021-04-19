@@ -1,38 +1,50 @@
 import React, { Component } from "react";
 import { createReview } from "../../actions/review_actions";
+import StarRatingComponent from "react-star-rating-component";
+import { AiFillStar } from "react-icons/ai";
 import { connect } from "react-redux";
 
 class ReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      review: {
-        product_id: props.productId,
-        body: "",
-        rating: 5,
-      },
+      // id: null,
+      rating: 0,
+      body: "",
+      productId: null,
+      reviewer: "",
+      // reviewerId: null,
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      productId: this.props.productId,
+    });
+  }
+
+  update(field) {
+    return (e) =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
+  }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createReview(this.state.review);
+    const productId = parseInt(this.state.productId);
+    const review = Object.assign({}, this.state, {
+      product_id: productId,
+      reviewer: this.props.reviewer,
+    });
+
+    this.props.createReview(review);
+    // console.log(review);
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({
-      review: Object.assign(
-        {},
-        { ...this.state.review },
-        {
-          [e.target.name]: e.target.value,
-        }
-      ),
-    });
-    console.log(this.state.review);
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({ rating: nextValue });
   }
 
   render() {
@@ -43,13 +55,19 @@ class ReviewForm extends Component {
           <div className="review-field">
             <div className="rating-container">
               <div className="rating-title-text">Rate This Product</div>
-              [Star Rating Goes Here]
+              <StarRatingComponent
+                name="rating"
+                starCount={5}
+                renderStarIcon={() => <AiFillStar />}
+                value={this.state.rating}
+                onStarClick={this.onStarClick}
+              />
             </div>
           </div>
           <div className="review-field">
             <input
-              onChange={this.handleChange}
-              value={this.state.review.body}
+              onChange={this.update("body")}
+              value={this.state.body}
               type="text"
               name="body"
               placeholder="Review Body Here"
@@ -62,6 +80,11 @@ class ReviewForm extends Component {
   }
 }
 
+const mSTP = (state) => {
+  return {
+    reviewer: state.entities.users[state.session.id].firstname,
+  };
+};
 const mDTP = (dispatch) => {
   return {
     createReview: (review) => dispatch(createReview(review)),

@@ -1,27 +1,43 @@
-.review-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 300px;
+.ReviewShow {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: 36px 1fr;
+  grid-template-areas: "userIcon name-time" ".  review-content";
+  column-gap: 12px;
+  font-family: $main-font;
+  margin: 12px 0;
 }
 
-.review-item {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0;
-
+.userIcon {
+  grid-area: userIcon;
 }
 
 .name-time {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+  grid-area: name-time;
+  display: flex;
+  align-items: center;
+
+  font-size: 13px;
+  font-weight: 300;
+  color: rgb(89, 89, 89);
+  .reviewer-name {
+    text-decoration: underline;
+    margin-right: 6px;
+  }
 }
 
-.review-rating {
+.review-content {
+  grid-area: review-content;
+  .review-rating {
     margin-bottom: 0.5rem;
+  }
+
+  .review-body {
+    margin-bottom: 0.5rem;
+  }
 }
 
-.review-body {
-    margin-bottom: 0.5rem;
+.ReviewForm {
+
 }
+
