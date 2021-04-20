@@ -1,3 +1,29 @@
-.Footer{
-    
+.Footer {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+
+  .Skills {
+    background-color: #2f466c;
+    color: #fff;
+    nav {
+      width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-evenly;
+
+      ul {
+      }
+    }
+  }
+  .About {
+    background-color: #232347;
+    color: #fff;
+    .container {
+      width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
