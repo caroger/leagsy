@@ -10,7 +10,6 @@ const ProductCard = ({ product }) => {
     <Link className="ProductCard" to={`/products/${product.id}`}>
       <img src={imgUrls[1]} alt={name} className="ProductCardImg" />
       <div className="ProductCardName">{name}</div>
-      <div className="ProductCardPrice">$ {price}</div>
       <div className="ProductCardRating">
         <StarRatingComponent
           name="rating"
@@ -20,6 +19,7 @@ const ProductCard = ({ product }) => {
           value={avgRating}
         />
       </div>
+      <div className="ProductCardPrice">$ {price}</div>
     </Link>
   );
 };
