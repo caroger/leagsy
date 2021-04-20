@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createReview } from "../../actions/review_actions";
 import StarRatingComponent from "react-star-rating-component";
-import { AiFillStar, AiOutlineUser, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { FaUserAstronaut } from "react-icons/fa";
 import { connect } from "react-redux";
 
