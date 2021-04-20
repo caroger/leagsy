@@ -11,6 +11,8 @@ const Footer = () => {
             <li>Javascript</li>
             <li>React</li>
             <li>Redux</li>
+            <li>HTML5</li>
+            <li>CSS3/SCSS</li>
           </ul>
           <ul>
             <li>Backend Skills</li>
