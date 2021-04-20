@@ -15,7 +15,7 @@ class Home extends Component {
       <div className="Home">
         <Promo products={this.props.products} />
         <Recommendation products={this.props.products} />
-        <EditorPicks />
+        <EditorPicks products={this.props.products} />
         <Link to={"/products"}> View all Products</Link>
       </div>
     );

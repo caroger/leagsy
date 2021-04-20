@@ -173,11 +173,10 @@
   font-weight: 300;
   font-family: $main-font;
   color: rgb(34, 34, 34);
-  // background-color: #ddebe3;
   background: linear-gradient(183deg, transparent 80px, #ddebe3 0) top;
   background-repeat: no-repeat;
   height: 362px;
-
+  margin-top: 128px;
   .gridContainer {
     max-width: 1400px;
     height: 375px;
@@ -186,6 +185,8 @@
     display: grid;
     grid-template-columns: 4fr 3fr 2fr 3fr;
     grid-template-rows: 1fr 1fr;
+    column-gap: 18px;
+    row-gap: 18px;
 
     .text1 {
       display: flex;
@@ -219,11 +220,49 @@
       font-weight: 300;
     }
 
-    .product {
-      background-color: red;
+    .EditorCard {
       margin: -9px;
       padding: 9px;
       top: -9px;
+      height: 200px;
+      position: relative;
+      color: rgb(34, 34, 34);
+      & a:link {
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+      }
+      &:hover {
+        img {
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .EditorCardPrice {
+          display: block;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      img {
+        width: 100%;
+        max-height: 100%;
+        display: block;
+        object-fit: cover;
+        overflow: hidden;
+        transition: box-shadow 200ms ease-in-out 0ms;
+        border-radius: 5px;
+        background-color: teal;
+      }
+      .EditorCardPrice {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background-color: white;
+        border-radius: 15px;
+        padding: 6px 9px;
+        transition: box-shadow 200ms ease-in-out 0ms;
+      }
     }
   }
 }
