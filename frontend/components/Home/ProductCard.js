@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
           starCount={5}
           renderStarIcon={() => <AiFillStar />}
           editing={false}
-          value={avgRatingg}
+          value={avgRating}
         />
       </div>
     </Link>
