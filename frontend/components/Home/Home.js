@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
 import Promo from "./Promo";
 import Recommendation from "./Recommendation";
 import EditorPicks from "./EditorPicks";
@@ -16,7 +15,6 @@ class Home extends Component {
         <Promo products={this.props.products} />
         <Recommendation products={this.props.products} />
         <EditorPicks products={this.props.products} />
-        <Link to={"/products"}> View all Products</Link>
       </div>
     );
   }
