@@ -8,7 +8,7 @@ import Cart from "./Cart/Cart";
 import Home from "./Home/Home";
 import CatNav from "./CatNav/CatNav";
 import Category from "./Category/Category.js";
-// import Footer from "./Footer/Footer";
+import Footer from "./Footer/Footer";
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
         <Route exact path="/cat/:catetory" component={Category} />
         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </section>
   );
 };
