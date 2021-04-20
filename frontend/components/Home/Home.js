@@ -7,7 +7,7 @@ import { fetchProducts } from "../../actions/product_actions";
 
 class Home extends Component {
   componentDidMount() {
-    this.props.fetchProducts();
+    // this.props.fetchProducts();
   }
   render() {
     return (

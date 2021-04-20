@@ -1,70 +1,101 @@
 import React, { Component } from "react";
 import { createReview } from "../../actions/review_actions";
+import StarRatingComponent from "react-star-rating-component";
+import { AiFillStar, AiOutlineUser, AiOutlineStar } from "react-icons/ai";
+import { FaUserAstronaut } from "react-icons/fa";
 import { connect } from "react-redux";
 
 class ReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      review: {
-        product_id: props.productId,
-        body: "",
-        rating: 5,
-      },
+      rating: 0,
+      body: "",
+      productId: null,
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      productId: this.props.productId,
+    });
+  }
+
+  update(field) {
+    return (e) =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
+  }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createReview(this.state.review);
+    const productId = parseInt(this.state.productId);
+    const review = Object.assign({}, this.state, {
+      product_id: productId,
+    });
+    this.props.createReview(review);
+
+    this.setState({
+      body: "",
+    });
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({
-      review: Object.assign(
-        {},
-        { ...this.state.review },
-        {
-          [e.target.name]: e.target.value,
-        }
-      ),
-    });
-    console.log(this.state.review);
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({ rating: nextValue });
+  }
+  renderErrors(err) {
+    return <p className="error">{err.length === 0 ? " " : err[0]}</p>;
   }
 
   render() {
     return (
       <div className="ReviewForm">
-        <form onSubmit={this.handleSubmit}>
-          <div className="review headr">Share Your Review Here</div>
-          <div className="review-field">
-            <div className="rating-container">
-              <div className="rating-title-text">Rate This Product</div>
-              [Star Rating Goes Here]
+        <div className="userIcon">
+          <FaUserAstronaut size={36} />
+        </div>
+        <div className="form-container" onSubmit={this.handleSubmit}>
+          <div className="rating-title-text">Rate this product</div>
+          <div className="rating-container">
+            <StarRatingComponent
+              name="rating"
+              starCount={5}
+              renderStarIcon={() => <AiFillStar />}
+              value={this.state.rating}
+              onStarClick={this.onStarClick}
+              size={72}
+            />
+            <div className="errorMessage">
+              {this.renderErrors(this.props.errors)}
             </div>
           </div>
-          <div className="review-field">
-            <input
-              onChange={this.handleChange}
-              value={this.state.review.body}
-              type="text"
-              name="body"
-              placeholder="Review Body Here"
-            />
+          <textarea
+            rows={5}
+            className="body-input"
+            onChange={this.update("body")}
+            value={this.state.body}
+            name="body"
+            placeholder="What do you think of this product?"
+          />
+          <div className="submitbtn" onClick={this.handleSubmit}>
+            <p>Submit Review</p>
           </div>
-          <button type="submit">Submit Your Review</button>
-        </form>
+        </div>
       </div>
     );
   }
 }
 
+const mSTP = (state) => {
+  return {
+    reviewer: state.entities.users[state.session.id].firstname,
+    errors: state.errors.review,
+  };
+};
 const mDTP = (dispatch) => {
   return {
     createReview: (review) => dispatch(createReview(review)),
   };
 };
-export default connect(null, mDTP)(ReviewForm);
+export default connect(mSTP, mDTP)(ReviewForm);

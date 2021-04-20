@@ -19,8 +19,9 @@
 // Product Images
 .ProductShowImage {
   display: grid;
-  grid-template-columns: 1fr 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr 4fr 1fr;
   column-gap: 10px;
+  margin-bottom: 36px;
 
   .left-arrow,
   .right-arrow {
@@ -79,9 +80,11 @@
 
   .ProductImage {
     max-width: 100%;
+    width: auto;
+    max-height: 50vh;
     border-radius: 10px;
     background-color: teal;
-    // object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -234,4 +237,25 @@
   z-index: 100;
   justify-content: center;
   align-items: center;
+}
+
+.totalReview {
+  display: flex;
+  margin-bottom: 24px;
+  .reviewCount {
+    font-family: $Roboto;
+    font-size: 26px;
+    margin-right: 12px;
+    font-weight: 300;
+    letter-spacing: 0.35px;
+  }
+
+  .reviewValue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 24px;
+    padding-top: 10px;
+  }
 }

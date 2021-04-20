@@ -1,7 +1,7 @@
 import {
   RECEIVE_REVIEW,
   RECEIVE_REVIEWS,
-  DELETE_REVIEW,
+  RECEIVE_REVIEW_ERRORS,
 } from "../actions/review_actions";
 import { RECEIVE_PRODUCT } from "../actions/product_actions";
 
@@ -12,13 +12,15 @@ export default (oldState = {}, action) => {
     case RECEIVE_PRODUCT:
       const { reviews } = action;
       return Object.assign({}, oldState, reviews);
+    case RECEIVE_REVIEWS:
+      return Object.assign({}, oldState, action.reviews);
     case RECEIVE_REVIEW:
-      const { review } = action;
-      return Object.assign({}, oldState, { [review.id]: review });
-    case DELETE_REVIEW:
-      let newState = Object.assign({}, oldState);
-      delete newState[action.review.id];
-      return newState;
+      const { review, reviewer } = action;
+      return Object.assign({}, oldState, {
+        [review.id]: Object.assign(review, {
+          reviewer: reviewer.firstname,
+        }),
+      });
     default:
       return oldState;
   }
