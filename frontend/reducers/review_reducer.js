@@ -1,7 +1,7 @@
 import {
   RECEIVE_REVIEW,
   RECEIVE_REVIEWS,
-  DELETE_REVIEW,
+  RECEIVE_REVIEW_ERRORS,
 } from "../actions/review_actions";
 import { RECEIVE_PRODUCT } from "../actions/product_actions";
 
@@ -21,10 +21,6 @@ export default (oldState = {}, action) => {
           reviewer: reviewer.firstname,
         }),
       });
-    case DELETE_REVIEW:
-      let newState = Object.assign({}, oldState);
-      delete newState[action.review.id];
-      return newState;
     default:
       return oldState;
   }

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ReviewForm from "../Review/ReviewForm";
 import ReviewShow from "../Review/ReviewShow";
 import AddToCartForm from "./AddToCartForm";
+import StarRatingComponent from "react-star-rating-component";
+import { AiFillStar } from "react-icons/ai";
 import ImageSlider from "./ImageSlider";
 import { connect } from "react-redux";
 import { fetchProduct } from "../../actions/product_actions";
@@ -20,22 +22,45 @@ class Product extends Component {
   componentDidUpdate() {}
 
   render() {
-    const { product, productReviews, reviewer } = this.props;
+    const { product, productReviews, sessionId } = this.props;
     if (!product || !productReviews) return null;
     const urls = product.imgUrls || [];
+    const ownReview = productReviews.filter(
+      (review) => review && review.reviewerId === sessionId
+    );
+    const othersReviews = productReviews.filter(
+      (review) => review && review.reviewerId !== sessionId
+    );
     return (
       <div className="ProductShowContainer">
         <div className="leftCol">
           <ImageSlider images={urls} />
-          <ReviewForm productId={product.id} reviewer={reviewer} />
-          {Object.values(productReviews).map((review, key) => (
+          <div className="totalReview">
+            <div className="reviewCount">
+              {product.reviewIds.length} Reviews
+            </div>
+            <div className="reviewValue">
+              <StarRatingComponent
+                name="rating"
+                starCount={5}
+                renderStarIcon={() => <AiFillStar />}
+                value={product.avgRating}
+                editing={false}
+              />
+            </div>
+          </div>
+          {ownReview && ownReview.length === 1 ? (
+            <ReviewShow review={ownReview[0]} key={ownReview[0].id} />
+          ) : (
+            <ReviewForm productId={product.id} />
+          )}
+          {othersReviews.map((review, key) => (
             <ReviewShow review={review} key={key} />
           ))}
         </div>
         <div className="rightCol">
           <AddToCartForm product={product} />
         </div>
-        <button onClick={() => console.log(this.props)}>Show State</button>
       </div>
     );
   }
@@ -54,7 +79,6 @@ const mSTP = (state, { match }) => {
     product,
     productReviews,
     sessionId: state.session.id,
-    reviewer: state.entities.users[state.session.id].firstname,
   };
 };
 

@@ -24,20 +24,124 @@
     text-decoration: underline;
     margin-right: 6px;
   }
+  .removeBtn {
+    margin-left: 24px;
+    font-size: 13px;
+    height: 36px;
+    cursor: pointer;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    border-radius: 36px;
+
+    p {
+      margin: auto;
+      font-weight: 700;
+    }
+
+    &:hover {
+      opacity: 1;
+      transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+      transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+        background 150ms ease-out, box-shadow 200ms ease-out;
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 
 .review-content {
   grid-area: review-content;
   .review-rating {
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
   }
 
   .review-body {
     margin-bottom: 0.5rem;
+    white-space: pre-wrap;
+    display: flex;
   }
 }
 
 .ReviewForm {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-areas: "userIcon review-field";
+  column-gap: 12px;
+  font-family: $main-font;
+  margin: 12px 0;
 
+  margin: 48px 0;
+
+  .userIcon {
+    grid-area: userIcon;
+  }
+
+  .form-container {
+    grid-area: review-field;
+    display: flex;
+    flex-direction: column;
+    .rating-title-text {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .rating-container {
+      justify-self: center;
+      vertical-align: center;
+      font-size: 36px;
+
+      display: flex;
+
+      .errorMessage {
+        font-size: 11px;
+        color: red;
+        align-self: center;
+      }
+    }
+
+    .body-input {
+      height: 100px;
+      outline: none !important;
+      resize: none;
+      padding-right: 36px;
+      background-color: #ffffff;
+      padding: 18px;
+      border-radius: 18px;
+      // box-shadow: rgba(34, 34, 34, 0.5) 0px 4px 20px 0px;
+
+      &:focus {
+        box-shadow: inset 0 0 0 1px black, 0 0 3px 1px hotpink;
+        // box-shadow: rgba(34, 34, 34, 0.15) 0px 4px 20px 0px;
+      }
+    }
+    .submitbtn {
+      align-self: flex-start;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      height: 48px;
+      width: 200px;
+      cursor: pointer;
+      border-radius: 24px;
+      background-color: #222222;
+      box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 36px;
+      p {
+        color: white;
+      }
+
+      &:hover {
+        transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
+          background 150ms ease-out, box-shadow 200ms ease-out;
+        box-shadow: 0 4px 20px rgba(34, 34, 34, 20%);
+        transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+        background: #2f2f2f;
+      }
+    }
+  }
 }
-

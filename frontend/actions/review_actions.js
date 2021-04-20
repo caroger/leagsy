@@ -3,6 +3,7 @@ import * as APIUtil from "../util/review_api_util";
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
 export const DELETE_REVIEW = "DELETE_REVIEW";
+export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
 
 const receiveReviews = (reviews) => ({
   type: RECEIVE_REVIEWS,
@@ -21,6 +22,11 @@ const destroyReview = ({ review }) => ({
   review,
 });
 
+const receiveErrors = (errors) => ({
+  type: RECEIVE_REVIEW_ERRORS,
+  errors,
+});
+
 // Thunk Actions
 
 export const fetchReviews = () => (dispatch) => {
@@ -36,8 +42,9 @@ export const fetchReviews = () => (dispatch) => {
 // };
 
 export const createReview = (review) => (dispatch) => {
-  return APIUtil.createReview(review).then((review) =>
-    dispatch(receiveReview(review))
+  return APIUtil.createReview(review).then(
+    (review) => dispatch(receiveReview(review)),
+    (err) => dispatch(receiveErrors(err.responseJSON))
   );
 };
 

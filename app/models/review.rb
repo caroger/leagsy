@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class Review < ApplicationRecord
-  validates_inclusion_of :rating, in: 1..5, on: :create, message: "rating must be between 1-5"
+  validates_inclusion_of :rating, in: 1..5, on: :create, message: "value between 1-5 is required"
 
   validates :reviewer_id, uniqueness: { scope: :product_id, message: "can only leave one review per product" }
 
