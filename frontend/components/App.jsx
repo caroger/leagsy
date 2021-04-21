@@ -21,7 +21,7 @@ const App = () => {
         <Route exact path="/products" component={Products} />
         <Route exact path="/products/:productId" component={Product} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/cat/:catetory" component={Category} />
+        <Route exact path="/cat/:category" component={Category} />
         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
       <Footer />
