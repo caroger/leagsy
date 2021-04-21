@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import LoginFormContainer from "../session_form/login_form_container";
 import SignupFormContainer from "../session_form/signup_form_container";
 import NotLogInCart from "../Product/NotLogInCart";
+import NotLogInReview from "../Product/NotLogInReview";
 import CheckOutMessage from "../Cart/CheckoutMessage";
 
 function Modal({ modal, closeModal }) {
@@ -20,6 +21,9 @@ function Modal({ modal, closeModal }) {
       break;
     case "notlogincart":
       component = <NotLogInCart />;
+      break;
+    case "notloginreview":
+      component = <NotLogInReview />;
       break;
     case "checkout":
       component = <CheckOutMessage />;

@@ -18,7 +18,7 @@ export default (oldState = {}, action) => {
       const { review, reviewer } = action;
       return Object.assign({}, oldState, {
         [review.id]: Object.assign(review, {
-          reviewer: reviewer.firstname,
+          reviewer: reviewer.firstName,
         }),
       });
     default:

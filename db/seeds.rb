@@ -7,12 +7,12 @@ Review.destroy_all
 
 # Create Users
 user_list = [
-  [ email: "demo1@rtsy.com", firstname: "League Figure Maker", password: "123456" ],
-  [ email: "demo2@rtsy.com", firstname: "League Plush Maker", password: "123456" ],
-  [ email: "demo3@rtsy.com", firstname: "League Hats Maker", password: "123456" ],
-  [ email: "demo4@rtsy.com", firstname: "League Jewelry Maker", password: "123456" ],
-  [ email: "demo5@rtsy.com", firstname: "League Artist", password: "123456" ],
-  [ email: "demo@rtsy.com", firstname: "Demo User", password: "123456" ]]
+  [ email: "demo1@rtsy.com", first_name: "League Figure Maker", password: "123456" ],
+  [ email: "demo2@rtsy.com", first_name: "League Plush Maker", password: "123456" ],
+  [ email: "demo3@rtsy.com", first_name: "League Hats Maker", password: "123456" ],
+  [ email: "demo4@rtsy.com", first_name: "League Jewelry Maker", password: "123456" ],
+  [ email: "demo5@rtsy.com", first_name: "League Artist", password: "123456" ],
+  [ email: "demo@rtsy.com", first_name: "Demo User", password: "123456" ]]
 
 user_list.each do |u|
   User.create(u)

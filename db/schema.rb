@@ -42,8 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
     t.integer "quantity", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.index ["user_id"], name: "index_cart_items_on_user_id"
+    t.index ["user_id", "product_id"], name: "index_cart_items_on_user_id_and_product_id", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -67,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_223034) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "firstname", null: false
+    t.string "first_name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false

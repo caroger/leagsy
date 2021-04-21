@@ -1,6 +1,7 @@
 import React from "react";
 
-const Category = () => {
+
+const Category = (products) => {
   return <div>This is Category View</div>;
 };
 

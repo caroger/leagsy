@@ -12,7 +12,7 @@ end
 
   json.reviewers do
     json.set! review.reviewer.id do
-      json.extract! review.reviewer, :id, :firstname
+      json.extract! review.reviewer, :id, :first_name
     end
   end
 end

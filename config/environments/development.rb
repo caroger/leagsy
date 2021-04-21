@@ -30,8 +30,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
 
   # TODO change if necessary
-  config.active_storage.service = :amazon_dev
-  # config.active_storage.service = :local
+  # config.active_storage.service = :amazon_dev
+  config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -62,3 +62,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+# Rails.application.routes.default_url_options[:host] = "localhost:3000"

@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
 
-function NotLogInCart(props) {
-  debugger;
+const NotLogInCart = (props) => {
   return (
     <div className="NotLogInCart">
       <p>Please </p>
@@ -13,7 +12,7 @@ function NotLogInCart(props) {
       <p>before adding items to cart.</p>
     </div>
   );
-}
+};
 
 const mDTP = (dispatch) => ({
   openModal: (modal) => dispatch(openModal(modal)),
