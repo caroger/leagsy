@@ -18,11 +18,14 @@ export default (oldState = {}, action) => {
       nextState.all[review.productId].avgRating = avgRating;
       return nextState;
     case DELETE_REVIEW:
+     // debugger;
       const idx = nextState.all[action.review.productId].reviewIds.indexOf(
         action.review.id
       );
       if (idx !== -1) {
         nextState.all[action.review.productId].reviewIds.splice(idx, 1);
+        nextState.all[action.review.productId].avgRating =
+          action.review.avgRating;
       }
       return nextState;
 
