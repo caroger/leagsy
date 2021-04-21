@@ -2,39 +2,32 @@
   font-family: $main-font;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 12px 36px;
 
   .navLink {
-    padding: 0 36px;
     margin-top: 12px;
-    ul {
-      display: flex;
-      align-items: center;
-      li {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    .left {
+      span {
+        margin-right: 12px;
+        align-content: center;
+        align-self: center;
+      }
+      a {
+        color: rgb(34, 34, 34);
+        text-decoration: underline;
+        text-transform: capitalize;
         padding-bottom: 5px;
-
-        span {
-          margin: 0 12px;
-          padding-bottom: 5px;
-        }
-        a {
-          color: rgb(34, 34, 34);
-          text-decoration: underline;
-          // font-size: 14px;
-          text-transform: capitalize;
-          padding-bottom: 5px;
-          &:hover {
-            color: rgb(89, 89, 89);
-          }
+        &:hover {
+          color: rgb(89, 89, 89);
         }
       }
     }
   }
 
   .heading {
-    padding: 24px 36px 0 36px;
+    padding: 24px 0;
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
@@ -63,10 +56,10 @@
 
       .ProductCardImg {
         width: 100%;
-        height: 163.84px;
-        object-fit: cover;
+        height: 200px;
+        object-fit: contain;
         overflow: hidden;
-        background-color: #9e9e9e;
+        background-color: $img-color;
         transition: box-shadow 200ms ease-in-out 0ms;
         border-radius: 5px;
       }

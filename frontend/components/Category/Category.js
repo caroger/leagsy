@@ -9,20 +9,23 @@ const Category = ({ filteredProducts, category }) => {
   return (
     <div className="Category">
       <div className="navLink">
-        <ul>
-          <li>
-            <Link>All categories</Link>
-            <span>
-              <AiOutlineRight size={12} />{" "}
-            </span>
-          </li>
-          <li>
-            <Link to={`/cat/${category}`}>{category}</Link>
-          </li>
-          <li>
-            <span>({Object.keys(filteredProducts).length} results)</span>
-          </li>
-        </ul>
+        <div className="left">
+          <span>
+            <Link to={`/cat/all`}>All categories</Link>
+          </span>
+          {category !== "all" && (
+            <>
+              {" "}
+              <span>
+                <AiOutlineRight size={12} />
+              </span>
+              <span>
+                <Link to={`/cat/${category}`}>{category}</Link>
+              </span>{" "}
+            </>
+          )}
+          <span>({Object.keys(filteredProducts).length} results)</span>
+        </div>
       </div>
       <div className="heading">
         <h1>{category}</h1>
@@ -41,7 +44,10 @@ const Category = ({ filteredProducts, category }) => {
 const mSTP = (state, ownProps) => {
   const products = state.entities.products.all || {};
   const category = ownProps.match.params.category || "";
-  const filteredProducts = filterObject(products, "category", category);
+  const filteredProducts =
+    category === "all"
+      ? products
+      : filterObject(products, "category", category);
   return {
     category,
     filteredProducts,
