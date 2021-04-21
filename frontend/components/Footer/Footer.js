@@ -24,7 +24,7 @@ const Footer = () => {
           </ul>
           <ul>
             <li>Hobbies</li>
-            <li>Playing League of Legends</li>
+            <li>League of Legends</li>
             <li>Snowboarding</li>
             <li>Running</li>
           </ul>
