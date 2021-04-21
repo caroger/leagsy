@@ -4,6 +4,7 @@ import StarRatingComponent from "react-star-rating-component";
 import { AiFillStar } from "react-icons/ai";
 import { FaUserAstronaut } from "react-icons/fa";
 import { connect } from "react-redux";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -31,15 +32,19 @@ class ReviewForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const productId = parseInt(this.state.productId);
-    const review = Object.assign({}, this.state, {
-      product_id: productId,
-    });
-    this.props.createReview(review);
-
-    this.setState({
-      body: "",
-    });
+    if (this.props.currentUser) {
+      const productId = parseInt(this.state.productId);
+      const review = Object.assign({}, this.state, {
+        product_id: productId,
+      });
+      this.props.createReview(review);
+      this.setState({
+        body: "",
+        rating: 0,
+      });
+    } else {
+      this.props.openModal("notloginreview");
+    }
   }
 
   onStarClick(nextValue, prevValue, name) {
@@ -89,13 +94,16 @@ class ReviewForm extends Component {
 
 const mSTP = (state) => {
   return {
-    reviewer: state.entities.users[state.session.id].firstname,
+    sessionId: state.session.id,
     errors: state.errors.review,
+    currentUser: state.entities.users[state.session.id],
   };
 };
 const mDTP = (dispatch) => {
   return {
     createReview: (review) => dispatch(createReview(review)),
+    closeModal: () => dispatch(closeModal()),
+    openModal: (modal) => dispatch(openModal(modal)),
   };
 };
 export default connect(mSTP, mDTP)(ReviewForm);

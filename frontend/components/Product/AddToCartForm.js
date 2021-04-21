@@ -20,7 +20,6 @@ class AddToCartForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.currentUser) {
-      console.log(this.state);
       this.props
         .createCartItem(this.state)
         .then(() => this.props.history.push("/cart"));

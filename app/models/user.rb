@@ -13,7 +13,7 @@
 class User < ApplicationRecord
   attr_reader :password
 
-  validates :firstname, :email, :password_digest, :session_token, presence: true
+  validates :first_name, :email, :password_digest, :session_token, presence: true
   validates :session_token, uniqueness: true
   validates :email, uniqueness: true
 
