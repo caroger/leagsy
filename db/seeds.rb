@@ -23,7 +23,15 @@ figure_seller = User.first
 figures_list = [
   { name: "Cho'Gath Team Mini", description: "Limited Edition Cho'Gath will feast upon the world and feed the souls to the Void.", category: "figures", price: 12, seller: figure_seller },
   { name: "Battle Principal Yuumi Team Mini", description: "The newest principal of durandal God-Weapon Academy arrives as our newest Limited Edition Team Mini. As a powerful channeler of magic, she uses the academic registry book as a focus object to generate apocalyptic levels of energy... often while perched on a terrified student's head.", category: "figures", price: 12, seller: figure_seller },
-  { name: "Battle Academia Team Minis Set", description: "The best of Durandal Academy are here! Battle Academia Ezreal, Jayce, Katarina and Lux, plus Battle Professor Graves is here to teach you a lesson as our newest set of Team Minis.", category: "figures", price: 40, seller: figure_seller },
+  { name: "Battle Academia Team Minis Set", description: "The best of Durandal Academy are here! Battle Academia Ezreal, Jayce, Katarina and Lux, plus Battle Professor Graves is here to teach you a lesson as our newest set of Team Minis. \n\n Battle Academia Team Minis Set Features: \n\Battle Academia Lux
+Battle Academia Ezreal
+Battle Academia Jayce
+Battle Academia Katarina
+Battle Professor Graves
+Approximate Measurements:
+
+Height: 2.3 - 2.7 in / 6.1 - 6.7 cm
+Width: 1.6 - 2.4 in / 4.1 - 6.2 cm", category: "figures", price: 40, seller: figure_seller },
   { name: "K/DA ALL OUT Seraphine Figure", description: "K/DA's newest collaborator is Seraphine, a vibrant young producer and songwriter. Music is a way for her to connect with others and herself--and alongside K/DA, she's determined to reach new heights. Earnest and open-hearted, Seraphine's dream is to unite the world through her art.
   \n\n K/DA Seraphine takes to the stage as Special Edition #2 in the Series 4 figure line.", category: "figures", price: 30, seller: figure_seller },
   { name: "Warring Kingdoms Jarvan IV Figure", description: "'By my will, this shall be finished.' \n\nWarring Kingdoms Jarvan IV brings a cataclysm to the Series 4 line as Special Edition #04 to celebrate the Lunar New Year.", category: "figures", price: 30, seller: figure_seller },
