@@ -92,8 +92,6 @@ class Category extends Component {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        <button onClick={() => console.log(this.state)}>Show State</button>
-        <button onClick={() => console.log(this.props)}>Show Props</button>
       </div>
     );
   }

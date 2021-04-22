@@ -82,7 +82,14 @@ class AddToCartForm extends Component {
 
         <div className="description">
           <h2>Description</h2>
-          <p>{description}</p>
+          <div className="description-body">
+            {description.split("\\n").map((p) => (
+              <span>
+                {p}
+                <br />
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );

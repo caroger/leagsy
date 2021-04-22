@@ -197,8 +197,12 @@
       margin-bottom: 10px;
       font-weight: 700;
     }
-    p {
-      white-space: pre-wrap;
+    .description-body {
+      white-space: pre-line;
+      span {
+        display: block;
+        margin-top: 12px;
+      }
     }
   }
 }
