@@ -7,7 +7,7 @@ export const selectReviewsForProduct = ({ reviews }, product) => {
   return product.reviewIds.map((reviewId) => reviews[reviewId]);
 };
 
-export const asArray = ({ products }) =>
+export const asArray = ( products ) =>
   Object.keys(products).map((key) => products[key]);
 
 // Helper functions to filter object
