@@ -64,6 +64,7 @@
 .ImageSlider {
   position: relative;
   width: 100%;
+
   height: auto;
 
   .Slider {
@@ -79,12 +80,17 @@
     width: 100%;
   }
 
-  .ProductImage {
+  .bigImage {
     width: 100%;
-    max-height: 48vh;
-    border-radius: 10px;
+    min-height: 48vh;
     background-color: $img-color;
+  }
+  .ProductImage {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
     object-fit: cover;
+    background-color: $img-color;
   }
 }
 
