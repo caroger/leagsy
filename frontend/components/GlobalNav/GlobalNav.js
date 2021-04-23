@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
+import { FaUser, FaUserAstronaut } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,7 +30,10 @@ class NavBar extends Component {
   LogoutButton() {
     return (
       <button className="SigninButton" onClick={this.props.logout}>
-        Log Out
+        <span>
+          <FaUserAstronaut size={14} />
+        </span>
+        <span>Log Out</span>
       </button>
     );
   }
