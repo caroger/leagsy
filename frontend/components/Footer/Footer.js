@@ -62,7 +62,7 @@ const Footer = () => {
             <span> United States | English (US) | $ (USD)</span>
           </p>
           <p>
-            <span>© 2021 Roger Hu</span>
+            <span>© 2021 Roger Hu | </span>
             <span>
               Product Photos Credit - https://merch.riotgames.com/en-us/
             </span>
