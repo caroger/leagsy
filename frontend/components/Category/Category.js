@@ -41,8 +41,8 @@ class Category extends Component {
   }
 
   render() {
-    const { category, filteredProducts } = this.props;
     const { selectedOption } = this.state;
+    const { category, filteredProducts } = this.props;
 
     const sortedProducts =
       selectedOption !== null
