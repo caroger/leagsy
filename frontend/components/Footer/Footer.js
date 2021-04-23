@@ -64,7 +64,14 @@ const Footer = () => {
           <p>
             <span>© 2021 Roger Hu | </span>
             <span>
-              Product Photos Credit - https://merch.riotgames.com/en-us/
+              Product Photos Credit -{" "}
+              <a
+                href="https://merch.riotgames.com/en-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://merch.riotgames.com/en-us/
+              </a>
             </span>
           </p>
         </div>

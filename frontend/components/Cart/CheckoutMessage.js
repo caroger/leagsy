@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 function CheckoutMessage() {
   return (
     <div className="CheckoutMessage">
-      <h1>Thank you for visting Rtsy!</h1>
+      <h1>Thank you for visting Leagsy!</h1>
       <p>
         All credits go to Riot Games for the sample products images and
-        descriptions used on Rtsy.
+        descriptions used on Leagsy.
       </p>
       <p>
         Please head to the official{" "}
-        <Link
-          to="https://merch.riotgames.com/en-us/"
+        <a
+          href="https://merch.riotgames.com/en-us/"
           target="_blank"
           rel="noopener noreferrer"
         >
           Riot Games Merch website
-        </Link>{" "}
+        </a>{" "}
         to make purchases.
       </p>
     </div>

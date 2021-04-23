@@ -46,6 +46,11 @@
       padding: 18px 24px;
       display: flex;
       justify-content: space-between;
+
+      a:link {
+        text-decoration: none;
+        color: white;
+      }
     }
   }
 }
