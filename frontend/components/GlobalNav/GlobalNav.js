@@ -42,7 +42,7 @@ class NavBar extends Component {
     return (
       <div className="logo">
         <Link to="/" className="logo-link">
-          Rtsy
+          Leagsy
         </Link>
       </div>
     );

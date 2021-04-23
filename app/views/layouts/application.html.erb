@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rtsy</title>
+    <title>Leagsy</title>
+     <meta property="og:title" content="Leagsy" />
+     <meta property='og:image' content="<%= image_url('cover.png') %>"/>
+     <meta property="og:description"
+       content="An Etsy inspired online gift shop for League of Legend fans"
+     />
+     <meta property="og:url"
+       content="http://projectname.herokuapp.com/"
+     />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
   <body>
     <%= yield %>
