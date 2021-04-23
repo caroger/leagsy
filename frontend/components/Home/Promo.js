@@ -10,11 +10,11 @@ const Promo = ({ products }) => {
       </div>
       <div className="ProductCircleWrapper">
         <ProductCircle product={products[Object.keys(products)[0]]} />
-        <ProductCircle product={products[Object.keys(products)[1]]} />
-        <ProductCircle product={products[Object.keys(products)[6]]} />
         <ProductCircle product={products[Object.keys(products)[7]]} />
-        <ProductCircle product={products[Object.keys(products)[4]]} />
-        <ProductCircle product={products[Object.keys(products)[5]]} />
+        <ProductCircle product={products[Object.keys(products)[17]]} />
+        <ProductCircle product={products[Object.keys(products)[20]]} />
+        <ProductCircle product={products[Object.keys(products)[30]]} />
+        <ProductCircle product={products[Object.keys(products)[40]]} />
       </div>
     </div>
   );

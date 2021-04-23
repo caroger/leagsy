@@ -10,16 +10,16 @@ const CatNav = () => {
             <Link to={"/cat/figures"}>Figures</Link>
           </li>
           <li className="CatItem">
-            <Link to={"/cat/plush"}>Plush</Link>
+            <Link to={"/cat/plush"}>Plushes</Link>
           </li>
           <li className="CatItem">
             <Link to={"/cat/statues"}>Statues</Link>
           </li>
           <li className="CatItem">
-            <Link to={"/cat/posters"}>Posters</Link>
+            <Link to={"/cat/hat"}>Hats</Link>
           </li>
           <li className="CatItem">
-            <Link to={"/cat/hats"}>Hats</Link>
+            <Link to={"/cat/mousepad"}>MousePads</Link>
           </li>
         </ul>
       </div>

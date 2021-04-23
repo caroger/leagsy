@@ -8,7 +8,9 @@ const ProductCard = ({ product }) => {
   const { imgUrls, price, avgRating, name, id } = { ...product };
   return (
     <Link className="ProductCard" to={`/products/${product.id}`}>
-      <img src={imgUrls[1]} alt={name} className="ProductCardImg" />
+      <div className="img-container">
+        <img src={imgUrls[0]} alt={name} className="ProductCardImg" />
+      </div>
       <div className="ProductCardName">{name}</div>
       <div className="ProductCardRating">
         <StarRatingComponent

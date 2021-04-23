@@ -106,7 +106,7 @@
         height: 100%; /* This if for the object-fit */
         object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
         object-position: center;
-        background-color: teal;
+        background-color: $img-color;
         border-radius: 6px;
       }
     }

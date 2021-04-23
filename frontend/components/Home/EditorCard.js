@@ -6,7 +6,7 @@ const EditorCard = ({ product }) => {
   const { imgUrls, name, price, id } = { ...product };
   return (
     <Link className="EditorCard" to={`/products/${product.id}`} key={id}>
-      <img src={imgUrls[1]} alt={name} className="EditorCardImg" />
+      <img src={imgUrls[0]} alt={name} className="EditorCardImg" />
       <div className="EditorCardPrice">$ {price}</div>
     </Link>
   );

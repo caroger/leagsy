@@ -10,12 +10,12 @@ const Recommendation = ({ products }) => {
             <h2>Popular Gifts Right Now</h2>
           </div>
           <div className="ProductCardsContainer">
-            <ProductCard product={products[Object.keys(products)[0]]} />
-            <ProductCard product={products[Object.keys(products)[1]]} />
             <ProductCard product={products[Object.keys(products)[2]]} />
             <ProductCard product={products[Object.keys(products)[3]]} />
-            <ProductCard product={products[Object.keys(products)[4]]} />
-            <ProductCard product={products[Object.keys(products)[5]]} />
+            <ProductCard product={products[Object.keys(products)[12]]} />
+            <ProductCard product={products[Object.keys(products)[13]]} />
+            <ProductCard product={products[Object.keys(products)[22]]} />
+            <ProductCard product={products[Object.keys(products)[23]]} />
           </div>
         </div>
       </div>

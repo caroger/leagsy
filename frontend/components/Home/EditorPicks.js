@@ -10,12 +10,12 @@ const EditorPicks = ({ products }) => {
           <h2>Promo's Day Gifts</h2>
           <h3>Shop these unique finds</h3>
         </div>
-        <EditorCard product={products[Object.keys(products)[0]]} />
-        <EditorCard product={products[Object.keys(products)[1]]} />
-        <EditorCard product={products[Object.keys(products)[2]]} />
-        <EditorCard product={products[Object.keys(products)[3]]} />
         <EditorCard product={products[Object.keys(products)[4]]} />
         <EditorCard product={products[Object.keys(products)[5]]} />
+        <EditorCard product={products[Object.keys(products)[14]]} />
+        <EditorCard product={products[Object.keys(products)[15]]} />
+        <EditorCard product={products[Object.keys(products)[24]]} />
+        <EditorCard product={products[Object.keys(products)[25]]} />
         <div className="text2">
           This Promo’s Day feels different, and his gift should, too. Whether
           you’re celebrating yourself, gifting the challenger players your life,
