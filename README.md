@@ -1,4 +1,4 @@
-![Banner](/app/assets/README/banner.png)
+[![Banner](/app/assets/README/banner.png)](http://leagsy.herokuapp.com/#/)
 # Leagsy
 Leagsy, an online gift shop for League of Legend fans, is a clone of the e-commerce website [Etys](https://www.etsy.com). It offers a pleasant browsing experience on [League of Legend](https://merch.riotgames.com/en-us/) merchandises. Users can browse, filter, sort, review, and add merchandises to her/his shopping cart.
 
