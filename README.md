@@ -63,6 +63,8 @@ const sortedProducts =
 ```
 
 #### Product Review
+
+![Product Review](/app/assets/README/reivew_demo.gif)
 - Prompt user to login/registered before reviewing a product
 - Check for required field (rating value) before allowing user to submit review
 - Same user can only leave 1 review for each product
