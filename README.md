@@ -1,5 +1,8 @@
-# README
+# Leagsy
 
+November 16, 2020 App Academy SF Cohort
+
+Leagsy is a clone of
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -22,3 +25,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+90504

@@ -2,7 +2,7 @@
   display: block;
   margin-bottom: 30px;
   color: rgb(34, 34, 34);
-  background-color: $promo-bg;
+  background-color: $promo-bg-color;
   h1 {
     font-family: $Roboto;
     font-size: 32px;
@@ -77,7 +77,7 @@
         object-fit: cover;
         border-radius: 50%;
         overflow: hidden;
-        background-color: $img-color;
+        background-color: $circle-product-bg-color;
       }
       .ProductCircleLink {
         display: flex;
@@ -136,7 +136,7 @@
           cursor: pointer;
           color: rgb(34, 34, 34);
           height: 165px;
-          background-color: $img-color;
+          background-color: $recommend-product-bg-color;
           transition: box-shadow 100ms ease-in-out 0ms;
           border-radius: 5px;
 
@@ -182,7 +182,7 @@
   font-size: 16px;
   font-weight: 300;
   font-family: $main-font;
-  background: linear-gradient(182deg, transparent 50px, $editor-bg) top;
+  background: linear-gradient(182deg, transparent 50px, $editor-bg-color) top;
   background-repeat: no-repeat;
   height: 420px;
   margin-top: 128px;
@@ -237,7 +237,7 @@
       display: flex;
       justify-content: center;
       border-radius: 5px;
-      background-color: $img-color;
+      background-color: $editor-product-bg-color;
       & a:link {
         text-decoration: none;
         font-size: 13px;
