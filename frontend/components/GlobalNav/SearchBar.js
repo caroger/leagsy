@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import SearchResult from "./SearchResult";
 import { useSelector } from "react-redux";
-
 import Fuse from "fuse.js";
 import { asArray } from "../../reducers/selector";
+
+//helper event handler to detect clicking outside
+let useClickOutside = (handler) => {
+  let domNode = useRef();
+  useEffect(() => {
+    let maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler();
+      }
+    };
+    document.addEventListener("mousedown", maybeHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", maybeHandler);
+    };
+  });
+
+  return domNode;
+};
 
 const SearchBar = () => {
   const products = useSelector((state) => state.entities.products.all || {});
   const [query, updateQuery] = useState("");
   const fuse = new Fuse(asArray(products), {
     keys: ["name", "category"],
-    threshold: 0.3,
+    threshold: 0.5,
   });
   const onSearch = ({ currentTarget }) => {
     updateQuery(currentTarget.value);
   };
   const results = fuse.search(query);
   const searchResults = results.map((product) => product.item);
+  let domNode = useClickOutside(() => {
+    updateQuery("");
+  });
 
   return (
-    <div className="SearchBar">
+    <div ref={domNode} className="SearchBar">
       <div className="row1">
         <input
           className="SearchInput"
