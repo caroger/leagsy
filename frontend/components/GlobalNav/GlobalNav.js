@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
-import { FaUser, FaUserAstronaut } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  FaUserAstronaut,
+  FaShoppingBasket,
+  FaShoppingBag,
+} from "react-icons/fa";
+import SearchBar from "./SearchBar";
+import SearchResult from "./SearchResult";
 
 class NavBar extends Component {
   constructor(props) {
@@ -48,26 +51,12 @@ class NavBar extends Component {
     );
   }
 
-  SearchBar() {
-    return (
-      <div className="SearchBar">
-        <input
-          className="SearchInput"
-          type="text"
-          placeholder="Search anything"
-        />
-        <button className="SearchButton">
-          <FontAwesomeIcon icon={faSearch} color={"black"} />
-        </button>
-      </div>
-    );
-  }
-
   ShoppingCart() {
     const { itemCount } = this.props;
     return (
       <Link to="/cart" className="ShoppingCart">
-        <FontAwesomeIcon icon={faShoppingCart} />
+        <FaShoppingBag />
+        {/* <FontAwesomeIcon icon={faShoppingCart} /> */}
         {itemCount > 0 && (
           <div className="itemCount">
             <span>{itemCount}</span>
@@ -90,7 +79,7 @@ class NavBar extends Component {
       <div className="NavBar">
         <div className="header-container">
           {this.SiteLogo()}
-          {this.SearchBar()}
+          <SearchBar />
           {this.UserNav(this.props.currentUser)}
         </div>
       </div>
