@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const SearchResult = ({ products, handleRedirect }) => {
+const SearchResult = ({ products, clearSearch }) => {
   let history = useHistory();
 
   return (
@@ -11,8 +11,9 @@ const SearchResult = ({ products, handleRedirect }) => {
         <div
           to={`/products/${product.id}`}
           onClick={(e) => {
+            e.preventDefault();
             history.push(`/products/${product.id}`);
-            handleRedirect;
+            clearSearch();
           }}
           className="SearchResultItem"
           key={product.id}

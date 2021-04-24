@@ -35,6 +35,9 @@ const SearchBar = () => {
     updateQuery(currentTarget.value);
   };
   const results = fuse.search(query);
+  const clearSearch = () => {
+    updateQuery("");
+  };
   const searchResults = results.map((product) => product.item);
   let domNode = useClickOutside(() => {
     updateQuery("");
@@ -46,7 +49,9 @@ const SearchBar = () => {
         <input
           className="SearchInput"
           type="search"
-          placeholder={"Search Anything"}
+          placeholder={
+            "Search by product name and category. Click on result to go to product detail view"
+          }
           value={query}
           onChange={onSearch}
         />
@@ -56,7 +61,9 @@ const SearchBar = () => {
       </div>
       <div className="row2">
         <div className="placeholder"></div>
-        {searchResults && <SearchResult products={searchResults} />}
+        {searchResults && (
+          <SearchResult products={searchResults} clearSearch={clearSearch} />
+        )}
         <div className="placeholder"></div>
       </div>
     </div>
