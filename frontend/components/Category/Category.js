@@ -37,7 +37,7 @@ class Category extends Component {
   // }
 
   handleChange(selectedOption) {
-    this.setState({ selectedOption }, () => console.log(this.state));
+    this.setState({ selectedOption });
   }
 
   render() {
