@@ -19,7 +19,6 @@ const SearchResult = ({ products, clearSearch }) => {
           key={product.id}
         >{`${product.name}  | $ ${product.price}`}</div>
       ))}
-      {/* {JSON.stringify(products)} */}
     </div>
   );
 };

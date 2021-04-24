@@ -241,6 +241,9 @@
       cursor: pointer;
       text-decoration: none;
       color: black;
+      &:hover {
+        font-weight: bold;
+      }
     }
   }
 }
