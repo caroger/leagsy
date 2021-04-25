@@ -34,7 +34,7 @@ const SearchBar = () => {
   const onSearch = ({ currentTarget }) => {
     updateQuery(currentTarget.value);
   };
-  const results = fuse.search(query);
+  const results = fuse.search(query).slice(0, 10);
   const clearSearch = () => {
     updateQuery("");
   };
@@ -60,11 +60,11 @@ const SearchBar = () => {
         </button>
       </div>
       <div className="row2">
-        <div className="placeholder"></div>
+        <div className="placeholder1"></div>
         {searchResults && (
           <SearchResult products={searchResults} clearSearch={clearSearch} />
         )}
-        <div className="placeholder"></div>
+        <div className="placeholder2"></div>
       </div>
     </div>
   );
