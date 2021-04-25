@@ -11,10 +11,13 @@ const ProductCircle = ({ product }) => {
         <img className="ProductCircleImg" src={imgUrls[0]} alt={name} />
         <div className="ProductCircleLink">
           <div className="ProductName">
-            {name}{" "}
-            <span className="Arrow">
+            <div className="Name">
+              {name}
+            </div>
+
+            <div className="Arrow">
               <FaArrowRight />
-            </span>
+            </div>
           </div>
           {/* <div className="Arrow">
             <FaArrowRight />

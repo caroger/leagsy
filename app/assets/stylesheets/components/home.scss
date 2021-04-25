@@ -88,9 +88,16 @@
           text-decoration: none;
           display: flex;
           align-items: center;
-        }
-        .Arrow {
-          position: relative;
+          .Name {
+            margin-right: 6px;
+          }
+          .Arrow {
+            padding-bottom: 2px;
+            svg {
+              display: block;
+              margin: auto;
+            }
+          }
         }
       }
     }
