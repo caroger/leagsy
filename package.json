@@ -1,5 +1,5 @@
 {
-  "name": "Leagsy",
+  "name": "leagsy",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.13",
@@ -21,7 +21,7 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^4.5.0"
   },
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "description": "Etsy inspired online gift shop for League of Legends fans",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -39,7 +39,7 @@
     "dev": "webpack --watch --mode=development"
   },
   "keywords": [],
-  "author": "",
+  "author": "Roger hu",
   "license": "ISC",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",

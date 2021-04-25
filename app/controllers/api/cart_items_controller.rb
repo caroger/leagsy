@@ -22,7 +22,6 @@ class Api::CartItemsController < ApplicationController
   end
 
   def update
-    # debugger
     @cart_item = current_user.cart_items.find_by(product_id: cartitem_params[:product_id])
     if @cart_item
       @cart_item.update(cartitem_params)

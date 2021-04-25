@@ -21,7 +21,6 @@ export default (oldState = {}, action) => {
       delete newState[action.cartItem.id];
       return newState;
     case RECEIVE_CART_ITEM:
-      // debugger;
       const { cartItem } = action;
       return Object.assign({}, oldState, {
         [cartItem.id]: cartItem,

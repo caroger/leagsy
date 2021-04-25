@@ -159,7 +159,7 @@
       color: #222222;
       text-indent: 0.01px;
       box-shadow: 0 1px 6px 0 rgba(34, 34, 34, 15%);
-      transition: border-color 200ms ease-out 0ms, box-shadow 0s ease-out;
+      transition: all 100ms ease-in;
       &:hover,
       &:focus {
         border-color: rgba(34, 34, 34, 0.5);
@@ -178,8 +178,7 @@
       line-height: 24px;
       font-weight: 700;
       outline: none;
-      transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
-        background 150ms ease-out, box-shadow 200ms ease-out;
+      transition: all 100ms ease-in;
       &:hover {
         box-shadow: 0 4px 20px rgba(34, 34, 34, 20%);
         transform: scaleX(1.015) scaleY(1.035) perspective(1px);

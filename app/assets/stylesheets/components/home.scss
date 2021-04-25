@@ -57,12 +57,10 @@
       }
 
       &:hover {
-        transition: transform 250ms;
         .Arrow {
           transform: translateX(5px);
         }
         .ProductCircleImg {
-          transition: box-shadow 100ms ease-in-out 50ms;
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
       }
@@ -78,6 +76,7 @@
         border-radius: 50%;
         overflow: hidden;
         background-color: $circle-product-bg-color;
+        transition: all 200ms ease-in-out;
       }
       .ProductCircleLink {
         display: flex;
@@ -252,8 +251,8 @@
         font-size: 13px;
         font-weight: 400;
       }
+      transition: box-shadow 100ms ease-in 0ms;
       &:hover {
-        transition: box-shadow 100ms ease-in 0ms;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
         .EditorCardPrice {

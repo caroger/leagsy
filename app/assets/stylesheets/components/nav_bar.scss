@@ -65,11 +65,13 @@
             margin-right: 10px;
           }
 
+          transition: all 200ms ease-in-out;
           &:hover {
             border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(34, 34, 34, 0.3);
+            box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);
             background-color: rgba(34, 34, 34, 0.075);
             opacity: 1;
+            transform: scaleX(1.015) scaleY(1.035) perspective(1px);
           }
         }
 
@@ -80,7 +82,7 @@
           padding: 12px;
           color: #222222;
           position: relative;
-
+          transition: all 200ms ease-in-out;
           &:hover {
             border-radius: 24px;
             box-shadow: 0 4px 20px rgba(34, 34, 34, 15%);

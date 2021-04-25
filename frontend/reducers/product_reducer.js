@@ -18,7 +18,6 @@ export default (oldState = {}, action) => {
       nextState.all[review.productId].avgRating = avgRating;
       return nextState;
     case DELETE_REVIEW:
-     // debugger;
       const idx = nextState.all[action.review.productId].reviewIds.indexOf(
         action.review.id
       );
