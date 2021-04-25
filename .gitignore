@@ -108,5 +108,6 @@ spec/examples.txt
 client/app/libs/i18n/translations.js
 
 # Ignore npm package-lock
-package-lock.jsonbundle.js
+package-lock.json
+bundle.js
 bundle.js.map
