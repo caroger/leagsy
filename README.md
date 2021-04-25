@@ -13,12 +13,12 @@ Leagsy is built using a Rails backend, PostgreSQL for the database management, R
 
 ### Features/Code Highlight
 
-##### Shopping Cart
-![Cart Crud](/app/assets/README/cart_demo.gif)
+#### Product Search Filter
+![Product Search](/app/assets/README/search_demo.gif)
+- Search product by name and category
+- Press ESC to clear search
+- Click on search result to go to product detail view
 
-- CRUD functions for shopping cart items
-- Sync update item count indicator next to the shopping cart icon upon cart item creation/deletion
-- Sync update cart sub-total upon cart item quantity update
 
 #### Image Slider
 ![Image Slider](/app/assets/README/slider_demo.gif)
@@ -92,7 +92,11 @@ render(){
   </div>
 }
 ```
-
+#### Shopping Cart
+![Cart Crud](/app/assets/README/cart_demo.gif)
+- CRUD functions for shopping cart items
+- Sync update item count indicator next to the shopping cart icon upon cart item creation/deletion
+- Sync update cart sub-total upon cart item quantity update
 ### Acknowledgement
 Products seeding data are taking from [Riot Merch Store](https://merch.riotgames.com/en-us/)
 
