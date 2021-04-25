@@ -86,6 +86,8 @@
         .ProductName {
           margin-right: 5px;
           text-decoration: none;
+          display: flex;
+          align-items: center;
         }
         .Arrow {
           position: relative;

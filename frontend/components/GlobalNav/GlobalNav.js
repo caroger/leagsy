@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaUserAstronaut,
-  FaShoppingBasket,
-  FaShoppingBag,
-} from "react-icons/fa";
+import { FaUserAstronaut, FaShoppingBag } from "react-icons/fa";
 import SearchBar from "./SearchBar";
-import SearchResult from "./SearchResult";
 
 class NavBar extends Component {
   constructor(props) {
@@ -56,7 +51,6 @@ class NavBar extends Component {
     return (
       <Link to="/cart" className="ShoppingCart">
         <FaShoppingBag />
-        {/* <FontAwesomeIcon icon={faShoppingCart} /> */}
         {itemCount > 0 && (
           <div className="itemCount">
             <span>{itemCount}</span>

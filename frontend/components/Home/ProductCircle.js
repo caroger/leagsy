@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FaArrowRight } from "react-icons/fa";
 
 const ProductCircle = ({ product }) => {
   if (!product) return null;
@@ -11,10 +10,15 @@ const ProductCircle = ({ product }) => {
       <Link className="ProductCircle" to={`/products/${id}`}>
         <img className="ProductCircleImg" src={imgUrls[0]} alt={name} />
         <div className="ProductCircleLink">
-          <div className="ProductName">{name}</div>
-          <div className="Arrow">
-            <FontAwesomeIcon icon={faArrowRight} />
+          <div className="ProductName">
+            {name}{" "}
+            <span className="Arrow">
+              <FaArrowRight />
+            </span>
           </div>
+          {/* <div className="Arrow">
+            <FaArrowRight />
+          </div> */}
         </div>
       </Link>
     </div>

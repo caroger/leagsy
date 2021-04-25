@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import CatNav from "./CatNav/CatNav";
 import Category from "./Category/Category.js";
 import Footer from "./Footer/Footer";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <GlobalNav />
       <CatNav />
       <Modal />
+      <ScrollToTop />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/products/:productId" component={Product} />
